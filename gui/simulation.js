@@ -197,6 +197,7 @@ cm.Grid.prototype = {
 			burn = this.chanceOfBurning;
 			}
 		var hum  = 5-Math.round(this.humidity/10)
+		var combust;
 		
 		var time = ++this._time; // time now
 
@@ -209,7 +210,7 @@ cm.Grid.prototype = {
 			{
 				sensor = 0;
 				burning = 0;
-				
+				combust = 0;
 				c5 = c[x1][y1];
 				
 				if (c5.sensorTime!=time)
@@ -224,21 +225,30 @@ cm.Grid.prototype = {
 					if (c1) 
 					{
 						if (c1.burningTime >=0 && c1.burningTime != time)
+						{
 							burning+=(4+(wx!=0?Math.round(wx*3):-1)+(wy!=0?Math.round(wy*-3):-1));
+							combust++;
+						}
 						if (c1.sensorTime)
 							sensor++;
 					}
 					if (c2)
 					{
 						if (c2.burningTime >=0 && c2.burningTime != time)
+							{
 							burning+=(8+(wy!=0?Math.round(wy*-7):-4));
+							combust++;
+							}
 						if (c2.sensorTime)
 							sensor++;
 					}
 					if (c3)
 					{
 						if (c3.burningTime >=0 && c3.burningTime != time)
+						{
 							burning+=(4+(wx!=0?Math.round(wx*-3):-1)+(wy!=0?Math.round(wy*-3):-1));
+							combust++;
+						}
 						if (c3.sensorTime)
 							sensor++;
 					}
@@ -248,7 +258,10 @@ cm.Grid.prototype = {
 					c4 = c[x0][y1];
 					
 					if (c4.burningTime >=0 && c4.burningTime != time)
+					{	
 						burning+=(8+(wx!=0?Math.round(wx*7):-4));
+						combust++;
+					}
 					if (c4.sensorTime)
 						sensor++;
 				}
@@ -258,7 +271,10 @@ cm.Grid.prototype = {
 					c6 = c[x2][y1];
 					
 					if (c6.burningTime >=0 && c6.burningTime != time)
+					{	
 						burning+=(8+(wx!=0?Math.round(wx*-7):-4));
+						combust++;
+					}
 					if (c6.sensorTime)
 						sensor++;
 				}
@@ -271,21 +287,30 @@ cm.Grid.prototype = {
 					if (c7)
 					{
 						if (c7.burningTime >=0 && c7.burningTime != time)
+						{	
 							burning+=(4+(wx!=0?Math.round(wx*3):-1)+(wy!=0?Math.round(wy*3):-1));
+							combust++;
+						}
 						if (c7.sensorTime)
 							sensor++;
 					}
 					if (c8)
 					{
 						if (c8.burningTime >=0 && c8.burningTime != time)
+						{	
 							burning+=(8+(wy!=0?Math.round(wy*7):-4));
+							combust++;
+						}
 						if (c8.sensorTime)
 							sensor++;
 					}
 					if (c9)
 					{
 						if (c9.burningTime >=0 && c9.burningTime != time)
+						{	
 							burning+=(4+(wx!=0?Math.round(wx*-3):-1)+(wy!=0?Math.round(wy*3):-1));
+							combust++;
+						}
 						if (c9.sensorTime)
 							sensor++;
 					}
@@ -294,13 +319,17 @@ cm.Grid.prototype = {
 				{
 					burning += hum;
 				}
-				if ( !(c5.burningTime>=0) && burning && burning > mf(mr()*burn) )
+				if (!(c5.burningTime>=0) && burning && combust == 8)
+					{
+						c5.burningTime = time;
+					}
+				else if ( !(c5.burningTime>=0) && burning && burning > mf(mr()*burn) )
 					c5.burningTime = time;
 					
 				if ( !(c5.burningTime>=0) && !sensor && !c5.sensorTime && mr() <= 0.2)
 					c5.sensorTime = time;
 				
-				c5.burningCount = burning;
+				c5.burningCount = combust;
 			}
 		}
 		
