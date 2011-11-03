@@ -344,12 +344,12 @@ cm.Grid.prototype = {
 		{			
 			for(var y=0,ny=this.sizeY;y<ny;y++)
 			{
-				to.push(ch(from[x][y].burningCount))
+				to.push(ch(from[x][y].burningCount));
 			}
 		}
 		
 		var that = this;
-			
+		
 		$.ajax({
 			url:'http://localhost:8000/simulate/fire',
 			type: 'post',
@@ -360,7 +360,7 @@ cm.Grid.prototype = {
 				sizeX: that.sizeX,
 				sizeY: that.sizeY,
 				windDirection: that.windDirection,
-				cells: Base64.encode(to.join())
+				cells: Base64.encode(to.join(''))
 			}
 		});
 	}
