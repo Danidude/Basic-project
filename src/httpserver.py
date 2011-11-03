@@ -4,12 +4,38 @@ Created on 7. okt. 2011
 @author: Eier
 '''
 import cgi
-import sys
-import time
-
+import base64;
 from BaseHTTPServer import BaseHTTPRequestHandler
 from BaseHTTPServer import HTTPServer
 from os import curdir, path
+
+
+class GridCell():
+    x = 0
+    y = 0
+    v = 0
+    def __init__(self,x,y,v):
+        self.x = x
+        self.y = y
+        self.v = v #value
+
+class Grid():
+    sizeX = 0
+    sizeY = 0
+    cells = None
+    def __init__(self,sizeX,sizeY,values1d):
+        self.sizeX = sizeX
+        self.sizeY = sizeY
+        
+        v = 0
+        cells = []
+        for x in range(sizeX):
+            cells.append([])
+            for y in range(sizeY):
+                print x,sizeX,y,sizeY,v,len(values1d)
+                cells[x].append(GridCell(x, y, values1d[v]));
+                v += 1
+
 
 class HttpRequestHandler(BaseHTTPRequestHandler):
     
@@ -67,7 +93,18 @@ class HttpRequestHandler(BaseHTTPRequestHandler):
         self.send_response(200)
         self.send_header('Content-type','text/plain')
         self.end_headers()
-        self.wfile.write('ok!')
+        cells = []
+        for key,value in postvars.items():
+            if key == 'sizeX':
+                sizeX = int(value[0])
+            elif key == 'sizeY':
+                sizeY = int(value[0])
+            elif key=='cells':
+                for char in base64.b64decode(value[0]):
+                    cells.append(char)
+        
+        grid = Grid(sizeX,sizeY,cells)
+        print grid.cells
         return
     
 if __name__ == '__main__':
