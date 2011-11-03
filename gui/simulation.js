@@ -147,6 +147,7 @@ cm.Grid.prototype = {
 	foregroundColor: '#ccc',
 	borderColor: '#111',
 	windMagnitude: 1,
+	humidity: 50,
 	chanceOfBurning: 58,
 	windDirection: 0, // radians
 	_cells: null,
@@ -184,6 +185,7 @@ cm.Grid.prototype = {
 		
 		this.windMagnitude = parseInt($('#windMag').val());
 		var wd = parseInt($('#windDir').val());
+		this.humidity = parseInt($('#himidity').val())
 		var wdr = wd*Math.PI/180;
 		var wx = this.windMagnitude * Math.cos(wdr);
 		var wy = this.windMagnitude * Math.sin(wdr);
@@ -194,6 +196,7 @@ cm.Grid.prototype = {
 			{
 			burn = this.chanceOfBurning;
 			}
+		var hum  = 5-Math.round(this.humidity/10)
 		
 		var time = ++this._time; // time now
 
@@ -287,7 +290,10 @@ cm.Grid.prototype = {
 							sensor++;
 					}
 				}
-				
+				if (burning > 0)
+				{
+					burning += hum;
+				}
 				if ( !(c5.burningTime>=0) && burning && burning > mf(mr()*burn) )
 					c5.burningTime = time;
 					
