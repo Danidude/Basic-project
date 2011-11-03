@@ -147,6 +147,7 @@ cm.Grid.prototype = {
 	foregroundColor: '#ccc',
 	borderColor: '#111',
 	windMagnitude: 1,
+	chanceOfBurning: 58,
 	windDirection: 0, // radians
 	_cells: null,
 	_time: 0,
@@ -181,11 +182,17 @@ cm.Grid.prototype = {
 		var burning = 0; // number of burning neighboor cells
 		var sensor = 0; // number of sensed neighboor cells
 		
+		this.windMagnitude = parseInt($('#windMag').val());
 		var wd = parseInt($('#windDir').val());
 		var wx = this.windMagnitude * Math.cos(wd);
 		var wy = this.windMagnitude * Math.sin(wd);
 		wx = Math.abs(wx) > 0 && Math.abs(wx) <= 0.00009 ? 0 : wx;
 		wy = Math.abs(wy) > 0 && Math.abs(wy) <= 0.00009 ? 0 : wy;
+		var burn = this.chanceOfBurning*this.windMagnitude;
+		if(burn == 0)
+			{
+			burn = this.chanceOfBurning;
+			}
 		
 		var time = ++this._time; // time now
 
@@ -213,21 +220,21 @@ cm.Grid.prototype = {
 					if (c1) 
 					{
 						if (c1.burningTime >=0 && c1.burningTime != time)
-							burning+=(4+(wx<0?-3:wx>0?3:0)+(wy<0?-3:wy>0?3:0));
+							burning+=(4+(wx!=0?Math.round(wx*3):0)+(wy!=0?Math.round(wy*3):0));
 						if (c1.sensorTime)
 							sensor++;
 					}
 					if (c2)
 					{
 						if (c2.burningTime >=0 && c2.burningTime != time)
-							burning+=(8+(wy<0?7:wy>0?-7:-4));
+							burning+=(8+(wy!=0?Math.round(wy*-7):-4));
 						if (c2.sensorTime)
 							sensor++;
 					}
 					if (c3)
 					{
 						if (c3.burningTime >=0 && c3.burningTime != time)
-							burning+=(4+(wx>0?-3:wx<0?3:0)+(wy<0?-3:wy>0?3:0));
+							burning+=(4+(wx!=0?Math.round(wx*-3):0)+(wy!=0?Math.round(wy*3):0));
 						if (c3.sensorTime)
 							sensor++;
 					}
@@ -237,7 +244,7 @@ cm.Grid.prototype = {
 					c4 = c[x0][y1];
 					
 					if (c4.burningTime >=0 && c4.burningTime != time)
-						burning+=(8+(wx>0?7:wx<0?7:-4));
+						burning+=(8+(wx!=0?Math.round(wx*7):-4));
 					if (c4.sensorTime)
 						sensor++;
 				}
@@ -247,7 +254,7 @@ cm.Grid.prototype = {
 					c6 = c[x2][y1];
 					
 					if (c6.burningTime >=0 && c6.burningTime != time)
-						burning+=(8+(wx<0?7:wx>0?7:-4));
+						burning+=(8+(wx!=0?Math.round(wx*-7):-4));
 					if (c6.sensorTime)
 						sensor++;
 				}
@@ -260,27 +267,27 @@ cm.Grid.prototype = {
 					if (c7)
 					{
 						if (c7.burningTime >=0 && c7.burningTime != time)
-							burning+=(4+(wx>0?3:wx<0?-3:0)+(wy<0?-3:wy>0?3:0));
+							burning+=(4+(wx!=0?Math.round(wx*3):0)+(wy!=0?Math.round(wy*3):0));
 						if (c7.sensorTime)
 							sensor++;
 					}
 					if (c8)
 					{
 						if (c8.burningTime >=0 && c8.burningTime != time)
-							burning+=(8+(wy<0?-7:wy>0?7:-4));
+							burning+=(8+(wy!=0?Math.round(wy*7):-4));
 						if (c8.sensorTime)
 							sensor++;
 					}
 					if (c9)
 					{
 						if (c9.burningTime >=0 && c9.burningTime != time)
-							burning+=(4+(wx<0?3:wx>0?-3:0)+(wy<0?-3:wy>0?3:0));
+							burning+=(4+(wx!=0?Math.round(wx*-3):0)+(wy!=0?Math.round(wy*3):0));
 						if (c9.sensorTime)
 							sensor++;
 					}
 				}
 				
-				if ( !(c5.burningTime>=0) && burning && burning > mf(mr()*58) )
+				if ( !(c5.burningTime>=0) && burning && burning > mf(mr()*burn) )
 					c5.burningTime = time;
 					
 				if ( !(c5.burningTime>=0) && !sensor && !c5.sensorTime && mr() <= 0.2)
