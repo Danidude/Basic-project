@@ -184,8 +184,9 @@ cm.Grid.prototype = {
 		
 		this.windMagnitude = parseInt($('#windMag').val());
 		var wd = parseInt($('#windDir').val());
-		var wx = this.windMagnitude * Math.cos(wd);
-		var wy = this.windMagnitude * Math.sin(wd);
+		var wdr = wd*Math.PI/180;
+		var wx = this.windMagnitude * Math.cos(wdr);
+		var wy = this.windMagnitude * Math.sin(wdr);
 		wx = Math.abs(wx) > 0 && Math.abs(wx) <= 0.00009 ? 0 : wx;
 		wy = Math.abs(wy) > 0 && Math.abs(wy) <= 0.00009 ? 0 : wy;
 		var burn = this.chanceOfBurning*this.windMagnitude;
@@ -220,7 +221,7 @@ cm.Grid.prototype = {
 					if (c1) 
 					{
 						if (c1.burningTime >=0 && c1.burningTime != time)
-							burning+=(4+(wx!=0?Math.round(wx*3):0)+(wy!=0?Math.round(wy*3):0));
+							burning+=(4+(wx!=0?Math.round(wx*3):-1)+(wy!=0?Math.round(wy*-3):-1));
 						if (c1.sensorTime)
 							sensor++;
 					}
@@ -234,7 +235,7 @@ cm.Grid.prototype = {
 					if (c3)
 					{
 						if (c3.burningTime >=0 && c3.burningTime != time)
-							burning+=(4+(wx!=0?Math.round(wx*-3):0)+(wy!=0?Math.round(wy*3):0));
+							burning+=(4+(wx!=0?Math.round(wx*-3):-1)+(wy!=0?Math.round(wy*-3):-1));
 						if (c3.sensorTime)
 							sensor++;
 					}
@@ -267,7 +268,7 @@ cm.Grid.prototype = {
 					if (c7)
 					{
 						if (c7.burningTime >=0 && c7.burningTime != time)
-							burning+=(4+(wx!=0?Math.round(wx*3):0)+(wy!=0?Math.round(wy*3):0));
+							burning+=(4+(wx!=0?Math.round(wx*3):-1)+(wy!=0?Math.round(wy*3):-1));
 						if (c7.sensorTime)
 							sensor++;
 					}
@@ -281,7 +282,7 @@ cm.Grid.prototype = {
 					if (c9)
 					{
 						if (c9.burningTime >=0 && c9.burningTime != time)
-							burning+=(4+(wx!=0?Math.round(wx*-3):0)+(wy!=0?Math.round(wy*3):0));
+							burning+=(4+(wx!=0?Math.round(wx*-3):-1)+(wy!=0?Math.round(wy*3):-1));
 						if (c9.sensorTime)
 							sensor++;
 					}
