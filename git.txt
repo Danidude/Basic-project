@@ -1,0 +1,14 @@
+---- Always start working by ---
+git pull				  Get the latest version (updates from others)
+
+---- Go back to last save ---
+git checkout report.txt                   go back to latest version on report.txt (or any other filename)
+git checkout -f                           go back to latest version on all files
+
+---- How to save changes ---
+git add -A                                Adds all files to save
+git commit -m "message here"              Do the actual saving and add write a message of what you did
+
+---- Upload to server ----
+git pull                                  Get the latest version (updates from others)
+git push                                  Upload to server.
