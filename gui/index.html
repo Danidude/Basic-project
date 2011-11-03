@@ -1,0 +1,19 @@
+<html>
+<head>
+<title>Test</title>
+<script type="text/javascript" src="jquery-1.6.4.min.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+var ch = String.fromCharCode;
+var data = [255,221,3];
+ 
+var str = '';
+for(var d=0,dn=data.length;d<dn;d++)
+	str += ch(data[d]);
+
+$('body').append(str);
+</script>
+</body>
+</html>
+

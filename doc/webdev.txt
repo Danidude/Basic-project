@@ -1,0 +1,13 @@
+How to integrate web development tools in Eclipse
+
+1. Open eclipse (use any workspace)
+2. Go to "Help > Install New Software"
+3. Type into work with depending on your version of eclipse:
+	- http://download.eclipse.org/releases/galileo
+	- http://download.eclipse.org/releases/helios
+	- http://download.eclipse.org/releases/indigo
+
+4. Go to "Web, XML, Java EE and OSGi Enterprise Development"
+5. Check "Eclipse Web Developer Tools"
+6. Install and follow instructions
+7. Restart eclipse

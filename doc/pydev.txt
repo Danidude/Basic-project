@@ -1,0 +1,8 @@
+How to integrate python in Eclipse
+
+1. Open eclipse (use any workspace)
+2. Go to "Help > Install New Software"
+3. Type into work with "http://pydev.org/updates"
+4. Check "PyDev"
+5. Install and follow instructions
+6. Restart eclipse

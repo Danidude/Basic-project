@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Crisis Mapping Simulation</title>
+<link type="text/css" rel="stylesheet" href="normalize.css"/>
+<link type="text/css" rel="stylesheet" href="simulation.css"/>
+<script type="text/javascript" src="external.js"></script>
+<script type="text/javascript" src="simulation.js"></script>
+<script type="text/javascript">
+function launch()
+{	
+	window.simulation = new cm.Grid({
+		sizeX: 71,
+		sizeY: 71,
+		parent: '#canvas'
+	});
+	
+	window.visualization = new cm.Grid({
+		sizeX: 71,
+		sizeY: 71,
+		parent: '#canvas'
+	});
+	
+	$('#loadingmask').fadeOut();
+}
+
+$(document).ready(function(){
+	$('#toolbar').fadeTo(200,0.8);
+	$('#loadingmask').fadeTo(200,0.9);
+	setTimeout("launch()",500);	
+});
+</script>
+</head>
+<body>
+	<div id="loadingmask"></div>
+	<div id="tooltip"></div>
+	<table id="canvas-wrapper">
+		<tr>
+			 <td id="canvas"></td>
+		</tr>
+	</table>
+	<table id="toolbar-wrapper">
+		<tr>
+			<td class="left-column">Crisis Mapping Simulation</td>
+			<td class="middle-column">
+				<input type="button" value="&lt;"/>
+				<input id="time" type="text" disabled="disabled" value="0"/>
+				<input type="button" value="&gt;" onclick="simulation._next();$('#time').val(parseInt($('#time').val())+1);simulation._draw();"/>
+			</td>
+			<td class="right-column">
+				<img src="01-refresh.png" onclick="location.reload();"/>
+				<img src="71-compass.png"/>
+				<img src="78-stopwatch.png"/>
+			</td>
+			 <td class="right-right-column">
+                <input id="windDir" type="text" value="0"/>
+            </td>
+	</table>
+</body>
+</html>

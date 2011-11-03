@@ -1,0 +1,176 @@
+html, body
+{
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+body
+{
+	text-align: center;
+	background-color: #222;
+	color: #ccc;
+	font-family: arial, tahoma, verdana;
+	font-size: 13px;
+}
+
+h6
+{
+	font-size: 11px;
+	font-weight: bold;
+}
+
+input
+{
+	color: #ccc;
+	font-size: 11px;
+	font-weight: bold;
+}
+
+input[type="text"]
+{
+	padding: 5px;
+}
+
+input[type="button"]
+{
+	padding: 6px;
+}
+
+button, input[type="button"], input[type="text"]
+{
+	margin: 2px;
+	text-align: center;
+	font-size: 16px;
+	border-width: 1px;
+	border-color: #ccc;
+	border-style: solid;
+	color: #ccc;
+	background-color: transparent;
+}
+
+button:hover, input[type="button"]:hover
+{
+	color: #222;
+	background-color: #ccc;
+}
+
+pre
+{
+	text-align: left;
+}
+
+#outer
+{
+}
+
+#loadingmask
+{
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	height: 100%;
+	width: 100%;
+	background-image: url(blue_loading.gif);
+	background-repeat: no-repeat;
+	background-position: center;
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+	background-color: #000;
+	color: #ccc;
+	font-size: 30px;
+	font-weight: bold;
+}
+
+#tooltip
+{
+	position: absolute;
+	background-color: #ccc;
+	border-color: #fff;
+	border-width: 1px;
+	border-style: solid;
+	font-weight: bold;
+	color: #333;
+	padding: 10px;
+	z-index: 1000;
+	display: none;
+}
+
+.cm-grid-table
+{
+	display: inline-block;
+}
+
+.cm-grid-cell
+{
+	width: 8px;
+	height: 8px;
+	font-size: 5px;
+	color: #ccc;
+	background-color: transparent;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #333;
+	vertical-align: middle;
+	text-align: center;
+}
+
+#toolbar-wrapper
+{
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	top: 94%;
+	padding: 6px;
+	background-color: #111;
+	width: 100%;
+}
+
+#toolbar-wrapper tbody, #toolbar-wrapper tr
+{
+	width: 100%;
+}
+
+#toolbar-wrapper .middle-column
+{
+	width: 34%;
+	text-align: center;
+}
+
+#toolbar-wrapper .middle-column input
+{
+	width: 20px;
+	border: 0;
+}
+
+#toolbar-wrapper .right-column
+{
+	width: 33%;
+	text-align: center;
+}
+
+#toolbar-wrapper .left-column
+{
+	width: 33%;
+	font-weight: bold;
+	text-align: center;
+}
+
+
+#canvas
+{
+	vertical-align: middle;
+	text-align: center;
+}
+
+#canvas-wrapper
+{
+	position: fixed;
+	top: 0;
+	bottom: 6%;
+	left: 0;
+	width: 100%;
+}
