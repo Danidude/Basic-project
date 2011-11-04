@@ -22,18 +22,18 @@ class GridCell():
 class Grid():
     sizeX = 0
     sizeY = 0
-    cells = None
+    
     def __init__(self,sizeX,sizeY,values1d):
         self.sizeX = sizeX
         self.sizeY = sizeY
         
         v = 0
-        cells = []
+        self.cells = []
         for x in range(sizeX):
-            cells.append([])
+            self.cells.append([])
             for y in range(sizeY):
                 print x,sizeX,y,sizeY,v,len(values1d)
-                cells[x].append(GridCell(x, y, values1d[v]));
+                self.cells[x].append(GridCell(x, y, ord(values1d[v])));
                 v += 1
 
 
@@ -105,6 +105,13 @@ class HttpRequestHandler(BaseHTTPRequestHandler):
         
         grid = Grid(sizeX,sizeY,cells)
         print grid.cells
+        
+        i1 = 0
+        for c in cells:
+            i1 += 1
+            if c != " ":
+                print c
+                print i1
         
         from analyze.Analyzer import GPR_d
         
