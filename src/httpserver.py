@@ -105,6 +105,15 @@ class HttpRequestHandler(BaseHTTPRequestHandler):
         
         grid = Grid(sizeX,sizeY,cells)
         print grid.cells
+        
+        from analyze.Analyzer import GPR_d
+        
+        gpr = GPR_d()
+        
+        
+        
+        
+        
         return
     
 if __name__ == '__main__':
