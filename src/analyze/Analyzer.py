@@ -6,11 +6,12 @@ import random
 
 class Predict:
     
-    def __init__(self, xr, yr):
+    def __init__(self, xr, yr, X, y):
 
         helper = Helper()
         
-        self.x_star = helper.init_x_star(xr, yr)
+#        self.x_star = helper.init_x_star(xr, yr)
+        self.x_star = helper.init_x_star_removes_existing_points(xr, yr, X)
         self.init_kernel()
         
         
@@ -41,6 +42,29 @@ class Helper:
                     x_star = np.concatenate((x_star,[(x,y)]))
         return x_star
     
+    def init_x_star_removes_existing_points(self, xr, yr, X):
+        x_star = np.array([]).transpose()
+        
+        X1 = []
+        Y1 = []
+        
+        for value in X:
+            X1.append(value[0])
+            Y1.append(value[1])
+        
+        for x in range(xr):
+            for y in range(yr):
+                
+                if len(x_star) == 0:
+                    x_star = [(x,y)]
+                else:
+                    x_star = np.concatenate((x_star,[(x,y)]))
+        return x_star
+    
+    def exists_in_X(self,x,y,X):
+        print ""
+        
+    
 class Plotter:
     
     def __init__(self):
@@ -59,7 +83,6 @@ class GPR_Controller:
         helper = Helper()
         
         
-        predict = Predict(xr,yr)
         
         
         y = np.array([]).transpose()
@@ -76,6 +99,7 @@ class GPR_Controller:
                         print cell.v
         
         
+        predict = Predict(xr,yr,X,y)
         
         self.predict = predict.predict(X, y)
         
