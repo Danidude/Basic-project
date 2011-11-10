@@ -124,9 +124,6 @@ class HttpRequestHandler(BaseHTTPRequestHandler):
         
         
         
-        
-        self.wfile.write(f.read())
-        
         t2 = time.time() -t
         print t2
         
