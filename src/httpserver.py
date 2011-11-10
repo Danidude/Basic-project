@@ -114,9 +114,18 @@ class HttpRequestHandler(BaseHTTPRequestHandler):
                 print i1
         
         from analyze.Analyzer import GPR_d
+        from analyze.Analyzer import GPR_Controller
+        import time
         
-        gpr = GPR_d()
         
+        t = time.time()
+        gpr_controller = GPR_Controller(grid)
+        prediction = gpr_controller.predict
+        
+        
+        
+        t2 = time.time() -t
+        print t2
         
         
         
