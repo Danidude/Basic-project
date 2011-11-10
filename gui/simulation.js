@@ -21,7 +21,7 @@ cm.GridCell.prototype = {
 	sensor: false,
 	burning: false,
 	burningTime: -1,
-	sensorTime: 0,
+	sensorTime: -1,
 	_rectangle: null,
 	draw:function(g,selected){
 		var r = this._rectangle;
@@ -30,9 +30,9 @@ cm.GridCell.prototype = {
 		// i.e. not calculated for each draw
 		if (selected)
 		{
-			if (this.sensorTime && this.burningTime >= 0)
+			if (this.sensorTime >= 0 && this.burningTime >= 0)
 				r.fillStyle = '#fc9';
-			else if (this.sensorTime)
+			else if (this.sensorTime >= 0)
 				r.fillStyle = '#dd9';
 			else if (this.burningTime >= 0)
 				r.fillStyle='#f99';
@@ -41,9 +41,9 @@ cm.GridCell.prototype = {
 		}
 		else
 		{
-			if (this.sensorTime && this.burningTime >= 0)
+			if (this.sensorTime >= 0 && this.burningTime >= 0)
 				r.fillStyle = '#e60';
-			else if (this.sensorTime)
+			else if (this.sensorTime >= 0)
 				r.fillStyle = '#dd0';
 			else if (this.burningTime >= 0)
 				r.fillStyle='#e00';
@@ -214,7 +214,7 @@ cm.Grid.prototype = {
 				c5 = c[x1][y1];
 				
 				if (c5.sensorTime!=time)
-					c5.sensorTime = 0;
+					c5.sensorTime = -1;
 				
 				if (y0 >= 0)
 				{
@@ -229,7 +229,7 @@ cm.Grid.prototype = {
 							burning+=(4+(wx!=0?Math.round(wx*3):-1)+(wy!=0?Math.round(wy*-3):-1));
 							combust++;
 						}
-						if (c1.sensorTime)
+						if (c1.sensorTime >=0)
 							sensor++;
 					}
 					if (c2)
@@ -239,7 +239,7 @@ cm.Grid.prototype = {
 							burning+=(8+(wy!=0?Math.round(wy*-7):-4));
 							combust++;
 							}
-						if (c2.sensorTime)
+						if (c2.sensorTime >=0 )
 							sensor++;
 					}
 					if (c3)
@@ -249,7 +249,7 @@ cm.Grid.prototype = {
 							burning+=(4+(wx!=0?Math.round(wx*-3):-1)+(wy!=0?Math.round(wy*-3):-1));
 							combust++;
 						}
-						if (c3.sensorTime)
+						if (c3.sensorTime >=0)
 							sensor++;
 					}
 				}
@@ -262,7 +262,7 @@ cm.Grid.prototype = {
 						burning+=(8+(wx!=0?Math.round(wx*7):-4));
 						combust++;
 					}
-					if (c4.sensorTime)
+					if (c4.sensorTime >=0)
 						sensor++;
 				}
 				//----------------- c5 is self ---------------------//
@@ -275,7 +275,7 @@ cm.Grid.prototype = {
 						burning+=(8+(wx!=0?Math.round(wx*-7):-4));
 						combust++;
 					}
-					if (c6.sensorTime)
+					if (c6.sensorTime >=0)
 						sensor++;
 				}
 				if (y2 < yn) 
@@ -291,7 +291,7 @@ cm.Grid.prototype = {
 							burning+=(4+(wx!=0?Math.round(wx*3):-1)+(wy!=0?Math.round(wy*3):-1));
 							combust++;
 						}
-						if (c7.sensorTime)
+						if (c7.sensorTime >=0)
 							sensor++;
 					}
 					if (c8)
@@ -301,7 +301,7 @@ cm.Grid.prototype = {
 							burning+=(8+(wy!=0?Math.round(wy*7):-4));
 							combust++;
 						}
-						if (c8.sensorTime)
+						if (c8.sensorTime >=0)
 							sensor++;
 					}
 					if (c9)
@@ -311,7 +311,7 @@ cm.Grid.prototype = {
 							burning+=(4+(wx!=0?Math.round(wx*-3):-1)+(wy!=0?Math.round(wy*3):-1));
 							combust++;
 						}
-						if (c9.sensorTime)
+						if (c9.sensorTime >=0)
 							sensor++;
 					}
 				}
@@ -326,7 +326,7 @@ cm.Grid.prototype = {
 				else if ( !(c5.burningTime>=0) && burning && burning > mf(mr()*burn) )
 					c5.burningTime = time;
 					
-				if ( !(c5.burningTime>=0) && !sensor && !c5.sensorTime && mr() <= 0.2)
+				if ( !(c5.burningTime>=0) && !sensor && c5.sensorTime < 0 && mr() <= 0.2)
 					c5.sensorTime = time;
 				
 				c5.burningCount = combust;
@@ -373,7 +373,10 @@ cm.Grid.prototype = {
 		{			
 			for(var y=0,ny=this.sizeY;y<ny;y++)
 			{
-				to.push(ch(from[x][y].burningCount));
+				if (from[x][y].sensorTime >= 0)
+					to.push(ch(from[x][y].burningCount));
+				else
+					to.push(ch(127));
 			}
 		}
 		
