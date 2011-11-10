@@ -13,7 +13,11 @@ function launch()
 	window.simulation = new cm.Grid({
 		sizeX: 71,
 		sizeY: 71,
-		parent: '#canvas'
+		parent: '#canvas',
+		onGaussianSuccess:function(data){
+			cm.log("on Gaussian success");
+			window.visualization.setDataFrom1D(data);
+		}
 	});
 	
 	window.visualization = new cm.Grid({

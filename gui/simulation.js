@@ -335,6 +335,36 @@ cm.Grid.prototype = {
 		
 		this.evaluate(null);
 	},
+	setDataFrom1D:function(data)
+	{
+		cm.log("setting data 1d");
+		var i = null;
+		var cc,c = null;
+		for(var x=0,nx=this.sizeX;x<nx;x++)
+		{
+			for(var y=0,ny=this.sizeY;y<ny;y++)
+			{
+				cc = data.charCodeAt(i);
+				c = this._cells[x][y];
+				
+				if (cc != 126)
+				{
+					
+					c.burningCount = cc;
+					c.burningTime = this._time;
+				}
+				else
+				{
+					c.burningCount = -1;
+					c.burningTime = -1;
+				}
+				
+				i++;
+			}
+		}
+		
+		this._draw();
+	},
 	onMouseClick:function(ev,cell){
 		cell.burningTime = this._time;
 		cell.draw(this,false);		
@@ -363,6 +393,10 @@ cm.Grid.prototype = {
 			for(var y=0,ny=this.sizeY;y<ny;y++)
 				c[x][y].draw(this,false);
 	},
+	onGaussianSuccess:function(data)
+	{
+		cm.log(data);
+	},
 	evaluate:function(target){
 		var from = this._cells;
 		var to = [];
@@ -381,18 +415,24 @@ cm.Grid.prototype = {
 		}
 		
 		var that = this;
-		
+		cm.log("ajax request");
 		$.ajax({
 			url:'http://localhost:8000/simulate/fire',
 			type: 'post',
-			dataType: 'text',
-			mimeType: 'application/json',
+			dataType: 'json',
 			data: {
 				time: that._time,
 				sizeX: that.sizeX,
 				sizeY: that.sizeY,
 				windDirection: that.windDirection,
 				cells: Base64.encode(to.join(''))
+			},
+			success:function(data){
+				cm.log("ajax success");
+				that.onGaussianSuccess(Base64.decode(data.cells));
+			},
+			failure:function(){
+				cm.log("ajax failure");
 			}
 		});
 	}
