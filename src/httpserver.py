@@ -124,12 +124,12 @@ class HttpRequestHandler(BaseHTTPRequestHandler):
         
         
         
-        prediction = gpr_controller.predict
+        large_string = gpr_controller.large_string
         
-        large_string = ""
-        for cell in grid.cells:
-            for row in cell:
-                large_string += chr(row.v)
+#        large_string = ""
+#        for cell in grid.cells:
+#            for row in cell:
+#                large_string += chr(row.v)
         
         
         self.wfile.write(base64.b64encode(large_string))

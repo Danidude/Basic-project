@@ -350,15 +350,15 @@ cm.Grid.prototype = {
 				cc = parseInt(data.charCodeAt(i));
 				c = this._cells[x][y];
 
-				if (cc == 126 || cc == 127) //fire
-				{
-					c.burningCount = cc;
-					c.burningTime = this._time;
-				}
-				else
+				if (cc == 0)
 				{
 					c.burningCount = -1;
 					c.burningTime = -1;
+				}
+				else
+				{	
+					c.burningCount = cc;
+					c.burningTime = this._time;
 				}
 				
 				i++;

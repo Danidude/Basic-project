@@ -17,8 +17,8 @@ class Predict:
         
     def init_kernel(self):
         
-#        self.logtheta = logtheta = np.array([np.log(0.2), np.log(2.0), np.log(1.0), np.log(8.0), np.log(0.0001)])
-        self.logtheta = logtheta = np.array([np.log(4.5), np.log(0.01), np.log(1.0), np.log(1.0), np.log(0.000001)])
+        self.logtheta = logtheta = np.array([np.log(0.2), np.log(2.0), np.log(1.0), np.log(8.0), np.log(0.0001)])
+#        self.logtheta = logtheta = np.array([np.log(4.5), np.log(0.01), np.log(1.0), np.log(1.0), np.log(0.000001)])
         self.covfunc = ['kernels.covSum', ['kernels.covSEiso', 'kernels.covSEiso', 'kernels.covNoise']]
         
         
@@ -116,19 +116,25 @@ class GPR_Controller:
         
         
         
+        large_string = ""
         for row in grid.cells:
             for cell in row:
                 print "x:{0} y:{1} v:{2}".format(cell.x,cell.y,cell.v)
                 if cell.v > 8:
                     if prediction[0] > 0.007:
                         cell.v = 126
+                        large_string += chr(126)
                     else:
                         cell.v = 0
-                        
-                    all_y.append(cell.v)
+                        large_string += chr(0)
                     prediction = prediction[1:]
+                else:
+                    large_string += chr(0)
+                all_y.append(cell.v)
+                
         
         self.grid = grid
+        self.large_string = large_string
         
         t22 = np.sort(all_y)
         fd = 0
