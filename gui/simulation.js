@@ -338,18 +338,20 @@ cm.Grid.prototype = {
 	setDataFrom1D:function(data)
 	{
 		cm.log("setting data 1d");
-		var i = null;
+		var i = 0;
 		var cc,c = null;
+		
+		cm.log("length: "+data.length);
+		
 		for(var x=0,nx=this.sizeX;x<nx;x++)
 		{
 			for(var y=0,ny=this.sizeY;y<ny;y++)
 			{
-				cc = data.charCodeAt(i);
+				cc = parseInt(data.charCodeAt(i));
 				c = this._cells[x][y];
-				
-				if (cc != 126)
+
+				if (cc == 126 || cc == 127) //fire
 				{
-					
 					c.burningCount = cc;
 					c.burningTime = this._time;
 				}
@@ -373,7 +375,7 @@ cm.Grid.prototype = {
 		cell.draw(this,true);
 		var o = this.self.offset();
 		var z = this.zoom;
-		$('#tooltip').text('['+cell.x+','+cell.y+']')
+		$('#tooltip').text('['+cell.x+','+cell.y+","+cell.burningCount+']')
 		.css('left',cell.x*z+o.left+(z<<1))
 		.css('top',cell.y*z+o.top+(z<<1)).show();
 	},
@@ -419,7 +421,7 @@ cm.Grid.prototype = {
 		$.ajax({
 			url:'http://localhost:8000/simulate/fire',
 			type: 'post',
-			dataType: 'json',
+			dataType: 'text',
 			data: {
 				time: that._time,
 				sizeX: that.sizeX,
@@ -429,7 +431,7 @@ cm.Grid.prototype = {
 			},
 			success:function(data){
 				cm.log("ajax success");
-				that.onGaussianSuccess(Base64.decode(data.cells));
+				that.onGaussianSuccess(Base64.decode(data));
 			},
 			failure:function(){
 				cm.log("ajax failure");

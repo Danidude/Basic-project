@@ -6,12 +6,12 @@ import random
 
 class Predict:
     
-    def __init__(self, xr, yr, X, y):
+    def __init__(self, xr, yr):
 
         helper = Helper()
         
 #        self.x_star = helper.init_x_star(xr, yr)
-        self.x_star = helper.init_x_star_removes_existing_points(xr, yr, X)
+        #self.x_star = helper.init_x_star_removes_existing_points(xr, yr)
         self.init_kernel()
         
         
@@ -25,6 +25,11 @@ class Predict:
     def predict(self, X, y):
         
         prediction = gpr.gp_pred(self.logtheta, self.covfunc, X, y, self.x_star)
+        return prediction
+    
+    def predict_2(self, X, y, x_star):
+        
+        prediction = gpr.gp_pred(self.logtheta, self.covfunc, X, y, x_star)
         return prediction
 
 class Helper:
@@ -42,27 +47,18 @@ class Helper:
                     x_star = np.concatenate((x_star,[(x,y)]))
         return x_star
     
-    def init_x_star_removes_existing_points(self, xr, yr, X):
+    def init_x_star_removes_existing_points(self, xr, yr, cells):
         x_star = np.array([]).transpose()
+
         
-        X1 = []
-        Y1 = []
         
-        for value in X:
-            X1.append(value[0])
-            Y1.append(value[1])
-        
-        for x in range(xr):
+        for x, x1 in range(xr):
             for y in range(yr):
-                
                 if len(x_star) == 0:
                     x_star = [(x,y)]
                 else:
                     x_star = np.concatenate((x_star,[(x,y)]))
         return x_star
-    
-    def exists_in_X(self,x,y,X):
-        print ""
         
     
 class Plotter:
@@ -87,22 +83,61 @@ class GPR_Controller:
         
         y = np.array([]).transpose()
         X = np.array([]).transpose()
+        x_star = np.array([]).transpose()
+        
         for row in grid.cells:
             for cell in row:
-                if len(X) == 0:
-                    X = [(cell.x,cell.y)]
-                    y = [(cell.v)]
+                if cell.v < 9:
+                    if len(X) == 0:
+                        X = [(cell.x,cell.y)]
+                        y = [(cell.v)]
+                    else:
+                        X = np.concatenate((X,[(cell.x,cell.y)]))
+                        y = np.concatenate((y,[(cell.v)]))
+
                 else:
-                    X = np.concatenate((X,[(cell.x,cell.y)]))
-                    y = np.concatenate((y,[(cell.v)]))
-                    if cell.v > 0:
-                        print cell.v
+                    print cell.v
+                    if len(x_star) == 0:
+                        x_star = [(cell.x,cell.y)]
+                    else:
+                        x_star = np.concatenate((x_star,[(cell.x,cell.y)]))
         
         
-        predict = Predict(xr,yr,X,y)
+        predict = Predict(xr, yr)
         
-        self.predict = predict.predict(X, y)
+        self.predict = predict.predict_2(X, y, x_star)
         
+        prediction = []
+        for p in self.predict[0]:
+            prediction.append(p)
+            print p
+        
+        all_y = []
+        
+        
+        
+        for row in grid.cells:
+            for cell in row:
+                print "x:{0} y:{1} v:{2}".format(cell.x,cell.y,cell.v)
+                if cell.v > 8:
+                    if prediction[0] > 0.007:
+                        cell.v = 126
+                    else:
+                        cell.v = 0
+                        
+                    all_y.append(cell.v)
+                    prediction = prediction[1:]
+        
+        self.grid = grid
+        
+        t22 = np.sort(all_y)
+        fd = 0
+        for t1 in t22:
+            if t1 > 0.007:
+                print "sorted y : {0}".format(t1)
+                fd +=1
+        print fd
+                
         
         
     
@@ -121,6 +156,7 @@ class GPR_d:
         X = helper.init_x_star(xr, yr)[:10]
         y = np.array([]).transpose()
         for y1 in range(len(X)):
+            
             rand = random.random()
             if len(y) == 0:
                 y = [(rand)]

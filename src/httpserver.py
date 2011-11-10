@@ -32,7 +32,7 @@ class Grid():
         for x in range(sizeX):
             self.cells.append([])
             for y in range(sizeY):
-                print x,sizeX,y,sizeY,v,len(values1d)
+#                print x,sizeX,y,sizeY,v,len(values1d)
                 self.cells[x].append(GridCell(x, y, ord(values1d[v])));
                 v += 1
 
@@ -72,7 +72,7 @@ class HttpRequestHandler(BaseHTTPRequestHandler):
             self.end_headers()
 
             self.wfile.write(f.read())
-            f.close()            
+            f.close()
             return
         except IOError:
             self.send_error(404,'File Not Found: %s' % fpath)
@@ -104,14 +104,14 @@ class HttpRequestHandler(BaseHTTPRequestHandler):
                     cells.append(char)
         
         grid = Grid(sizeX,sizeY,cells)
-        print grid.cells
+        #print grid.cells
         
-        i1 = 0
-        for c in cells:
-            i1 += 1
-            if c != " ":
-                print c
-                print i1
+#        i1 = 0
+#        for c in cells:
+#            i1 += 1
+#            if c != " ":
+#                print c
+#                print i1
         
         from analyze.Analyzer import GPR_d
         from analyze.Analyzer import GPR_Controller
@@ -120,9 +120,20 @@ class HttpRequestHandler(BaseHTTPRequestHandler):
         
         t = time.time()
         gpr_controller = GPR_Controller(grid)
+        grid = gpr_controller.grid
+        
+        
+        
         prediction = gpr_controller.predict
         
+        large_string = ""
+        for cell in grid.cells:
+            for row in cell:
+                large_string += chr(row.v)
         
+        
+        self.wfile.write(base64.b64encode(large_string))
+
         
         t2 = time.time() -t
         print t2
