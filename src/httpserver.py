@@ -110,14 +110,7 @@ class HttpRequestHandlerWrapper:
                         cells.append(char)
             
             grid = Grid(sizeX,sizeY,cells)
-            #print grid.cells
-            
-    #        i1 = 0
-    #        for c in cells:
-    #            i1 += 1
-    #            if c != " ":
-    #                print c
-    #                print i1
+
             
             from analyze.Analyzer import GPR_d
             from analyze.Analyzer import GPR_Controller
