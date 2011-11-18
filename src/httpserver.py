@@ -38,7 +38,7 @@ class Grid():
 class HttpRequestHandlerWrapper:
     
     def __init__(self):
-        HttpRequestHandlerWrapper.old_fire = 0
+        HttpRequestHandlerWrapper.old_fire = None
         server = HTTPServer(('127.0.0.1', 8000), self.HttpRequestHandler)
         server.serve_forever()
         print "Server started!"
@@ -84,8 +84,6 @@ class HttpRequestHandlerWrapper:
                 self.send_error(404,'File Not Found: %s' % fpath)
          
         def do_POST(self):
-            HttpRequestHandlerWrapper.old_fire += 1
-            print HttpRequestHandlerWrapper.old_fire
             try:
                 ctype, pdict = cgi.parse_header(self.headers.getheader('content-type'))
                 if ctype == 'multipart/form-data':
@@ -127,13 +125,13 @@ class HttpRequestHandlerWrapper:
             
             
             t = time.time()
-            gpr_controller = GPR_Controller(grid,None)
+            gpr_controller = GPR_Controller(grid,HttpRequestHandlerWrapper.old_fire)
             grid = gpr_controller.grid
             
             
             
             large_string = gpr_controller.large_string
-            self.old_fire = gpr_controller.old_fire
+            HttpRequestHandlerWrapper.old_fire = gpr_controller.old_fire
     #        large_string = ""
     #        for cell in grid.cells:
     #            for row in cell:

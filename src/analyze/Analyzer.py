@@ -77,8 +77,8 @@ class GPR_Controller:
 #        large_string = ""
 #        if old_fire == None:
 #            old_fire = grid.cells
-#        for new_row, old_row in zip(grid.cells, old_fire):
-#            for new_cell, old_cell in zip(new_row, old_row):
+#        for new_row, new_row in zip(grid.cells, old_fire):
+#            for new_cell, old_cell in zip(new_row, new_row):
 #                print "x:{0} y:{1} v:{2}".format(new_cell.x, new_cell.y, new_cell.v)
 #                if new_cell.v > 8:
 #                    if prediction[0] > 0.007:
@@ -98,21 +98,46 @@ class GPR_Controller:
 #                    new_cell.v = 0
 #                    large_string += chr(0)
 #                all_y.append(new_cell.v)
+#        large_string = ""
+#        for new_row in grid.cells:
+#            for new_cell in new_row:
+#                print "x:{0} y:{1} v:{2}".format(new_cell.x,new_cell.y,new_cell.v)
+#                if new_cell.v > 8:
+#                    if prediction[0] > 0.007:
+#                        new_cell.v = 126
+#                        large_string += chr(126)
+#                    else:
+#                        new_cell.v = 0
+#                        large_string += chr(0)
+#                    prediction = prediction[1:]
+#                else:
+#                    large_string += chr(0)
+#                all_y.append(new_cell.v)
+#        return large_string
+
+
+        if old_fire == None:
+            old_fire = grid.cells
         large_string = ""
-        for row in grid.cells:
-            for cell in row:
-                print "x:{0} y:{1} v:{2}".format(cell.x,cell.y,cell.v)
-                if cell.v > 8:
+        for new_row, old_row in zip(grid.cells,old_fire):
+            for new_cell, old_cell in zip(new_row, old_row):
+                print "x:{0} y:{1} v:{2}".format(new_cell.x,new_cell.y,new_cell.v)
+                if new_cell.v > 8:
                     if prediction[0] > 0.007:
-                        cell.v = 126
+                        new_cell.v = 126
                         large_string += chr(126)
                     else:
-                        cell.v = 0
-                        large_string += chr(0)
+                        if old_cell.v == 127:
+                            old_cell.v = 0
+                        new_cell.v = old_cell.v
+                        large_string += chr(new_cell.v)
                     prediction = prediction[1:]
                 else:
+                    if old_cell.v == 127:
+                            old_cell.v = 0
+                    new_cell.v = old_cell.v
                     large_string += chr(0)
-                all_y.append(cell.v)
+                all_y.append(new_cell.v)
         return large_string
 
     def __init__(self, grid, old_fire):
