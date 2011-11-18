@@ -115,7 +115,7 @@ class GPR_Controller:
 #                all_y.append(new_cell.v)
 #        return large_string
 
-
+        """only move those which is beneath a give"""
         if old_fire == None:
             old_fire = grid.cells
         large_string = ""
@@ -136,7 +136,7 @@ class GPR_Controller:
                     if old_cell.v == 127:
                             old_cell.v = 0
                     new_cell.v = old_cell.v
-                    large_string += chr(0)
+                    large_string += chr(old_cell.v)
                 all_y.append(new_cell.v)
         return large_string
 
