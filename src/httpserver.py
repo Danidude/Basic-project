@@ -11,13 +11,14 @@ from os import curdir, path
 
 
 class GridCell():
-    x = 0
-    y = 0
-    v = 0
-    def __init__(self,x,y,v):
+#    x = 0
+#    y = 0
+#    v = 0
+    def __init__(self,x,y,v,S2):
         self.x = x
         self.y = y
         self.v = v #value
+        self.S2 = S2
 
 class Grid():
     sizeX = 0
@@ -33,7 +34,7 @@ class Grid():
             self.cells.append([])
             for y in range(sizeY):
 #                print x,sizeX,y,sizeY,v,len(values1d)
-                self.cells[x].append(GridCell(x, y, ord(values1d[v])));
+                self.cells[x].append(GridCell(x, y, ord(values1d[v]),None));
                 v += 1
 class HttpRequestHandlerWrapper:
     

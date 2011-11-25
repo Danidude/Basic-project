@@ -2,6 +2,7 @@
 from GPR import gpr
 import numpy as np
 import random
+import copy
 
 
 class Predict:
@@ -72,7 +73,7 @@ class Plotter:
 class GPR_Controller:
     
 
-    def update_grid(self, grid, old_fire, prediction, all_y):
+    def update_grid(self, grid, old_fire, prediction, S2,all_y):
         #creating large string and changing the grid
 #        large_string = ""
 #        if old_fire == None:
@@ -115,23 +116,44 @@ class GPR_Controller:
 #                all_y.append(new_cell.v)
 #        return large_string
 
-        """only move those which is beneath a give"""
+
+
+
+        """only move those which is beneath a given """
         if old_fire == None:
             old_fire = grid.cells
         large_string = ""
+        
+#        
+#        for new_row, old_row in zip(grid.cells,old_fire):
+#            for new_cell, old_cell in zip(new_row,old_row):
+#                
+#                if self.s2_has_the_lowest_variance(S2[0],new_cell, old_cell):
+#                    print ""
+#        
+        
+        
+        
+        
+        
+        
         for new_row, old_row in zip(grid.cells,old_fire):
             for new_cell, old_cell in zip(new_row, old_row):
                 print "x:{0} y:{1} v:{2}".format(new_cell.x,new_cell.y,new_cell.v)
+                #only predicted 
                 if new_cell.v > 8:
-                    if prediction[0] > 0.007:
+                    if prediction[0] > 0.03:
                         new_cell.v = 126
+                        new_cell.S2 = S2
                         large_string += chr(126)
                     else:
                         if old_cell.v == 127:
                             old_cell.v = 0
                         new_cell.v = old_cell.v
+                        new_cell.S2 = S2
                         large_string += chr(new_cell.v)
                     prediction = prediction[1:]
+                    S2 = S2[1:]
                 else:
                     if old_cell.v == 127:
                             old_cell.v = 0
@@ -140,8 +162,22 @@ class GPR_Controller:
                 all_y.append(new_cell.v)
         return large_string
 
+    def s2_has_the_lowest_variance(self, S2, new_cell, old_cell):
+        
+        if old_cell.S2 == None:
+            return True
+        
+        if S2 < old_cell.S2:
+            return True
+        else:
+            return False
+
+
+
     def __init__(self, grid, old_fire):
         #TODO remove already measured points
+        
+        
         
         print ""
         self.grid = grid
@@ -158,7 +194,7 @@ class GPR_Controller:
         
         for new_row in grid.cells:
             for new_cell in new_row:
-                if new_cell.v < 9:        
+                if new_cell.v < 25:        
 
                     if len(X) == 0:
                         X = [(new_cell.x,new_cell.y)]
@@ -168,7 +204,7 @@ class GPR_Controller:
                         y = np.concatenate((y,[(new_cell.v)]))
 
                 else:
-                    print new_cell.v
+#                    print new_cell.v
                     if len(x_star) == 0:
                         x_star = [(new_cell.x,new_cell.y)]
                     else:
@@ -180,34 +216,97 @@ class GPR_Controller:
         self.predict = predict.predict_2(X, y, x_star)
         
         prediction = []
-        for p in self.predict[0]:
-            prediction.append(p)
-            print p
+        S2 = []
+#        for p,s2 in zip(self.predict[0],self.predict[1]):
+#            prediction.append(p)
+#            S2.append(s2[0])
+#            print p
+#        
+#        all_y = []
         
-        all_y = []
+        self.add_prediction_to_grid_cells(self.predict, grid.cells)
+        old_fire = self.init_fire(grid.cells, old_fire)
+        self.increase_fire_s2(old_fire) #simulating time
+        self.update_fire_area(grid.cells, old_fire)
+        self.convert_to_discrete_values(old_fire)
+        self.large_prediction_string, self.large_s2_string = self.create_large_string(old_fire)
         
-        
-        large_string = self.update_grid(grid, old_fire, prediction, all_y)
+        #large_string = self.update_grid(grid, old_fire, prediction,S2, all_y)
                 
+        self.old_fire = old_fire
         
         #mash together old and new
         
-        self.old_fire = grid.cells
+#        self.old_fire = grid.cells
         
         
         self.grid = grid
-        self.large_string = large_string
+        self.large_string = self.large_prediction_string
         
-        t22 = np.sort(all_y)
-        fd = 0
-        for t1 in t22:
-            if t1 > 0.007:
-                print "sorted y : {0}".format(t1)
-                fd +=1
-        print fd
+#        t22 = np.sort(all_y)
+#        fd = 0
+#        for t1 in t22:
+#            if t1 > 0.3:
+#                print "sorted y : {0}".format(t1)
+#                fd +=1
+    
+    def create_large_string(self, fire):
+        large_prediction_string = ""
+        large_s2_string = ""
+        for row in fire:
+            for cell in row:
+                large_prediction_string += chr(cell.v)
+                large_s2_string += chr(cell.v)
+        return (large_prediction_string, large_s2_string)
+    
+    def convert_to_discrete_values(self,fire):
+        
+        for row in fire:
+            for cell in row:
+                if cell.v > 0.008:
+                    cell.v = 126
+                    print cell.v
+                else:
+                    cell.v = 0
+    
+    def init_fire(self, new_fire, fire):
+        if fire == None:
+            fire = copy.deepcopy(new_fire)
+        return fire
+            
+    
+    def increase_fire_s2(self,fire):
+        '''Simulating time'''
+        
+        for row in fire:
+            for cell in row:
+                cell.S2 += 0.1
+    
+    def update_fire_area(self, new_fire_cells, fire_cells):
+        
+        for new_row, row in zip(new_fire_cells, fire_cells):
+            for new_cell, cell in zip(new_row, row):
+                if new_cell.S2 < cell.S2:
+                    cell.v = new_cell.v
+                    cell.S2 = new_cell.S2
+        
+    def add_prediction_to_grid_cells(self, predictions, cells):
+        prediction = predictions[0]
+        S2 = predictions[1]
+        
+        for row in cells:
+            for cell in row:
                 
-        
-        
+                if cell.v == 127:
+                    cell.v = prediction[0]
+                    print cell.v
+                    cell.S2 = S2[0][0]
+                    prediction = prediction[1:]
+                    S2 = S2[1:]
+                else:
+                    cell.S2 = 0
+
+                
     
 
 class GPR_d:
@@ -224,7 +323,6 @@ class GPR_d:
         X = helper.init_x_star(xr, yr)[:10]
         y = np.array([]).transpose()
         for y1 in range(len(X)):
-            
             rand = random.random()
             if len(y) == 0:
                 y = [(rand)]
