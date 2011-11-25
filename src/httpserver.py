@@ -11,9 +11,7 @@ from os import curdir, path
 
 
 class GridCell():
-#    x = 0
-#    y = 0
-#    v = 0
+
     def __init__(self,x,y,v,S2):
         self.x = x
         self.y = y

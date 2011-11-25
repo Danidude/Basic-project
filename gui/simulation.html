@@ -9,35 +9,22 @@
 <script type="text/javascript" src="simulation.js"></script>
 <script type="text/javascript">
 function launch()
-{
-	var sizeX = 71;
-	var sizeY = 71;
-	var sensors = [];
-	var sensorCount = (sizeX+sizeY)*2;
-	
+{	
 	window.simulation = new cm.Grid({
-		sizeX: sizeX,
-		sizeY: sizeY,
-		sensors: sensors,
+		sizeX: 71,
+		sizeY: 71,
 		parent: '#canvas',
 		onGaussianSuccess:function(data){
+			cm.log("on Gaussian success");
 			window.visualization.setDataFrom1D(data);
 		}
 	});
 	
 	window.visualization = new cm.Grid({
-		sizeX: sizeX,
-		sizeY: sizeY,
-		sensors: sensors,
+		sizeX: 71,
+		sizeY: 71,
 		parent: '#canvas'
 	});
-	
-	for (var s=0;s<sensorCount;s++)
-	{
-		var x = Math.round(Math.random()*(sizeX-1));
-		var y = Math.round(Math.random()*(sizeY-1));
-		simulation.addSensor(x,y);
-	}
 	
 	$('#loadingmask').fadeOut();
 }
@@ -63,12 +50,15 @@ $(document).ready(function(){
 			<td class="middle-column">
 				<input type="button" value="&lt;"/>
 				<input id="time" type="text" disabled="disabled" value="0"/>
-				<input type="button" value="&gt;" onclick="simulation._next();$('#time').val(parseInt($('#time').val())+1);simulation.draw();"/>
+				<input type="button" value="&gt;" onclick="simulation._next();$('#time').val(parseInt($('#time').val())+1);simulation._draw();"/>
 			</td>
 			<td class="right-column">
 				<img src="01-refresh.png" onclick="location.reload();"/>
 				<img src="71-compass.png"/>
 				<img src="78-stopwatch.png"/>
+			</td>
+			<td>
+			     <input id="himidity" type="text" value="0"/>
 			</td>
 			<td class="right-text-column">
 			     WindDegree/WindMagintude

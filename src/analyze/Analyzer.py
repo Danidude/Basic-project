@@ -286,9 +286,12 @@ class GPR_Controller:
         
         for new_row, row in zip(new_fire_cells, fire_cells):
             for new_cell, cell in zip(new_row, row):
-                if new_cell.S2 < cell.S2:
+                if new_cell.S2 < cell.S2:# or new_cell.v > 0.008:
                     cell.v = new_cell.v
                     cell.S2 = new_cell.S2
+#                if new_cell.v > 0.008:
+#                    cell.v = new_cell.v
+#                    cell.S2 = new_cell.S2
         
     def add_prediction_to_grid_cells(self, predictions, cells):
         prediction = predictions[0]
