@@ -8,15 +8,19 @@ import base64;
 from BaseHTTPServer import BaseHTTPRequestHandler
 from BaseHTTPServer import HTTPServer
 from os import curdir, path
+from Analyzer import GPR_Controller
+import time
 
 
 class GridCell():
 
-    def __init__(self,x,y,v,S2):
+    def __init__(self,x,y,t,v,S2):
         self.x = x
         self.y = y
+        self.t = t
         self.v = v #value
         self.S2 = S2
+        
 
 class Grid():
     sizeX = 0
@@ -32,12 +36,13 @@ class Grid():
             self.cells.append([])
             for y in range(sizeY):
 #                print x,sizeX,y,sizeY,v,len(values1d)
-                self.cells[x].append(GridCell(x, y, ord(values1d[v]),None));
+                self.cells[x].append(GridCell(x, y, None, ord(values1d[v]),10000.0));
                 v += 1
 class HttpRequestHandlerWrapper:
     
     def __init__(self):
-        HttpRequestHandlerWrapper.old_fire = None
+        HttpRequestHandlerWrapper.fire_cells = None
+        HttpRequestHandlerWrapper.time_fire = []
         server = HTTPServer(('127.0.0.1', 8000), self.HttpRequestHandler)
         server.serve_forever()
         print "Server started!"
@@ -109,32 +114,13 @@ class HttpRequestHandlerWrapper:
                         cells.append(char)
             
             grid = Grid(sizeX,sizeY,cells)
-            #print grid.cells
-            
-    #        i1 = 0
-    #        for c in cells:
-    #            i1 += 1
-    #            if c != " ":
-    #                print c
-    #                print i1
-            
-            from analyze.Analyzer import GPR_d
-            from analyze.Analyzer import GPR_Controller
-            import time
-            
-            
+
             t = time.time()
-            gpr_controller = GPR_Controller(grid,HttpRequestHandlerWrapper.old_fire)
-            grid = gpr_controller.grid
-            
-            
+            gpr_controller = GPR_Controller(grid, HttpRequestHandlerWrapper.time_fire, HttpRequestHandlerWrapper.fire_cells)
+            #grid = gpr_controller.grid
             
             large_string = gpr_controller.large_string
-            HttpRequestHandlerWrapper.old_fire = gpr_controller.old_fire
-    #        large_string = ""
-    #        for cell in grid.cells:
-    #            for row in cell:
-    #                large_string += chr(row.v)
+            HttpRequestHandlerWrapper.fire_cells = gpr_controller.fire_cells
             
             
             self.wfile.write(base64.b64encode(large_string))
@@ -142,8 +128,6 @@ class HttpRequestHandlerWrapper:
             
             t2 = time.time() -t
             print t2
-            
-            
             
             return
     
