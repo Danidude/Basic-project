@@ -421,7 +421,7 @@ def sq_dist(a, b=None):
     a (of size n by D) and b (of size m by D). '''
 
     n = a.shape[0]
-    D = a.shape[1]
+    D = a.shape[1] #dimension
     m = n    
 
     if b == None:
@@ -432,12 +432,29 @@ def sq_dist(a, b=None):
         b = b.transpose()
 
     C = numpy.zeros((n,m))
+    negative_matrix = numpy.zeros((n,m))
+    
+    wind_direction = 0
 
     for d in range(0,D):
         tt = a[:,d]
         tt = tt.reshape(n,1)
-        tem = numpy.kron(numpy.ones((1,m)), tt)
-        tem = tem - numpy.kron(numpy.ones((n,1)), b[d,:])
-        C = C + tem * tem  
+        temA = numpy.kron(numpy.ones((1,m)), tt) #sonsor data
+        
+        """clarifying what's happening here and add """
+        
+        temB = numpy.kron(numpy.ones((n,1)), b[d,:])
+        
+        tem = temA - temB
+        
+        if d == 0:
+            for row, n_row in zip(tem, negative_matrix):
+                for cell, n_cell in zip(row, n_row):
+                    if cell < 0:
+                        n_cell = 1000
+        
+        C = C + tem * tem
+    
+    C = C + negative_matrix
 
     return C
