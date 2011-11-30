@@ -163,7 +163,7 @@ def covSEiso(loghyper=None, x=None, z=None):
     else:               # compute covariance between data sets x and z
         z = z/ell
         A = sf2*numpy.ones((z.shape[0],1))         # self covariances (needed for GPR)
-        B = sf2*numpy.exp(-sq_dist(x,z)/2)         # cross covariances
+        B = sf2*numpy.exp(-sq_dist(x,z,True)/2)         # cross covariances
         A=[A,B]
     return A
 
@@ -414,7 +414,7 @@ def regLapKernel(R, beta, s2):
     return K_R
 
 
-def sq_dist(a, b=None):
+def sq_dist(a, b=None, wind=False):
 
     '''Compute a matrix of all pairwise squared distances
     between two sets of vectors, stored in the row of the two matrices:
@@ -447,12 +447,17 @@ def sq_dist(a, b=None):
         
         tem = temA - temB
         
-        if d == 0:
-            for row, n_row in zip(tem, negative_matrix):
-                for cell, n_cell in zip(row, n_row):
+        if d == 0 and b != None and wind:
+            i = 0
+            j = 0
+            for row in tem:
+                for cell in row:
                     if cell < 0:
-                        n_cell = 1000
-        
+#                    n_cell = 100000.0
+#                        print "i, j: {0}, {1}".format(i, j)
+                        numpy.put(negative_matrix, [i,j],[-1000.0])
+                    j += 1
+                i += 1
         C = C + tem * tem
     
     C = C + negative_matrix
