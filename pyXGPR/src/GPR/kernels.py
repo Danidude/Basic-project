@@ -452,19 +452,22 @@ def sq_dist(a, b=None, wind=False, wind_vector=[-1,0]):
             
         if d == 1 and wind:
             y_pos = tem
-            i = 0
-            j = 0
-            for x_row, y_row in zip(x_pos, y_pos):
-                for x_cell, y_cell in zip(x_row, y_row):
+#            i = 0
+#            j = 0
+#            for x_row, y_row in zip(x_pos, y_pos):
+            for i in range(len(x_pos)):
+#                for x_cell, y_cell in zip(x_row, y_row):
+                for j in range(len(x_pos[0])):
                     
-                    dot_product = (x_cell*wind_vector[0]) + (y_cell*wind_vector[1])
+                    dot_product = (x_pos[i][j]*wind_vector[0]) + (y_pos[i][j]*wind_vector[1])
                     wind_sum = numpy.sqrt( (wind_vector[0]*wind_vector[0]) + (wind_vector[1]*wind_vector[1]) )
-                    cell_vector_sum = numpy.sqrt( (x_cell*x_cell) + (y_cell*y_cell) ) 
+                    cell_vector_sum = numpy.sqrt( (x_pos[i][j]*x_pos[i][j]) + (y_pos[i][j]*y_pos[i][j]) ) 
                     angle = numpy.arccos( dot_product / (cell_vector_sum * wind_sum))
-                    weight = 200 - angle + 0.001
-                    numpy.put(wind_weight_matrix, [i,j],[weight])
-                    j += 1
-                i += 1
+                    weight = 1.5 - (angle / numpy.pi) + 0.001
+#                    numpy.put(wind_weight_matrix, [i,j],[weight])
+                    wind_weight_matrix[i,j] = weight
+#                    j += 1
+#                i += 1
         
         C = C + tem * tem
 #        if d == 0 and b != None and wind:
@@ -479,13 +482,16 @@ def sq_dist(a, b=None, wind=False, wind_vector=[-1,0]):
 #                    j += 1
 #                i += 1
     if wind:
-        i = 0
-        j = 0
-        for row, wind_row in zip(C, wind_weight_matrix):
-            for cell, wind_cell in zip(row, wind_row):
-                numpy.put(C, [i,j],[cell * wind_cell])
-                j += 1
-            i += 1
+#        i = 0
+#        j = 0
+#        for row, wind_row in zip(C, wind_weight_matrix):
+        for i in range(len(C)):
+            for j in range(len(C[0])):
+#            for cell, wind_cell in zip(row, wind_row):
+                C[i,j] = C[i][j] * wind_weight_matrix[i][j]
+#                numpy.put(C, [i,j],C[i][j] * wind_weight_matrix[i][j])
+#                j += 1
+#            i += 1
     
 #    C = C + negative_matrix
 
