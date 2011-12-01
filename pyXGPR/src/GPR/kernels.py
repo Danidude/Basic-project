@@ -128,7 +128,7 @@ import scipy.sparse
 
 
 
-def covSEiso(loghyper=None, x=None, z=None):
+def covSEiso(loghyper=None, x=None, z=None, Y=None):
 
     '''Squared Exponential covariance function with isotropic distance measure.
     The covariance function is parameterized as:
@@ -163,7 +163,7 @@ def covSEiso(loghyper=None, x=None, z=None):
     else:               # compute covariance between data sets x and z
         z = z/ell
         A = sf2*numpy.ones((z.shape[0],1))         # self covariances (needed for GPR)
-        B = sf2*numpy.exp(-sq_dist(x,z,True)/2)         # cross covariances
+        B = sf2*numpy.exp(-sq_dist(x,z,True,[-1,0],Y)/2)         # cross covariances
         A=[A,B]
     return A
 
@@ -332,7 +332,7 @@ def covSumMat(covfunc, loghyper=None, x=None, R=None, w=None, z=None, Rstar=None
     return A
     
     
-def covSum(covfunc, loghyper=None, x=None, z=None):
+def covSum(covfunc, loghyper=None, x=None, z=None, Y=None):
     
     '''covSum - compose a covariance function as the sum of other covariance
     functions. This function doesn't actually compute very much on its own, it
@@ -389,7 +389,7 @@ def covSum(covfunc, loghyper=None, x=None, z=None):
         for i in range(1,len(covfunc)+1):
             f = covfunc[i-1] 
             # compute test covariances
-            results = Tools.general.feval(f, loghyper[int(v[i-1,0]):int(v[i-1,0])+int(v[i,0]),0], x, z)
+            results = Tools.general.feval(f, loghyper[int(v[i-1,0]):int(v[i-1,0])+int(v[i,0]),0], x, z,Y)
             # and accumulate
             A = A + results[0]    # self covariances 
             B = B + results[1]    # cross covariances        
@@ -414,7 +414,7 @@ def regLapKernel(R, beta, s2):
     return K_R
 
 
-def sq_dist(a, b=None, wind=False, wind_vector=[-1,0]):
+def sq_dist(a, b=None, wind=False, wind_vector=[-1,0], Y=None):
 
     '''Compute a matrix of all pairwise squared distances
     between two sets of vectors, stored in the row of the two matrices:
@@ -452,47 +452,24 @@ def sq_dist(a, b=None, wind=False, wind_vector=[-1,0]):
             
         if d == 1 and wind:
             y_pos = tem
-#            i = 0
-#            j = 0
-#            for x_row, y_row in zip(x_pos, y_pos):
+            y_matrix = numpy.kron(numpy.ones((1,m)), Y.reshape(n,1))
+            
             for i in range(len(x_pos)):
-#                for x_cell, y_cell in zip(x_row, y_row):
                 for j in range(len(x_pos[0])):
                     
                     dot_product = (x_pos[i][j]*wind_vector[0]) + (y_pos[i][j]*wind_vector[1])
                     wind_sum = numpy.sqrt( (wind_vector[0]*wind_vector[0]) + (wind_vector[1]*wind_vector[1]) )
                     cell_vector_sum = numpy.sqrt( (x_pos[i][j]*x_pos[i][j]) + (y_pos[i][j]*y_pos[i][j]) ) 
                     angle = numpy.arccos( dot_product / (cell_vector_sum * wind_sum))
-                    weight = 1.5 - (angle / numpy.pi) + 0.001
-#                    numpy.put(wind_weight_matrix, [i,j],[weight])
+                    weight = 0#1.1 - (angle / numpy.pi) + 0.001
+                    if angle > (numpy.pi / 2):# and y_matrix[i][j] > 0:
+                        weight = 2.0
                     wind_weight_matrix[i,j] = weight
-#                    j += 1
-#                i += 1
         
         C = C + tem * tem
-#        if d == 0 and b != None and wind:
-#            i = 0
-#            j = 0
-#            for row in tem:
-#                for cell in row:
-#                    if cell < 0:
-##                    n_cell = 100000.0
-##                        print "i, j: {0}, {1}".format(i, j)
-#                        numpy.put(negative_matrix, [i,j],[100.0])
-#                    j += 1
-#                i += 1
     if wind:
-#        i = 0
-#        j = 0
-#        for row, wind_row in zip(C, wind_weight_matrix):
         for i in range(len(C)):
             for j in range(len(C[0])):
-#            for cell, wind_cell in zip(row, wind_row):
                 C[i,j] = C[i][j] * wind_weight_matrix[i][j]
-#                numpy.put(C, [i,j],C[i][j] * wind_weight_matrix[i][j])
-#                j += 1
-#            i += 1
-    
-#    C = C + negative_matrix
 
     return C

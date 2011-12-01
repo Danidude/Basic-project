@@ -14,7 +14,7 @@ class Predict:
 
 #        self.logtheta = np.array([ np.log(1.0), np.log(8.0),np.log(1.0), np.log(8.0), np.log(0.0001)])
 #        self.covfunc = ['kernels.covSum', ['kernels.covSEiso', 'kernels.covSEiso', 'kernels.covNoise']]
-        self.logtheta = np.array([ np.log(3.0), np.log(8.0)])
+        self.logtheta = np.array([ np.log(2.0), np.log(7.5)])
         self.covfunc = ['kernels.covSum', ['kernels.covSEiso']]
         
     def predict(self, X, y):

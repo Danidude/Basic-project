@@ -89,7 +89,7 @@ def gp_pred(logtheta, covfunc, X, y, Xstar, R=None, w=None, Rstar=None):
     # (marginal) test predictions (Kss = self-cov; Kstar = corss-cov)
     if R==None:
         K = feval(covfunc, logtheta, X)                     # training covariances
-        [Kss, Kstar] = feval(covfunc, logtheta, X, Xstar)   # test covariances (Kss = self covariances, Kstar = cov between train and test cases)
+        [Kss, Kstar] = feval(covfunc, logtheta, X, Xstar, y)   # test covariances (Kss = self covariances, Kstar = cov between train and test cases)
     else:
         K = feval(covfunc, logtheta, X, R, w)               # training covariances
         [Kss, Kstar] = feval(covfunc, logtheta, X, R, w, Xstar, Rstar)   # test covariances
