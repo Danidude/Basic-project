@@ -414,7 +414,7 @@ def regLapKernel(R, beta, s2):
     return K_R
 
 
-def sq_dist(a, b=None, wind=False):
+def sq_dist(a, b=None, wind=False, wind_vector=[-1,0]):
 
     '''Compute a matrix of all pairwise squared distances
     between two sets of vectors, stored in the row of the two matrices:
@@ -432,34 +432,61 @@ def sq_dist(a, b=None, wind=False):
         b = b.transpose()
 
     C = numpy.zeros((n,m))
-    negative_matrix = numpy.zeros((n,m))
+#    negative_matrix = numpy.zeros((n,m))
+    wind_weight_matrix = numpy.ones((n,m))
     
-    wind_direction = 0
+    
+    x_pos = None
 
     for d in range(0,D):
         tt = a[:,d]
         tt = tt.reshape(n,1)
         temA = numpy.kron(numpy.ones((1,m)), tt) #sonsor data
-        
-        """clarifying what's happening here and add """
-        
         temB = numpy.kron(numpy.ones((n,1)), b[d,:])
         
         tem = temA - temB
         
-        if d == 0 and b != None and wind:
+        if d == 0 and wind:
+            import copy
+            x_pos = copy.deepcopy(tem)
+            
+        if d == 1 and wind:
+            y_pos = tem
             i = 0
             j = 0
-            for row in tem:
-                for cell in row:
-                    if cell < 0:
-#                    n_cell = 100000.0
-#                        print "i, j: {0}, {1}".format(i, j)
-                        numpy.put(negative_matrix, [i,j],[-1000.0])
+            for x_row, y_row in zip(x_pos, y_pos):
+                for x_cell, y_cell in zip(x_row, y_row):
+                    
+                    dot_product = (x_cell*wind_vector[0]) + (y_cell*wind_vector[1])
+                    wind_sum = numpy.sqrt( (wind_vector[0]*wind_vector[0]) + (wind_vector[1]*wind_vector[1]) )
+                    cell_vector_sum = numpy.sqrt( (x_cell*x_cell) + (y_cell*y_cell) ) 
+                    angle = numpy.arccos( dot_product / (cell_vector_sum * wind_sum))
+                    weight = 200 - angle + 0.001
+                    numpy.put(wind_weight_matrix, [i,j],[weight])
                     j += 1
                 i += 1
+        
         C = C + tem * tem
+#        if d == 0 and b != None and wind:
+#            i = 0
+#            j = 0
+#            for row in tem:
+#                for cell in row:
+#                    if cell < 0:
+##                    n_cell = 100000.0
+##                        print "i, j: {0}, {1}".format(i, j)
+#                        numpy.put(negative_matrix, [i,j],[100.0])
+#                    j += 1
+#                i += 1
+    if wind:
+        i = 0
+        j = 0
+        for row, wind_row in zip(C, wind_weight_matrix):
+            for cell, wind_cell in zip(row, wind_row):
+                numpy.put(C, [i,j],[cell * wind_cell])
+                j += 1
+            i += 1
     
-    C = C + negative_matrix
+#    C = C + negative_matrix
 
     return C
