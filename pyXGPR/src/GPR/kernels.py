@@ -141,6 +141,9 @@ def covSEiso(loghyper=None, x=None, z=None, Y=None):
                 log(sqrt(sf2)) ]
     a column vector  
     each row of x/z is a data point'''
+    
+    
+    
 
     if loghyper == None:                 # report number of parameters
         return 2
@@ -168,7 +171,7 @@ def covSEiso(loghyper=None, x=None, z=None, Y=None):
     return A
 
 
-def covSEard(loghyper=None, x=None, z=None):
+def covSEard(loghyper=None, x=None, z=None, t=None):
 
     '''Squared Exponential covariance function with Automatic Relevance Detemination
     (ARD) distance measure. The covariance function is parameterized as:
@@ -184,7 +187,7 @@ def covSEard(loghyper=None, x=None, z=None):
                   log(ell_D)
                   log(sqrt(sf2)) ]'''
     
-    if loghyper == None:                # report number of parameters
+    if loghyper == None:                # report number of parametersones
         return 'D + 1'                  # USAGE: integer OR D_+_int (spaces are SIGNIFICANT)
     
     [n, D] = x.shape
@@ -209,7 +212,7 @@ def covSEard(loghyper=None, x=None, z=None):
     return A
 
 
-def covNoise(loghyper=None, x=None, z=None):
+def covNoise(loghyper=None, x=None, z=None,n=None):
     '''Independent covariance function, ie "white noise", with specified variance.
     The covariance function is specified as:
     k(x^p,x^q) = s2 * \delta(p,q)
@@ -413,6 +416,37 @@ def regLapKernel(R, beta, s2):
     
     return K_R
 
+def create_vector(x1, y1, x2, y2):
+    '''Will go from (x1,y1) to (x2,y2)'''
+    x = x2 - x1
+    y = y2 - y1
+    return [x,y]
+    
+
+
+def calculate_weight(vector, wind_vector):
+    dot_product = (vector[0] * wind_vector[0]) + (vector[1] * wind_vector[1])
+    wind_sum = numpy.sqrt((wind_vector[0] * wind_vector[0]) + (wind_vector[1] * wind_vector[1]))
+    cell_vector_sum = numpy.sqrt((vector[0] * vector[0]) + (vector[1] * vector[1]))
+    angle = numpy.arccos(dot_product / (cell_vector_sum * wind_sum))
+#    if angle == 0:
+#        angle = numpy.pi
+    weight = (angle / numpy.pi)
+    if weight >= 0.5:
+        weight = 1.5
+    else:
+        weight = 0.5
+#    if weight < 0.
+#    if weight == 0:
+#        weight = 0.5
+#    if 
+    #weight = 1
+#    if weight >= 0.50:
+#        weight = 0.9
+#    else:
+#        weight = 1.2 + weight
+    
+    return weight
 
 def sq_dist(a, b=None, wind=False, wind_vector=[-1,0], Y=None):
 
@@ -421,8 +455,20 @@ def sq_dist(a, b=None, wind=False, wind_vector=[-1,0], Y=None):
     a (of size n by D) and b (of size m by D). '''
 
     n = a.shape[0]
-    D = a.shape[1] #dimension
-    m = n    
+    D = a.shape[1] 
+    m = n
+    
+    if b != None:
+        #weights = [1]*len(b)
+        weights = numpy.ones((n,b.shape[0]))
+        for i in range(len(a)):
+            for j in range(len(b)):
+                if Y[i] < 0:
+                    continue
+                vector = create_vector(a[i][0], a[i][1], b[j][0], b[j][1])
+                calculated_weight = calculate_weight(vector, wind_vector)
+                weights[i,j] = calculated_weight
+#    C[i,j] = C[i][j] * weights[j]
 
     if b == None:
         b = a.transpose()
@@ -433,10 +479,10 @@ def sq_dist(a, b=None, wind=False, wind_vector=[-1,0], Y=None):
 
     C = numpy.zeros((n,m))
 #    negative_matrix = numpy.zeros((n,m))
-    wind_weight_matrix = numpy.ones((n,m))
+#    wind_weight_matrix = numpy.ones((n,m))
     
     
-    x_pos = None
+#    x_pos = None
 
     for d in range(0,D):
         tt = a[:,d]
@@ -445,31 +491,37 @@ def sq_dist(a, b=None, wind=False, wind_vector=[-1,0], Y=None):
         temB = numpy.kron(numpy.ones((n,1)), b[d,:])
         
         tem = temA - temB
-        
-        if d == 0 and wind:
-            import copy
-            x_pos = copy.deepcopy(tem)
-            
-        if d == 1 and wind:
-            y_pos = tem
-            y_matrix = numpy.kron(numpy.ones((1,m)), Y.reshape(n,1))
-            
-            for i in range(len(x_pos)):
-                for j in range(len(x_pos[0])):
-                    
-                    dot_product = (x_pos[i][j]*wind_vector[0]) + (y_pos[i][j]*wind_vector[1])
-                    wind_sum = numpy.sqrt( (wind_vector[0]*wind_vector[0]) + (wind_vector[1]*wind_vector[1]) )
-                    cell_vector_sum = numpy.sqrt( (x_pos[i][j]*x_pos[i][j]) + (y_pos[i][j]*y_pos[i][j]) ) 
-                    angle = numpy.arccos( dot_product / (cell_vector_sum * wind_sum))
-                    weight = 0#1.1 - (angle / numpy.pi) + 0.001
-                    if angle > (numpy.pi / 2):# and y_matrix[i][j] > 0:
-                        weight = 2.0
-                    wind_weight_matrix[i,j] = weight
+#        tem2 = temB - temA
+#        
+#        if d == 0 and wind and False:
+#            import copy
+#            x_pos = copy.deepcopy(tem2)
+#            
+#        if d == 1 and wind and False:
+#            y_pos = tem2
+#            y_matrix = numpy.kron(numpy.ones((1,m)), Y.reshape(n,1))
+#            
+#            for i in range(len(x_pos)):
+#                for j in range(len(x_pos[0])):
+#                    
+#                    if y_matrix[i][j] < 0:
+##                        weight = 1
+##                        wind_weight_matrix[i,j] = weight
+#                        continue
+#                    
+#                    weight, cell_vector_sum = calculate_weight(wind_vector, i, x_pos, y_pos, j)
+#                    
+#                    if weight >= 0.50:# and y_matrix[i][j] > 0:
+#                        weight = weight * weight#0.05
+#                    else:
+#                        weight = 1 + weight#1.8
+#                    
+#                    wind_weight_matrix[i,j] = weight
         
         C = C + tem * tem
-    if wind:
+    if wind and True:
         for i in range(len(C)):
             for j in range(len(C[0])):
-                C[i,j] = C[i][j] * wind_weight_matrix[i][j]
+                C[i,j] = C[i][j] * weights[i][j]
 
     return C

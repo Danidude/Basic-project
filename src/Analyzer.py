@@ -12,17 +12,19 @@ class Predict:
         
     def init_kernel(self):
 
+        self.logtheta = np.array([ np.log(1.0), np.log(8.0), np.log(0.0001)])
+        self.covfunc = ['kernels.covSum', ['kernels.covSEiso', 'kernels.covNoise']]
 #        self.logtheta = np.array([ np.log(1.0), np.log(8.0),np.log(1.0), np.log(8.0), np.log(0.0001)])
 #        self.covfunc = ['kernels.covSum', ['kernels.covSEiso', 'kernels.covSEiso', 'kernels.covNoise']]
-        self.logtheta = np.array([ np.log(2.0), np.log(7.5)])
-        self.covfunc = ['kernels.covSum', ['kernels.covSEiso']]
+#        self.logtheta = np.array([ np.log(1.0), np.log(8.0), np.log(0.0001)])
+#        self.covfunc = ['kernels.covSum', ['kernels.covSEiso','kernels.covNoise']]
         
-    def predict(self, X, y):
-        
-        prediction = gpr.gp_pred(self.logtheta, self.covfunc, X, y, self.x_star)
-        return prediction
+#    def predict(self, X, y):
+#        
+#        prediction = gpr.gp_pred(self.logtheta, self.covfunc, X, y, self.x_star)
+#        return prediction
     
-    def predict_2(self, X, y, x_star):
+    def predict(self, X, y, x_star):
         
         prediction = gpr.gp_pred(self.logtheta, self.covfunc, X, y, x_star)
         return prediction
@@ -42,6 +44,13 @@ class GPR_Controller:
                     if new_cell.v < 40:#values are 0 - 8
                         if new_cell.v > 0: #sensors which detect fire
                             fire_sensors.append(new_cell)
+        
+        for time_frame in fire_time_grid:
+            for new_row in time_frame:
+                for new_cell in new_row:
+                    if new_cell.v < 40 and self.square_is_close_to(new_cell, fire_sensors, 16):#values are 0 - 8
+#                        if new_cell.v > 0: #sensors which detect fire
+#                            fire_sensors.append(new_cell)
                         if len(X) == 0:
                             X = [(new_cell.x, new_cell.y, new_cell.t)]
                             if new_cell.v == 0:
@@ -61,10 +70,10 @@ class GPR_Controller:
                 if new_cell.v < 40:#only 127
                     continue
                 
-                is_close_to_fire_sensors = self.square_is_close_to(new_cell, fire_sensors, 2)
+                is_close_to_fire_sensors = self.square_is_close_to(new_cell, fire_sensors, 16)
                 is_close_to_calculated_fire = self.square_is_close_to(new_cell, fire_cells, 3)
                 
-                if (not is_close_to_fire_sensors) and (not is_close_to_calculated_fire):
+                if (not is_close_to_fire_sensors):# and (not is_close_to_calculated_fire):
                     continue
 
                 if len(x_star) == 0:
@@ -107,7 +116,7 @@ class GPR_Controller:
         X, y, x_star = self.convert_to_numpy_array(time_fire, y, X, x_star, fire_cells)
         
         
-        self.predict = predict.predict_2(X, y, x_star)
+        self.predict = predict.predict(X, y, x_star)
         
         self.add_prediction_to_grid_cells(self.predict, x_star, grid.cells)
 
@@ -117,7 +126,7 @@ class GPR_Controller:
         self.large_string = self.large_prediction_string
     
     def add_fire_to_time_list(self, time_fire, cells):
-        timestamp = len(time_fire)
+        timestamp = len(time_fire)/2
         
         for row in cells:
             for cell in row:
@@ -138,7 +147,7 @@ class GPR_Controller:
         fire_cells = []
         for row in fire:
             for cell in row:
-                if cell.v > 0.04:
+                if cell.v > 0.0:
                     cell.v = 126
                     fire_cells.append(cell)
                 else:
