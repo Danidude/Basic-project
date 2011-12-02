@@ -195,7 +195,7 @@ cm.Grid.prototype = {
 			{
 				// calculate vector v from center to neighboor
 				vx = x-sensitivity;
-				vy = y-sensitivity;
+				vy = sensitivity-y;
 
 				// calculate cosine value of angle 'a' between wind 'w' and vector 'v'
 				// cos(a) = v*w / |v|*|w|
@@ -301,7 +301,7 @@ cm.Grid.prototype = {
 					if (bw > 0)
 					{
 						// bw >= bwn spontaneous combustion
-						if ( bw >= Math.floor(Math.random()*8) )
+						if ( bw >= Math.floor(Math.random()*10) )
 						{
 							cell.burningTime = time;
 						}
@@ -323,6 +323,7 @@ cm.Grid.prototype = {
 		
 		// burning weight
 		var bw = 0;
+		var hasBurningNeighbor = false;
 		
 		for(var nx=cell.x-sensitivity;nx<=nxl;nx++)
 		{
@@ -339,16 +340,22 @@ cm.Grid.prototype = {
 					{
 						var nc = cells[nx][ny];
 						
-						if (nc.burningTime >=0 && (sensor||nc.burningTime != this._time))
+						if ( nc.burningTime >=0 )
 						{
-							bw+=this.nbw[sensitivity][nxl-nx][nyl-ny];
+							if(sensor||nc.burningTime != this._time)
+							{
+								bw+=this.nbw[sensitivity][nxl-nx][nyl-ny];
+							}
+
+							hasBurningNeighbor = Math.abs(nx-cell.x)<=1 && Math.abs(ny-cell.y)<=1;
 						}
 					}
 				}
 			}
 		}
 		
-		return Math.ceil(bw);
+		
+		return Math.ceil(bw) == 0 ? (hasBurningNeighbor && sensor ? 1 : 0) : Math.ceil(bw);
 	},
 	addSensor:function(x,y){
 		var c = this.cells[x][y];
