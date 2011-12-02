@@ -126,7 +126,7 @@ class GPR_Controller:
         self.large_string = self.large_prediction_string
     
     def add_fire_to_time_list(self, time_fire, cells):
-        timestamp = len(time_fire)/2
+        timestamp = len(time_fire)*0.5
         
         for row in cells:
             for cell in row:

@@ -435,7 +435,7 @@ def calculate_weight(vector, wind_vector):
     if weight >= 0.5:
         weight = 1.5
     else:
-        weight = 0.5
+        weight = 0.3
 #    if weight < 0.
 #    if weight == 0:
 #        weight = 0.5
