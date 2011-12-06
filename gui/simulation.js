@@ -200,28 +200,28 @@ cm.Grid.prototype = {
 				// calculate cosine value of angle 'a' between wind 'w' and vector 'v'
 				// cos(a) = v*w / |v|*|w|
 				var a = vx*wx+vy*wy;
-				if (a==0)
+				if (Math.abs(a)<=0.0001)
 				{
 					nbw[x][y] = 0;
 					continue;
 				}
 				
 				var b = Math.sqrt(vx*vx+vy*vy);
-				if (b==0)
+				if (Math.abs(b)<=0.0001)
 				{
 					nbw[x][y] = 0;
 					continue;
 				}
 				
 				var c = Math.sqrt(wx*wx+wy*wy);
-				if (c==0)
+				if (Math.abs(c)<=0.0001)
 				{
 					nbw[x][y] = 0;
 					continue;
 				}
 				
 				var d = b*c;
-				if (d==0)
+				if (Math.abs(d)<=0.0001)
 				{
 					nbw[x][y] = 0;
 					continue;
@@ -325,6 +325,9 @@ cm.Grid.prototype = {
 		var bw = 0;
 		var hasBurningNeighbor = false;
 		
+		var dx,dy;
+		var sqrt3 = Math.sqrt(3);
+		
 		for(var nx=cell.x-sensitivity;nx<=nxl;nx++)
 		{
 			for(var ny=cell.y-sensitivity;ny<=nyl;ny++)
@@ -346,8 +349,9 @@ cm.Grid.prototype = {
 							{
 								bw+=this.nbw[sensitivity][nxl-nx][nyl-ny];
 							}
-
-							hasBurningNeighbor = Math.abs(nx-cell.x)<=1 && Math.abs(ny-cell.y)<=1;
+							dx = (nx-cell.x);
+							dy = (ny-cell.y);
+							hasBurningNeighbor = Math.sqrt(dx*dx+dy*dy)/sqrt3<sensitivity;
 						}
 					}
 				}
@@ -397,7 +401,7 @@ cm.Grid.prototype = {
 	onMouseClick:function(ev,cell){
 		cell.burningTime = this._time;
 		cell.bw = 0;
-		cell.draw(this,false);		
+		cell.draw(this,false);
 	},
 	onMouseOver:function(ev,cell){
 		cell.draw(this,true);
