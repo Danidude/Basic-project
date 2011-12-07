@@ -118,10 +118,10 @@ class GPR_Controller:
         
         self.predict = predict.predict(X, y, x_star)
         
-        self.add_prediction_to_grid_cells(self.predict, x_star, grid.cells)
+        self.fire_cells = self.add_prediction_to_grid_cells(self.predict, x_star, grid.cells)
 
-        self.fire_cells = self.convert_to_discrete_values(grid.cells)
-        self.large_prediction_string, self.large_s2_string = self.create_large_string(grid.cells)
+#        self.fire_cells = self.convert_to_discrete_values(grid.cells)
+        self.large_prediction_string, self.large_s2_string = self.create_large_string(self.fire_cells)
         
         self.large_string = self.large_prediction_string
     
@@ -134,30 +134,45 @@ class GPR_Controller:
         copied_fire = copy.deepcopy(cells)
         time_fire.append(copied_fire)
     
-    def create_large_string(self, fire):
+    def create_large_string(self, predicted_fire):
         large_prediction_string = ""
         large_s2_string = ""
-        for row in fire:
-            for cell in row:
-                large_prediction_string += chr(cell.v)
-                large_s2_string += chr(cell.v)
+        for fire in predicted_fire:
+            print fire
+            large_prediction_string += chr(fire)
         return (large_prediction_string, large_s2_string)
+    
+#    def create_large_string(self, fire):
+#        large_prediction_string = ""
+#        large_s2_string = ""
+#        for row in fire:
+#            for cell in row:
+#                large_prediction_string += chr(cell.v)
+#                large_s2_string += chr(cell.v)
+#        return (large_prediction_string, large_s2_string)
     
     def convert_to_discrete_values(self,fire):
         fire_cells = []
         for row in fire:
             for cell in row:
-                if cell.v > 0.0:
-                    cell.v = 126
-                    fire_cells.append(cell)
-                else:
-                    cell.v = 0
+                fire_cells.append(cell.v)
+                if cell.v > 64:
+                    print "x,y: {0}{1}, v: {2}".format(cell.x,cell.y,cell.v)
         return fire_cells
-    
-        
-    def add_prediction_to_grid_cells(self, predictions, x_star, cells):
+#    def convert_to_discrete_values(self,fire):
+#        fire_cells = []
+#        for row in fire:
+#            for cell in row:
+#                if cell.v > 0.0:
+#                    cell.v = 126
+#                    fire_cells.append(cell)
+#                else:
+#                    cell.v = 0
+#        return fire_cells
+    def add_prediction_to_grid_cells2(self, predictions, x_star, cells):
         prediction = predictions[0]
         S2 = predictions[1]
+        import math
         
         for row in cells:
             for cell in row:
@@ -165,7 +180,12 @@ class GPR_Controller:
                     cell.v = 0
                     cell.S2 = 0
                 if cell.v == 127 and cell.x == x_star[0][0] and cell.y == x_star[0][1] and cell.t == x_star[0][2]:
-                    cell.v = prediction[0]
+                    value = prediction[0]
+                    if prediction[0] > 1:
+                        value = 1.0
+                    elif prediction[0] < -1:
+                        value = -1.0
+                    cell.v = math.trunc(((value + 1) * 32) + 0.5)
                     cell.S2 = S2[0][0]
                     prediction = prediction[1:]
                     S2 = S2[1:]
@@ -176,5 +196,36 @@ class GPR_Controller:
                     cell.v = 0
                     cell.S2 = 0
         return
+        
+    def add_prediction_to_grid_cells(self, predictions, x_star, cells):
+        prediction = predictions[0]
+        S2 = predictions[1]
+        import math
+        predicted_cells = []
+        
+        for row in cells:
+            for cell in row:
+                if len(x_star) == 0:
+                    cell.v = 0
+                    cell.S2 = 0
+                if cell.v == 127 and cell.x == x_star[0][0] and cell.y == x_star[0][1] and cell.t == x_star[0][2]:
+                    value = copy.deepcopy(prediction[0])
+                    if prediction[0] > 1.0:
+                        value = 1.0
+                    elif prediction[0] < -1.0:
+                        value = -1.0
+                    predicted_cells.append(math.trunc(((value + 1) * 63.0) + 0.5))
+                    
+                    cell.v = prediction[0]
+                    cell.S2 = S2[0][0]
+                    prediction = prediction[1:]
+                    S2 = S2[1:]
+                    x_star = x_star[1:]
+                elif cell.v > 0.9999999 and cell.v < 25:
+                    cell.S2 = 0
+                else:
+                    cell.v = 0
+                    cell.S2 = 0
+        return predicted_cells
 
     
