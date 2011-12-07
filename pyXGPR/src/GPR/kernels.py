@@ -433,9 +433,9 @@ def calculate_weight(vector, wind_vector):
 #        angle = numpy.pi
     weight = (angle / numpy.pi)
     if weight > 0.5: #could =>
-        weight = 1.15
+        weight = 1.0
     else:
-        weight = 0.75
+        weight = 1.0
 #    if weight < 0.
 #    if weight == 0:
 #        weight = 0.5
@@ -519,7 +519,7 @@ def sq_dist(a, b=None, wind=False, wind_vector=[-1,0], Y=None):
 #                    wind_weight_matrix[i,j] = weight
         
         C = C + tem * tem
-    if wind and True:
+    if wind and False:
         for i in range(len(C)):
             for j in range(len(C[0])):
                 C[i,j] = C[i][j] * weights[i][j]
