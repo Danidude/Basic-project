@@ -15,6 +15,28 @@ cm.GridCell = function(args){
 	this._rectangle = {};
 };
 
+cm.Gradient = function(args){
+	$.extend(this,args);
+};
+
+cm.Gradient.prototype = {
+	color1: [34,34,34],
+	color2: [255,0,0],
+	getColor: function(f){
+		var c1 = this.color1;
+		var c2 = this.color2;
+		var r = Math.round(c1[0]+(c2[0]-c1[0])*f) << 16;
+		var g = Math.round(c1[1]+(c2[1]-c1[1])*f) << 8;
+		var b = Math.round(c1[2]+(c2[2]-c1[2])*f);
+		var rgb = (r|g|b).toString(16);
+		return "#000000".substring(0,7-rgb.length) + rgb;
+	}
+};
+
+cm.gradient = new cm.Gradient({});
+
+cm.log('color',cm.gradient.getColor(0.5));
+
 cm.GridCell.prototype = {
 	x: -1,
 	y: -1,
@@ -24,33 +46,45 @@ cm.GridCell.prototype = {
 	burningTime: -1,
 	sensorCount: 0,
 	_rectangle: null,
-	draw:function(g,selected){
+	draw:function(g,selected,visualization){
 		var r = this._rectangle;
-		// TODO: Unless the state has changed,
-		// the colors can be stored and reused,
-		// i.e. not calculated for each draw
-		if (selected)
+		
+		if (visualization)
 		{
-			if (this.sensorCount > 0 && this.burningTime >= 0)
-				r.fillStyle = '#fc9';
-			else if (this.sensorCount > 0)
-				r.fillStyle = '#dd9';
-			else if (this.burningTime >= 0)
-				r.fillStyle='#f99';
-			else
-				r.fillStyle='#ccc';
-		}
-		else
-		{
-			if (this.sensorCount > 0 && this.burningTime >= 0)
-				r.fillStyle = '#e60';
-			else if (this.sensorCount > 0)
-				r.fillStyle = '#dd0';
-			else if (this.burningTime >= 0)
-				r.fillStyle='#e00';
+			if (this.bw >= 0)
+				r.fillStyle = cm.gradient.getColor(this.bw/126);
 			else
 				r.fillStyle='#222';
 		}
+		else
+		{
+			// TODO: Unless the state has changed,
+			// the colors can be stored and reused,
+			// i.e. not calculated for each draw
+			if (selected)
+			{
+				if (this.sensorCount > 0 && this.burningTime >= 0)
+					r.fillStyle = '#fc9';
+				else if (this.sensorCount > 0)
+					r.fillStyle = '#dd9';
+				else if (this.burningTime >= 0)
+					r.fillStyle='#f99';
+				else
+					r.fillStyle='#ccc';
+			}
+			else
+			{
+				if (this.sensorCount > 0 && this.burningTime >= 0)
+					r.fillStyle = '#e60';
+				else if (this.sensorCount > 0)
+					r.fillStyle = '#dd0';
+				else if (this.burningTime >= 0)
+					r.fillStyle='#e00';
+				else
+					r.fillStyle='#222';
+			}
+		}
+		
 		var z = g.zoom;
 		r.x = this.x*z + 0.5;
 		r.y = this.y*z + 0.5;
@@ -147,6 +181,7 @@ cm.Grid.prototype = {
 	sizeX: 71,
 	sizeY: 71,
 	zoom: 8,
+	visualization: false,
 	backgroundColor: '#222',
 	foregroundColor: '#ccc',
 	borderColor: '#111',
@@ -412,7 +447,7 @@ cm.Grid.prototype = {
 		.css('top',cell.y*z+o.top+(z<<1)).show();
 	},
 	onMouseOut:function(ev,cell){
-		cell.draw(this,false);
+		cell.draw(this,false,this.visualization);
 	},
 	onDraw:function(){		
 		var p = this.parent;
@@ -425,7 +460,7 @@ cm.Grid.prototype = {
 		
 		for(var x=0,nx=this.sizeX;x<nx;x++)
 			for(var y=0,ny=this.sizeY;y<ny;y++)
-				c[x][y].draw(this,false);
+				c[x][y].draw(this,false,this.visualization);
 	},
 	onGaussianSuccess:function(data){
 		cm.log(data);
