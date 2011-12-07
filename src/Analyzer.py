@@ -139,12 +139,12 @@ class GPR_Controller:
         large_prediction_string = ""
         large_s2_string = ""
         for fire in predicted_fire:
-#            print fire
+            print fire
 #            if fire > 63:
 #                large_prediction_string += chr(126)
 ##                print 126
 #            else:
-                large_prediction_string += chr(fire)
+            large_prediction_string += chr(fire)
 #                print 0
         return (large_prediction_string, large_s2_string)
     
