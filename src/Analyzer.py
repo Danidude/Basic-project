@@ -51,7 +51,7 @@ class GPR_Controller:
         for time_frame in fire_time_grid:
             for new_row in time_frame:
                 for new_cell in new_row:
-                    if new_cell.v < 40 and self.square_is_close_to(new_cell, fire_sensors, 12):#values are 0 - 8
+                    if new_cell.v < 40 and self.square_is_close_to(new_cell, fire_sensors, 2):#values are 0 - 8
 #                        if new_cell.v > 0: #sensors which detect fire
 #                            fire_sensors.append(new_cell)
                         if len(X) == 0:
@@ -73,7 +73,7 @@ class GPR_Controller:
                 if new_cell.v < 100:#only 127
                     continue
                 
-                is_close_to_fire_sensors = self.square_is_close_to(new_cell, fire_sensors, 12)
+                is_close_to_fire_sensors = self.square_is_close_to(new_cell, fire_sensors, 2)
 #                is_close_to_calculated_fire = self.square_is_close_to(new_cell, fire_cells, 3)
                 
                 if (not is_close_to_fire_sensors):# and (not is_close_to_calculated_fire):

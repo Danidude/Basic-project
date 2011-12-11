@@ -466,7 +466,7 @@ def calculate_weight(vector, wind_vector):#, middle):
     else:
         weight = 0.5
     
-    return weight
+    return [weight, cell_vector_sum, wind_sum]
 
 def create_correlated_burning_sensors(sensor_positions, sensor_values):
     simple_burning_sensors = []
@@ -501,34 +501,42 @@ def sq_dist(a, b=None, wind=False, wind_vector=[-1,0], Y=None):
         
         correlated_burning_sensors = create_correlated_burning_sensors(a,Y)
         weights = numpy.ones((n,b.shape[0]))
+        correlated_burning_sensor_counter = 0
         for i in range(len(a)):
-            correlated_burning_sensor_counter = 0
             for j in range(len(b)):
                 if Y[i] <= 0:
                     continue
-                vector = create_vector(a[i][0], a[i][1], b[j][0], b[j][1])
                 
+#                weights[i,j] = 0.5
+#                continue
+                
+                vector = create_vector(a[i][0], a[i][1], b[j][0], b[j][1])
+                if vector == [0.0,0.0]:#burning sensor is the same as uncalculated
+                    weights[i,j] = 0.1
+                    continue
                 
                 calculated_weight = calculate_weight(vector, wind_vector)#, middle_sensor)
-                if calculated_weight >= 1 and False:
-                    weights[i,j] = calculated_weight
+                if calculated_weight[0] < 1:
+                    weights[i,j] = calculated_weight[0]
                     continue
                 
                 #####################
+                
                 for correlated_burning_sensor_vector in correlated_burning_sensors[correlated_burning_sensor_counter]:
                     angle = calculate_angle_and_length(vector, correlated_burning_sensor_vector)
                     
                     weight = (angle[0] / numpy.pi)
                     
-                    if weight > 0.25:
-                        weight = 1.0
+                    if weight < 0.15 and angle[2] < angle[1]:
+                        weight = 0.2
                         weights[i,j] = weight
                         continue
                 #####################
                 weights[i,j] = 1.0
+            if Y[i] > 0:
+                correlated_burning_sensor_counter += 1
                 
                 
-            correlated_burning_sensor_counter += 1
 #    C[i,j] = C[i][j] * weights[j]
 
     if b == None:
