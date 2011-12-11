@@ -12,7 +12,7 @@ class Predict:
         
     def init_kernel(self):
 
-        self.logtheta = np.array([ np.log(1.0), np.log(8.0), np.log(0.0001)])
+        self.logtheta = np.array([ np.log(1.5), np.log(8.0), np.log(0.0001)])
         self.covfunc = ['kernels.covSum', ['kernels.covSEiso', 'kernels.covNoise']]
 #        self.logtheta = np.array([ np.log(1.0), np.log(8.0),np.log(1.0), np.log(8.0), np.log(0.0001)])
 #        self.covfunc = ['kernels.covSum', ['kernels.covSEiso', 'kernels.covSEiso', 'kernels.covNoise']]
@@ -26,7 +26,10 @@ class Predict:
     
     def predict(self, X, y, x_star):
         
-        prediction = gpr.gp_pred(self.logtheta, self.covfunc, X, y, x_star)
+        logtheta = np.array([ np.log(1.0), np.log(8.0), np.log(0.0001)])
+        covfunc = ['kernels.covSum', ['kernels.covSEiso', 'kernels.covNoise']]
+        
+        prediction = gpr.gp_pred(logtheta, covfunc, X, y, x_star)
         return prediction
     
 
@@ -67,7 +70,7 @@ class GPR_Controller:
         for new_row in fire_time_grid[len(fire_time_grid) -1]:
             for new_cell in new_row:
                 
-                if new_cell.v < 40:#only 127
+                if new_cell.v < 100:#only 127
                     continue
                 
                 is_close_to_fire_sensors = self.square_is_close_to(new_cell, fire_sensors, 12)
@@ -80,6 +83,7 @@ class GPR_Controller:
                     x_star = [(new_cell.x, new_cell.y, new_cell.t)]
                 else:
                     x_star = np.concatenate((x_star, [(new_cell.x, new_cell.y, new_cell.t)]))
+        
         
         return X, y, x_star
     
@@ -131,7 +135,11 @@ class GPR_Controller:
         
         for row in cells:
             for cell in row:
-                cell.t = timestamp
+                if cell.v > 0:
+                    cell.t = timestamp
+                else:
+                    cell.t = timestamp
+                    
         copied_fire = copy.deepcopy(cells)
         time_fire.append(copied_fire)
     
@@ -139,12 +147,15 @@ class GPR_Controller:
         large_prediction_string = ""
         large_s2_string = ""
         for fire in predicted_fire:
-            print fire
+#            print fire
 #            if fire > 63:
 #                large_prediction_string += chr(126)
 ##                print 126
 #            else:
-            large_prediction_string += chr(fire)
+            if fire > 70:
+                large_prediction_string += chr(fire)
+            else:
+                large_prediction_string += chr(0)
 #                print 0
         return (large_prediction_string, large_s2_string)
     
@@ -234,4 +245,11 @@ class GPR_Controller:
                     predicted_cells.append(0)
         return predicted_cells
 
+
+
+        
+    
+    
+    
+    
     

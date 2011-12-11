@@ -423,30 +423,69 @@ def create_vector(x1, y1, x2, y2):
     return [x,y]
     
 
+import math
+def calculate_angle_and_length(vector1, vector2):
+    
+    dot_product = (vector1[0] * vector2[0]) + (vector1[1] * vector2[1])
+    vector1_length = numpy.sqrt((vector1[0] * vector1[0]) + (vector1[1] * vector1[1]))
+    vector2_length = numpy.sqrt((vector2[0] * vector2[0]) + (vector2[1] * vector2[1]))
+    
+    if vector1_length == 0.0 or vector2_length == 0.0:
+        return [0.0,vector1_length,vector2_length]
+    
+    value = dot_product / (vector1_length * vector2_length)
+    if value > 1:
+        value = 1.0
+    elif value < -1:
+        value = -1.0
+        
+#    print "angle: {0}".format(value)
+    angle = numpy.arccos(value)
+    if math.isnan(value):
+        print "vector1: {0}, vector2: {1}".format(vector1, vector2)
+    return [angle,vector1_length,vector2_length]
 
-def calculate_weight(vector, wind_vector):
+def calculate_weight(vector, wind_vector):#, middle):
     dot_product = (vector[0] * wind_vector[0]) + (vector[1] * wind_vector[1])
     wind_sum = numpy.sqrt((wind_vector[0] * wind_vector[0]) + (wind_vector[1] * wind_vector[1]))
     cell_vector_sum = numpy.sqrt((vector[0] * vector[0]) + (vector[1] * vector[1]))
-    angle = numpy.arccos(dot_product / (cell_vector_sum * wind_sum))
-#    if angle == 0:
-#        angle = numpy.pi
+    value = dot_product / (cell_vector_sum * wind_sum)
+    if value > 1:
+        value = 1.0
+    elif value < -1:
+        value = -1.0
+#    print "weight: {0}".format(value)
+    angle = numpy.arccos(value)
+    if math.isnan(value):
+        print "vector: {0}, wind_vector: {1}".format(vector, wind_vector)
+
     weight = (angle / numpy.pi)
-    if weight > 0.5: #could =>
-        weight = 1.0
+    if weight > 0.26:# and not middle:
+        weight = 20.0
+
     else:
-        weight = 1.0
-#    if weight < 0.
-#    if weight == 0:
-#        weight = 0.5
-#    if 
-    #weight = 1
-#    if weight >= 0.50:
-#        weight = 0.9
-#    else:
-#        weight = 1.2 + weight
+        weight = 0.5
     
     return weight
+
+def create_correlated_burning_sensors(sensor_positions, sensor_values):
+    simple_burning_sensors = []
+    for i in range(len(sensor_positions)):
+        if sensor_values[i] > 0:
+            simple_burning_sensors.append(sensor_positions[i])
+
+    burning_correlated_sensors = []
+    for sensor in simple_burning_sensors:
+        
+        burning_correlated_sensor = []
+        
+        for burning_sensor in simple_burning_sensors:
+            if sensor[0] == burning_sensor[0] and sensor[1] == burning_sensor[1] and sensor[2] == burning_sensor[2]:
+                continue
+            burning_correlated_sensor.append(create_vector(sensor[0],sensor[1],burning_sensor[0],burning_sensor[1]))
+            
+        burning_correlated_sensors.append(burning_correlated_sensor)
+    return burning_correlated_sensors
 
 def sq_dist(a, b=None, wind=False, wind_vector=[-1,0], Y=None):
 
@@ -459,15 +498,37 @@ def sq_dist(a, b=None, wind=False, wind_vector=[-1,0], Y=None):
     m = n
     
     if b != None and wind:
-        #weights = [1]*len(b)
+        
+        correlated_burning_sensors = create_correlated_burning_sensors(a,Y)
         weights = numpy.ones((n,b.shape[0]))
         for i in range(len(a)):
+            correlated_burning_sensor_counter = 0
             for j in range(len(b)):
-                if Y[i] < 0:
+                if Y[i] <= 0:
                     continue
                 vector = create_vector(a[i][0], a[i][1], b[j][0], b[j][1])
-                calculated_weight = calculate_weight(vector, wind_vector)
-                weights[i,j] = calculated_weight
+                
+                
+                calculated_weight = calculate_weight(vector, wind_vector)#, middle_sensor)
+                if calculated_weight >= 1 and False:
+                    weights[i,j] = calculated_weight
+                    continue
+                
+                #####################
+                for correlated_burning_sensor_vector in correlated_burning_sensors[correlated_burning_sensor_counter]:
+                    angle = calculate_angle_and_length(vector, correlated_burning_sensor_vector)
+                    
+                    weight = (angle[0] / numpy.pi)
+                    
+                    if weight > 0.25:
+                        weight = 1.0
+                        weights[i,j] = weight
+                        continue
+                #####################
+                weights[i,j] = 1.0
+                
+                
+            correlated_burning_sensor_counter += 1
 #    C[i,j] = C[i][j] * weights[j]
 
     if b == None:
@@ -519,9 +580,12 @@ def sq_dist(a, b=None, wind=False, wind_vector=[-1,0], Y=None):
 #                    wind_weight_matrix[i,j] = weight
         
         C = C + tem * tem
-    if wind and False:
+    if wind and True:
         for i in range(len(C)):
             for j in range(len(C[0])):
                 C[i,j] = C[i][j] * weights[i][j]
 
     return C
+
+
+
