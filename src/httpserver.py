@@ -43,7 +43,7 @@ class HttpRequestHandlerWrapper:
     def __init__(self):
         HttpRequestHandlerWrapper.fire_cells = None
         HttpRequestHandlerWrapper.time_fire = []
-        server = HTTPServer(('127.0.0.1', 8000), self.HttpRequestHandler)
+        server = HTTPServer(('127.0.0.1', 8001), self.HttpRequestHandler)
         server.serve_forever()
         print "Server started!"
 

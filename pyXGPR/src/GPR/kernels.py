@@ -125,7 +125,8 @@ import Tools
 import numpy
 import math
 import scipy.sparse
-
+from GrahamScan import convex_hull
+from BresenheimLineAlgorithm import bresenham_line
 
 
 def covSEiso(loghyper=None, x=None, z=None, Y=None):
@@ -461,31 +462,82 @@ def calculate_weight(vector, wind_vector):#, middle):
 
     weight = (angle / numpy.pi)
     if weight > 0.26:# and not middle:
-        weight = 20.0
+        weight = 1.4#20.0
 
     else:
         weight = 0.5
     
     return [weight, cell_vector_sum, wind_sum]
 
-def create_correlated_burning_sensors(sensor_positions, sensor_values):
-    simple_burning_sensors = []
-    for i in range(len(sensor_positions)):
+def find_burning_sensors(sensors_coordinates, sensor_values):
+    burning_sensors = []
+    for i in range(len(sensors_coordinates)-1):
         if sensor_values[i] > 0:
-            simple_burning_sensors.append(sensor_positions[i])
+            burning_sensor = []
+            burning_sensor.append(int(sensors_coordinates[i][0]))
+            burning_sensor.append(int(sensors_coordinates[i][1]))
+            burning_sensors.append(burning_sensor)
+    return burning_sensors
 
-    burning_correlated_sensors = []
-    for sensor in simple_burning_sensors:
+def scan_line_fill(points):
+    
+    edge_points = []
+    for i in range(len(points)-1):
+        edge_points.append(bresenham_line((points[i][0], points[i][1]), (points[i+1][0], points[i+1][1])))
+    #removing duplicates
+    edge_points2 = []
+    for edge_point in edge_points:
+        for point in edge_point:
+            edge_points2.append(point)
+    edge_points = list(set(edge_points2))
+    edge_points = sorted(edge_points, key=lambda point: point[1])
+    
+    
+    #detecting max min for each y
+    min_max = []
+    current_y = -1
+    minimum = -1
+    maximum = -1
+    y_list = []
+    for i in range(len(edge_points)):
         
-        burning_correlated_sensor = []
-        
-        for burning_sensor in simple_burning_sensors:
-            if sensor[0] == burning_sensor[0] and sensor[1] == burning_sensor[1] and sensor[2] == burning_sensor[2]:
-                continue
-            burning_correlated_sensor.append(create_vector(sensor[0],sensor[1],burning_sensor[0],burning_sensor[1]))
+        if edge_points[i][1] != current_y:
+            if minimum != -1 and maximum != -1:
+                min_max.append((minimum, maximum))
             
-        burning_correlated_sensors.append(burning_correlated_sensor)
-    return burning_correlated_sensors
+            current_y = edge_points[i][1]
+            y_list.append(current_y)
+            minimum = edge_points[i][0]
+            maximum = edge_points[i][0]
+        else:
+            if edge_points[i][0] < minimum:
+                minimum = edge_points[i][0]
+            elif edge_points[i][0] > maximum:
+                maximum = edge_points[i][0]
+                
+                
+    min_max.append((minimum, maximum))
+    
+    
+    area_points = []
+    for y, mini_maxi in zip(y_list,min_max):
+        for x in range(mini_maxi[0], mini_maxi[1] +1):
+            area_points.append((x,y))
+#    for i in range(len(edge_points)):#does not handle concav
+#        if i > 0 and edge_points[i-1][1] == edge_points[i][1]:
+#            continue
+#        
+#        elif edge_points[i][1] == edge_points[i+1][1]:
+#            min_x = min(edge_points, key=lambda point: point[0])[0]
+#            max_x = max(edge_points, key=lambda point: point[0])[0]
+#            y = edge_points[i][1]
+#            for x in range(min_x, max_x +1):
+#                area_points.append((x, y))
+#        else:
+#            area_points.append(edge_points[i])
+            
+    return area_points
+        
 
 def sq_dist(a, b=None, wind=False, wind_vector=[-1,0], Y=None):
 
@@ -499,16 +551,17 @@ def sq_dist(a, b=None, wind=False, wind_vector=[-1,0], Y=None):
     
     if b != None and wind:
         
-        correlated_burning_sensors = create_correlated_burning_sensors(a,Y)
+        burning_sensors = find_burning_sensors(a, Y)
+        burning_sensors_edge = convex_hull(burning_sensors)
+        burning_sensors_edge.append(burning_sensors_edge[0])
+        area_points = scan_line_fill(burning_sensors)
+        
         weights = numpy.ones((n,b.shape[0]))
-        correlated_burning_sensor_counter = 0
         for i in range(len(a)):
             for j in range(len(b)):
                 if Y[i] <= 0:
                     continue
-                
-#                weights[i,j] = 0.5
-#                continue
+
                 
                 vector = create_vector(a[i][0], a[i][1], b[j][0], b[j][1])
                 if vector == [0.0,0.0]:#burning sensor is the same as uncalculated
@@ -516,28 +569,15 @@ def sq_dist(a, b=None, wind=False, wind_vector=[-1,0], Y=None):
                     continue
                 
                 calculated_weight = calculate_weight(vector, wind_vector)#, middle_sensor)
-                if calculated_weight[0] < 1:
-                    weights[i,j] = calculated_weight[0]
-                    continue
+#                weights[i,j] = calculated_weight[0]
+                weight = calculated_weight[0]
+                point = (int(b[j][0]),int(b[j][1]))
+                if point in area_points:
+                    weight *= 0.1#0.66
                 
-                #####################
-                
-                for correlated_burning_sensor_vector in correlated_burning_sensors[correlated_burning_sensor_counter]:
-                    angle = calculate_angle_and_length(vector, correlated_burning_sensor_vector)
-                    
-                    weight = (angle[0] / numpy.pi)
-                    
-                    if weight < 0.15 and angle[2] < angle[1]:
-                        weight = 0.2
-                        weights[i,j] = weight
-                        continue
-                #####################
-                weights[i,j] = 1.0
-            if Y[i] > 0:
-                correlated_burning_sensor_counter += 1
+                weights[i][j] = weight
                 
                 
-#    C[i,j] = C[i][j] * weights[j]
 
     if b == None:
         b = a.transpose()
@@ -560,32 +600,7 @@ def sq_dist(a, b=None, wind=False, wind_vector=[-1,0], Y=None):
         temB = numpy.kron(numpy.ones((n,1)), b[d,:])
         
         tem = temA - temB
-#        tem2 = temB - temA
-#        
-#        if d == 0 and wind and False:
-#            import copy
-#            x_pos = copy.deepcopy(tem2)
-#            
-#        if d == 1 and wind and False:
-#            y_pos = tem2
-#            y_matrix = numpy.kron(numpy.ones((1,m)), Y.reshape(n,1))
-#            
-#            for i in range(len(x_pos)):
-#                for j in range(len(x_pos[0])):
-#                    
-#                    if y_matrix[i][j] < 0:
-##                        weight = 1
-##                        wind_weight_matrix[i,j] = weight
-#                        continue
-#                    
-#                    weight, cell_vector_sum = calculate_weight(wind_vector, i, x_pos, y_pos, j)
-#                    
-#                    if weight >= 0.50:# and y_matrix[i][j] > 0:
-#                        weight = weight * weight#0.05
-#                    else:
-#                        weight = 1 + weight#1.8
-#                    
-#                    wind_weight_matrix[i,j] = weight
+
         
         C = C + tem * tem
     if wind and True:
