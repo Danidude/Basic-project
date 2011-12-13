@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.12.13)  13 DEC 2011 13:02
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.12.13)  13 DEC 2011 18:05
 entering extended mode
  %&-line parsing enabled.
 **main.tex
@@ -463,7 +463,7 @@ Package: atbegshi 2008/07/31 v1.9 At begin shipout hook (HO)
 File: hpdftex.def 2009/10/09 v6.79a Hyperref driver for pdfTeX
 \Fld@listcount=\count108
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 32.
+Package hyperref Info: Option `colorlinks' set `true' on input line 31.
 
 (/usr/share/texmf-texlive/tex/latex/fancyhdr/fancyhdr.sty
 \fancy@headwidth=\skip46
@@ -505,21 +505,21 @@ Package: verbatim 2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
 (./conclusion/conclusion.aux) (./acknow.aux) (./ref.aux))
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 80.
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 80.
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 80.
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 80.
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 80.
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 80.
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 80.
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 80.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 79.
 
 (/usr/share/texmf-texlive/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
@@ -544,7 +544,7 @@ File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
 Package color Info: Driver file: pdftex.def on input line 130.
 )
-Package hyperref Info: Link coloring ON on input line 80.
+Package hyperref Info: Link coloring ON on input line 79.
 
 (/usr/share/texmf-texlive/tex/latex/hyperref/nameref.sty
 Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
@@ -554,26 +554,54 @@ Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
 )
 \c@section@level=\count115
 )
-LaTeX Info: Redefining \ref on input line 80.
-LaTeX Info: Redefining \pageref on input line 80.
+LaTeX Info: Redefining \ref on input line 79.
+LaTeX Info: Redefining \pageref on input line 79.
  (./main.out)
 (./main.out)
 \@outlinefile=\write3
 \openout3 = `main.out'.
 
 \AtBeginShipoutBox=\box31
-\openout2 = `./abstract.aux'.
 
- (./abstract.tex
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 2.
+<introduction/graphics/uia_logo.png, id=34, 269.005pt x 37.13875pt>
+File: introduction/graphics/uia_logo.png Graphic file (type png)
+
+<use introduction/graphics/uia_logo.png>
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <17.28> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 82.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 82.
  [1
 
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./introduction/graphics/ui
+a_logo.png (PNG copy)>]
+\openout2 = `./abstract.aux'.
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}])
+
+(./abstract.tex
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 2.
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.4 \end{abstract}
+                   [1
+
+])
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <24.88> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 95.
- (./main.toc)
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 94.
+ (./main.toc
+LaTeX Font Info:    Try loading font information for U+msa on input line 5.
+
+(/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2009/06/22 v3.00 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 5.
+
+(/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2009/06/22 v3.00 AMS symbols B
+))
 \tf@toc=\write4
 \openout4 = `main.toc'.
 
@@ -581,7 +609,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.97 \listoffigures
+l.96 \listoffigures
                     [1
 
 
@@ -620,7 +648,10 @@ Chapter 2.
 
  (./solution/solution.tex
 Chapter 3.
-) [7
+(./solution/fire-interpreter.tex
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <17.28> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1.
+)) [7
 
 
 
@@ -673,16 +704,6 @@ LaTeX Font Info:    Try loading font information for OT1+pcr on input line 5.
  (/usr/share/texmf-texlive/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 5.
-
-(/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2009/06/22 v3.00 AMS symbols A
-)
-LaTeX Font Info:    Try loading font information for U+msb on input line 5.
-
-(/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2009/06/22 v3.00 AMS symbols B
-)
 Underfull \hbox (badness 2126) in paragraph at lines 5--6
 []\OT1/ptm/m/it/12 Apache Solr Wiki \OT1/ptm/m/n/12 avail-able at [][]$\OT1/pcr
 /m/n/12 http : / / wiki . apache . org / solr /
@@ -708,21 +729,22 @@ nf /
 (./theory/theory.aux) (./solution/solution.aux) (./discussion/discussion.aux)
 (./conclusion/conclusion.aux) (./acknow.aux) (./ref.aux)) ) 
 Here is how much of TeX's memory you used:
- 5992 strings out of 495061
- 81537 string characters out of 1182620
- 157582 words of memory out of 3000000
- 8945 multiletter control sequences out of 15000+50000
- 15828 words of font info for 43 fonts, out of 3000000 for 9000
+ 6023 strings out of 495061
+ 82074 string characters out of 1182620
+ 157583 words of memory out of 3000000
+ 8961 multiletter control sequences out of 15000+50000
+ 26618 words of font info for 57 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 38i,5n,43p,663b,368s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,6n,43p,1005b,346s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf-te
 xlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texlive/fonts/type1/urw/cou
 rier/ucrr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmb8a.pfb></us
-r/share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-texliv
-e/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (12 pages, 78244 bytes).
+r/share/texmf-texlive/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texmf-texli
+ve/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/t
+imes/utmri8a.pfb>
+Output written on main.pdf (13 pages, 98692 bytes).
 PDF statistics:
- 129 PDF objects out of 1000 (max. 8388607)
- 29 named destinations out of 1000 (max. 500000)
- 57 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 144 PDF objects out of 1000 (max. 8388607)
+ 30 named destinations out of 1000 (max. 500000)
+ 70 words of extra memory for PDF output out of 10000 (max. 10000000)
 
