@@ -1,0 +1,160 @@
+%% Very basic Tex template for master report at UiA
+%% Created by Thomas Hansen Gøytil
+\documentclass[pdftex,12pt,final,a4paper]{report}
+
+% This is for norwegian letters (æøå)
+\usepackage[utf8]{inputenc}
+
+% This is to use \includegraphics to include the domain model
+\usepackage[pdftex]{graphicx}
+
+%\usepackage{setspace}
+%\onehalfspace
+
+% Use to create acronym list
+\usepackage{acronym}
+% A package that supports a lot of math symbols
+\usepackage{amssymb,amsmath}
+% Times font
+\usepackage{times}
+% This enables multirows in tables
+\usepackage{multirow}
+%enable float on placement on figures and tables
+\usepackage{float}
+%This package enables active links
+\usepackage[pdftex]{hyperref}
+\hypersetup{
+    colorlinks,%
+    citecolor=black,%
+    filecolor=black,%
+    linkcolor=black,%
+    urlcolor=black
+}
+
+% For pseudocode and algorithms
+%\usepackage{algorithmicx}
+%\usepackage{algorithmic}
+%\usepackage{algorithm}
+
+%\usepackage{algorithm}
+%\usepackage{algpseudocode}
+
+
+% This adds line breaks between paragraphs
+\setlength{\parskip}{0.10in}
+% This enables fancy header
+\headheight=14.5 pt
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[L]{\leftmark}
+\fancyhead[R]{}
+
+% Enables UiA frontpage
+\usepackage{uiafrontpage} 
+
+%Enables subfigures
+%\usepackage{subfig}
+
+
+%%%%%%%oursss
+\usepackage[USenglish]{babel}
+%\usepackage{qtree}
+\usepackage{verbatim}
+
+%\usepackage[toc,page]{appendix}
+
+
+\author{Mari Næss \\
+Ørjan Hatteberg \\
+Enok Karlsen Eskeland}
+
+%\supervisor{Folke Haugland \\ Jaran Nilsen}
+
+% select logo to use
+\titlelogo{introduction/graphics/UiAlogo.jpg}
+
+
+
+
+
+\begin{document}
+
+\title{Distributed querying with Apache Solr}
+%\maketitle
+
+\include{./abstract}
+
+
+
+
+
+%\include{preface}
+%\include{thesisDefinition}
+
+% Create table of contents 
+\tableofcontents 
+
+\listoffigures
+
+\listoftables
+
+%\listofalgorithms
+
+\pagebreak
+\thispagestyle{plain}
+\begin{Huge}
+\label{definitions}
+\begin{flushleft}
+
+\bf Definition list
+\end{flushleft}
+\end{Huge}
+
+\begin{description}
+
+  \item[Taxonomy] is by Integrasco usage and in this context defined as a complex query.
+  \item[Document] is the basic unit in Lucene indexing. E.g. a single pdf or a book.
+  \item[Rows] is the number of documents in the result set of a query.
+  \item[Start Offset] is the index of the first document you want displayed.
+  \item[Page Offset] is used in pagination, but is the same as start offset.
+  \item[Iterations] are the number of times a taxonomy is queried.
+  \item[Hit Count] is the total number of documents matching the query.
+  \item[QueryOptimizer] library is the solution developed for the problem.
+  \item[QTime] is the time spent generating the in memory response for a query in Solr (milliseconds).
+  \item[Elapsed Time] is QTime plus serializing and de-serializing transmitting in Solr (milliseconds).
+  \item[Query Time] is the time it takes to perform a solr search from QueryOptimizer or the test framework (milliseconds).
+  \item[Lucene] is an open source free text search library from Apache.
+  \item[Solr] is an open source search server utilizing Lucene.
+  \item[Solrconfig.xml] contains the parameters to configure Solr.
+  \item[QueryResultWindowSize]. A window is a section of search results. It can be from 0-49, 50-99 etc. When querying the entire window in which the search match will be returned and loaded into cache. QueryResultWindowSize is the size of these windows.
+  \item[QueryResultMaxDocsCached] is the maximum number of documents a single query can have in cache memory.
+  \item[Index] is a sorted list of terms present in the data set. Contains links for finding the term locations.
+  \item[Sharded index] is an index split in smaller parts possibly on different servers to better cope with scaling issues.
+\end{description}
+
+%\include{introduction/introduction}
+%\include{./background/background}
+%\include{./testing/tests}
+%\include{./solution/solution}
+%\include{./performance/performance}
+%\include{./discussion/discussion}
+%\include{./conclusion/conclusion}
+\include{./introduction/introduction}
+\include{./theory/theory}
+\include{./solution/solution}
+\include{./discussion/discussion}
+\include{./conclusion/conclusion}
+
+\include{./acknow}
+\include{./ref}
+%\appendix
+%	\include{appendix}
+%	\include{acro}
+
+
+
+
+%\bibliographystyle{IEEEtranS}
+%\bibliography{bibliography}
+
+\end{document}

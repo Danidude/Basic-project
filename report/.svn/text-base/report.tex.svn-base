@@ -1,0 +1,136 @@
+\documentclass[pdftex,10pt,final,a4paper]{report}
+
+% This is for norwegian letters (æøå)
+\usepackage[utf8]{inputenc}
+
+% This is to use \includegraphics to include the domain model
+\usepackage[pdftex]{graphicx}
+\usepackage{wrapfig}
+
+%\usepackage{setspace}
+%\onehalfspace
+
+% Use to create acronym list
+\usepackage{acronym}
+% A package that supports a lot of math symbols
+\usepackage{amssymb,amsmath}
+% Times font
+\usepackage{times}
+% This enables multirows in tables
+\usepackage{multirow}
+%enable float on placement on figures and tables
+\usepackage{float}
+%This package enables active links
+\usepackage[pdftex]{hyperref}
+\hypersetup{
+    colorlinks,%
+    citecolor=black,%
+    filecolor=black,%
+    linkcolor=black,%
+    urlcolor=black
+}
+
+% For pseudocode and algorithms
+\usepackage{algorithmic}
+\usepackage{algorithm}
+
+% For multiline  comments
+\usepackage{verbatim}
+
+% This adds line breaks between paragraphs
+\setlength{\parskip}{0.10in}
+% This enables fancy header
+\headheight=14.5 pt
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[L]{\leftmark}
+\fancyhead[R]{}
+
+% Enables UiA frontpage
+\usepackage{uiafrontpage} 
+
+%\author{Thoams Hansen Gøytil, Andreas Lundberg}
+% select logo to use
+\titlelogo{introduction/graphics/UiAlogo.jpg}
+
+
+\usepackage[USenglish]{babel}
+\usepackage{qtree}
+
+
+\begin{document}
+
+\input{./title.tex}
+
+\renewcommand{\baselinestretch}{1.5}
+\pagenumbering{roman} %numbering before main content starts
+\input{./keywords.tex}
+\input{./abstract.tex}
+\tableofcontents 
+
+\listoffigures
+
+\listoftables
+
+\listofalgorithms
+
+\newpage
+\pagenumbering{arabic} %reset numbering to normal for the main content
+
+\input{introduction/introduction.tex}
+\input{background/background}
+\input{./testing/tests.tex}
+\input{./testing/testFramework.tex}
+\input{solution/solution.tex}
+\input{discussion/discussion.tex}
+\input{conclusion/conclusion.tex}
+\input{./acknow.tex}
+\input{./ref.tex}
+\input{appendix/appendix.tex}
+
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{comment}
+\documentclass[5pt,a4paper]{report}
+\usepackage[pdftex]{graphicx} %for embedding images
+\usepackage{url} %for proper url entries
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+%include other pages
+\usepackage[toc,page]{appendix}
+\usepackage[final]{pdfpages} %for embedding another pdf, remove if not required
+
+\usepackage{graphicx}
+\usepackage{qtree}
+\begin{document}
+\setlength{\parindent}{0in} %Set 0 indention when new line
+\renewcommand\bibname{References} %Renames "Bibliography" to "References" on ref page
+
+%\input{./title.tex}
+\title{A novel spatio-temporal scheme for reducing the rate of false
+positives in Bloom Filter based URL-caching}
+\maketitle
+
+\renewcommand{\baselinestretch}{1.5}
+\pagenumbering{roman} %numbering before main content starts
+\input{./keywords.tex}
+\input{./abstract.tex}
+\tableofcontents
+\listoffigures
+
+\newpage
+\pagenumbering{arabic} %reset numbering to normal for the main content
+
+\input{introduction/introduction.tex}
+\input{./testing/tests.tex}
+\input{solution/solution.tex}
+\input{discussion/discussion.tex}
+\input{conclusion/conclusion.tex}
+\input{./acknow.tex}
+\input{./ref.tex}
+\input{appendix/appendix.tex}
+
+\end{document}

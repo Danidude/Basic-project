@@ -1,0 +1,111 @@
+%%
+%% Style for redefining the \maketitle command to fit the official
+%% template for a Master Thesis report at Agder University College.
+%%
+%%  Copyright 2003 Bent Andr� Solheim
+%%	Modified 2006 Aleksander M. Stensby
+%%
+%%  This program is provided under the terms of the
+%%  LaTeX Project Public License distributed from CTAN
+%%  archives in directory macros/latex/base/lppl.txt.
+%%
+%% Author: Aleksander M�ls�ther Stensby
+%%         at: aleksander.stensby@integrasco.no
+%%
+%% Modified by: Thomas Hansen Gøytil to fit requirements for 2010 submission.
+%%
+%% It it possible to put a logo at the top of the page.
+%% In your .tex-file, use \titlelogo{path/to/logo}. If this macro is not
+%% used, no logo will be used.
+%%
+%% Institution, location and thesis type are also possible to define
+%% using the \institution{xxx}, \location{xxx}, thesisin{xxx} macros.
+%% They default to The University of Agder, Grimstad, and Information
+%% and Communication Technology.
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{uiafrontpage}[]
+
+
+\newif\iflogopathdefined
+\logopathdefinedfalse
+\providecommand{\titlelogo}[1]{}
+\renewcommand{\titlelogo}[1]{
+    \def\@logopath{#1}
+    \logopathdefinedtrue
+}
+
+\providecommand{\institution}[1]{}
+\renewcommand{\institution}[1]{\def\@institution{#1}}
+\def\@institution{\textbf{Faculty of Engineering and Science \\
+University of Agder}}
+
+\providecommand{\location}[1]{}
+\renewcommand{\location}[1]{\def\@location{#1}}
+\def\@location{\textbf{Grimstad}}
+
+\renewcommand{\and}{\hspace{0.3in}}
+
+\providecommand{\maketitle}{}
+\renewcommand{\maketitle}{
+    \begin{titlepage}
+    \centering
+    Project report in Dat300
+	\addtolength{\voffset}{-2.5cm}
+    \begin{center}
+
+    \iflogopathdefined
+        \begin{figure}[t]
+            \centering
+            \includegraphics[width=1.00\textwidth]%
+            %\includegraphics[width=0.35\textwidth]%            
+                {\@logopath}
+        \end{figure}
+    \fi
+
+		
+    \Large
+    
+    \vspace*{2cm}
+    \emph{\textbf{\@title}}  \\                        %%enable these when main report is written
+    \vspace{0.1in}
+\small Improving performance by splitting complex search expressions\\
+    \vspace{0.3in}
+    \large
+    A bachelor thesis by\\
+    \vspace{0.2in}
+    \textbf{\@author}
+    \vspace{0.2in}
+    \\Supervisors\\
+    \vspace{0.2in}
+    \textbf{Folke Haugland \\Jaran Nilsen\\}  
+    \vspace{0.2in}
+        \emph{This Bachelor's Thesis is carried out as a part of the education at the
+    University of Agder and is therefore approved as a part of this education.\\}
+    \normalsize \emph{\\University of Agder, 2011\\}
+    \normalsize \emph{\\Faculty of Engineering and Science\\}
+    \normalsize \emph{\\Department of information- and communication technology}
+    
+    
+    
+    
+%    Thesis submitted in Partial Fulfillment of the \\
+%		Requirements for the Degree Bachelor of Science in \\
+%		Information and Communication Technology}
+
+
+    %\vspace{0.2in}
+    %\textbf{\@prelim}
+    %DRAFT VERSION \@draftversion
+
+    %\vspace{0.5in}
+    %\large \@institution
+    
+    %\vspace{0.4in}
+
+
+    
+    
+    \end{center}
+    \end{titlepage}
+}
