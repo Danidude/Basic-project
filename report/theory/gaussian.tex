@@ -1,0 +1,22 @@
+\section{Gaussian Processes for Regression}
+
+\begin{equation}
+k(x,x^{'})=\sigma_{f}^{2}exp\left[ \dfrac{-(x-x^{'})^{2}}{2l^{2}} \right] + \sigma_{n}^{2}\delta(x,x^{'})
+\label{eq:referanceName}
+\end{equation}
+
+
+
+\begin{eqnarray}
+K = 
+\begin{bmatrix} 
+k(x_{1}x_{1}) & k(x_{1}x_{2} & k(x_{1}x_{3} & k(x_{1}x_{4} & k(x_{1}x_{5} \\ k(x_{2}x_{1}) & k(x_{2}x_{2} & k(x_{2}x_{3} & k(x_{2}x_{4} & k(x_{2}x_{5} \\
+k(x_{3}x_{1}) & k(x_{3}x_{2} & k(x_{3}x_{3} & k(x_{3}x_{4} & k(x_{3}x_{5} \\ k(x_{4}x_{1}) & k(x_{4}x_{2} & k(x_{4}x_{3} & k(x_{4}x_{4} & k(x_{4}x_{5} \\
+k(x_{5}x_{1}) & k(x_{5}x_{2} & k(x_{5}x_{3} & k(x_{5}x_{4} & k(x_{5}x_{5} \\ \end{bmatrix}
+\label{eq:k-matrix}
+\end{eqnarray}
+\begin{eqnarray}
+ x - x^{'} &=& Distance between observation data    \nonumber \\
+  l &=& length parameter \nonumber \\
+  \sigma_{f}^{2} &=& Maximum allowable covariance
+\end{eqnarray}

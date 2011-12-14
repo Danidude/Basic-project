@@ -1,9 +1,16 @@
 \select@language {USenglish}
 \contentsline {chapter}{\numberline {1}Introduction}{5}{chapter.1}
 \contentsline {chapter}{\numberline {2}Theory}{6}{chapter.2}
+\contentsline {section}{\numberline {2.1}Gaussian Processes for Regression}{6}{section.2.1}
 \contentsline {chapter}{\numberline {3}Solution}{7}{chapter.3}
-\contentsline {section}{\numberline {3.1}Fire Interpreter}{7}{section.3.1}
-\contentsline {chapter}{\numberline {4}Discussion}{12}{chapter.4}
-\contentsline {chapter}{\numberline {5}Conclusion}{13}{chapter.5}
-\contentsline {chapter}{Acknowledgments}{14}{chapter.5}
-\contentsline {chapter}{References}{15}{chapter*.4}
+\contentsline {section}{\numberline {3.1}Fire and Sensor Simulation}{7}{section.3.1}
+\contentsline {section}{\numberline {3.2}Fire Interpreter}{7}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Changes in pyXGPR kernel to support wind}{9}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Unexpected predictions with wind}{10}{subsection.3.2.2}
+\contentsline {subsubsection}{Solution 1 to unexpected predictions with wind}{10}{section*.4}
+\contentsline {subsubsection}{Solution 2 to unexpected predictions with wind}{11}{section*.5}
+\contentsline {chapter}{\numberline {4}Discussion}{13}{chapter.4}
+\contentsline {section}{\numberline {4.1}Results}{13}{section.4.1}
+\contentsline {chapter}{\numberline {5}Conclusion}{14}{chapter.5}
+\contentsline {chapter}{Acknowledgments}{15}{chapter.5}
+\contentsline {chapter}{References}{16}{chapter*.6}

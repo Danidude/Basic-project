@@ -2,9 +2,9 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces NEED TO SET A USEFUL CAPTION. NEED TO SET A USEFUL CAPTION}}{8}{figure.3.1}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces NEED TO SET A USEFUL CAPTION. NEED TO SET A USEFUL CAPTION}}{9}{figure.3.2}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces NEED TO SET A USEFUL CAPTION. NEED TO SET A USEFUL CAPTION}}{10}{figure.3.3}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces NEED TO SET A USEFUL CAPTION. NEED TO SET A USEFUL CAPTION}}{11}{figure.3.4}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces The fire interpreter saves the sensor data (yellow dots) with \textbf {t}.}}{8}{figure.3.1}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces The left image illustrates when wind is used in predicting fire. The right image illustrates the faults with a pure wind implementation. The blue dots are where the there should have been predicted fire.}}{10}{figure.3.2}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces All sensors (red) are sensing fire and sensor one has a vector to all other vectors sensing fire. The green triangle is an uncalculated point. Burning sensor correlation looks for the black vector which has the most similar angle to the closest blue vector.}}{11}{figure.3.3}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Locates all cells within the boundary.}}{12}{figure.3.4}
 \addvspace {10\p@ }
 \addvspace {10\p@ }

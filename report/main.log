@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.12.13)  14 DEC 2011 01:03
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.12.13)  14 DEC 2011 02:22
 entering extended mode
  %&-line parsing enabled.
 **main.tex
@@ -563,10 +563,10 @@ LaTeX Info: Redefining \pageref on input line 79.
 
 \AtBeginShipoutBox=\box31
 
-<introduction/graphics/uia_logo.png, id=34, 269.005pt x 37.13875pt>
-File: introduction/graphics/uia_logo.png Graphic file (type png)
+<introduction/graphics/uia_logo.jpg, id=54, 218.7372pt x 53.9616pt>
+File: introduction/graphics/uia_logo.jpg Graphic file (type jpg)
 
-<use introduction/graphics/uia_logo.png>
+<use introduction/graphics/uia_logo.jpg>
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <17.28> not available
 (Font)              Font shape `OT1/ptm/b/it' tried instead on input line 82.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
@@ -574,11 +574,10 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./introduction/graphics/ui
-a_logo.png (PNG copy)>]
+a_logo.jpg>]
 \openout2 = `./abstract.aux'.
 
-
-(./abstract.tex
+ (./abstract.tex
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 2.
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
@@ -592,12 +591,12 @@ l.4 \end{abstract}
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <24.88> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 94.
  (./main.toc
-LaTeX Font Info:    Try loading font information for U+msa on input line 5.
+LaTeX Font Info:    Try loading font information for U+msa on input line 4.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 5.
+LaTeX Font Info:    Try loading font information for U+msb on input line 4.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
@@ -639,7 +638,10 @@ Chapter 1.
 
  (./theory/theory.tex
 Chapter 2.
-) [6
+(./theory/gaussian.tex
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <17.28> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1.
+)) [6
 
 
 
@@ -648,65 +650,92 @@ Chapter 2.
 
  (./solution/solution.tex
 Chapter 3.
-(./solution/fire-interpreter.tex
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <17.28> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1.
+(./solution/simulation.tex) (./solution/fire-interpreter.tex
+<solution/graphics/timeElapse.png, id=131, 595.023pt x 248.93pt>
+File: solution/graphics/timeElapse.png Graphic file (type png)
 
-Underfull \hbox (badness 10000) in paragraph at lines 3--7
+<use solution/graphics/timeElapse.png>
+Underfull \hbox (badness 10000) in paragraph at lines 3--18
 
  []
 
-<solution/graphics/timeElapse.png, id=96, 544.0325pt x 221.82875pt>
-File: solution/graphics/timeElapse.png Graphic file (type png)
 
-<use solution/graphics/timeElapse.png> [7
+Underfull \hbox (badness 10000) in paragraph at lines 3--18
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3--18
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3--18
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3--18
+
+ []
+
+[7
 
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 17--20
+Underfull \hbox (badness 10000) in paragraph at lines 19--21
 
  []
 
-[8 <./solution/graphics/timeElapse.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 36--39
+
+Underfull \hbox (badness 10000) in paragraph at lines 19--21
 
  []
 
-<solution/graphics/wind-problem.png, id=115, 455.7025pt x 67.25125pt>
+[8 <./solution/graphics/timeElapse.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 33--39
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--39
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--39
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--39
+
+ []
+
+<solution/graphics/wind-problem.png, id=144, 455.7025pt x 67.25125pt>
 File: solution/graphics/wind-problem.png Graphic file (type png)
 
-<use solution/graphics/wind-problem.png>
-<solution/graphics/burning-sensor-correlation.png, id=118, 308.15125pt x 237.88
+<use solution/graphics/wind-problem.png> [9]
+<solution/graphics/burning-sensor-correlation.png, id=156, 308.15125pt x 237.88
 875pt>
 File: solution/graphics/burning-sensor-correlation.png Graphic file (type png)
- <use solution/graphics/burning-sensor-correlation.png>
-<solution/graphics/graphical-boundary.png, id=120, 308.15125pt x 234.8775pt>
+ <use solution/graphics/burning-sensor-correlation.png> [10 <./solution/graphic
+s/wind-problem.png (PNG copy)>]
+<solution/graphics/graphical-boundary.png, id=163, 308.15125pt x 234.8775pt>
 File: solution/graphics/graphical-boundary.png Graphic file (type png)
 
 <use solution/graphics/graphical-boundary.png>))
-Underfull \hbox (badness 10000) in paragraph at lines 47--143
 
- []
+LaTeX Warning: `h' float specifier changed to `ht'.
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 47--143
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 47--143
-
- []
-
-[9 <./solution/graphics/wind-problem.png (PNG copy)>] [10 <./solution/graphics/
-burning-sensor-correlation.png (PNG copy)>] [11 <./solution/graphics/graphical-
-boundary.png (PNG copy)>]
+[11 <./solution/graphics/burning-sensor-correlation.png (PNG copy)>] [12 <./sol
+ution/graphics/graphical-boundary.png (PNG copy)>]
 \openout2 = `./discussion/discussion.aux'.
 
  (./discussion/discussion.tex
 Chapter 4.
-) [12
+(./discussion/results.tex)) [13
 
 
 
@@ -715,7 +744,7 @@ Chapter 4.
 
  (./conclusion/conclusion.tex
 Chapter 5.
-) [13
+) [14
 
 
 
@@ -737,7 +766,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 7--9
 
  []
 
-[14
+[15
 
 
 
@@ -756,7 +785,7 @@ Overfull \hbox (46.70651pt too wide) in paragraph at lines 3--5
 ah/GrahamScan.html
  []
 
-) [15
+) [16
 
 
 
@@ -764,13 +793,13 @@ ah/GrahamScan.html
 (./theory/theory.aux) (./solution/solution.aux) (./discussion/discussion.aux)
 (./conclusion/conclusion.aux) (./acknow.aux) (./ref.aux)) ) 
 Here is how much of TeX's memory you used:
- 6017 strings out of 495061
- 82514 string characters out of 1182620
- 166889 words of memory out of 3000000
- 8950 multiletter control sequences out of 15000+50000
+ 6047 strings out of 495061
+ 82935 string characters out of 1182620
+ 162415 words of memory out of 3000000
+ 8957 multiletter control sequences out of 15000+50000
  26103 words of font info for 55 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 38i,12n,43p,1652b,346s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,12n,43p,1685b,346s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf-te
 xlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texlive/fonts/type1/public/
 amsfonts/cm/cmex10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm
@@ -778,13 +807,14 @@ amsfonts/cm/cmex10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm
 </usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/
 texmf-texlive/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-texlive
 /fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type
-1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/
-utmb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmbi8a.pfb></usr/sh
-are/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/fo
-nts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (17 pages, 277337 bytes).
+1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-texlive/fonts/type1/public/ams
+fonts/cm/cmsy8.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmb8a.pfb><
+/usr/share/texmf-texlive/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texmf-te
+xlive/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/fonts/type1/ur
+w/times/utmri8a.pfb>
+Output written on main.pdf (18 pages, 280970 bytes).
 PDF statistics:
- 201 PDF objects out of 1000 (max. 8388607)
- 35 named destinations out of 1000 (max. 500000)
- 90 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 246 PDF objects out of 1000 (max. 8388607)
+ 46 named destinations out of 1000 (max. 500000)
+ 130 words of extra memory for PDF output out of 10000 (max. 10000000)
 
