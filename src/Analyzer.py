@@ -12,7 +12,7 @@ class Predict:
         
     def init_kernel(self):
 
-        self.logtheta = np.array([ np.log(1.5), np.log(8.0), np.log(0.0001)])
+        self.logtheta = np.array([ np.log(3.0), np.log(8.0), np.log(0.0001)])
         self.covfunc = ['kernels.covSum', ['kernels.covSEiso', 'kernels.covNoise']]
 #        self.logtheta = np.array([ np.log(1.0), np.log(8.0),np.log(1.0), np.log(8.0), np.log(0.0001)])
 #        self.covfunc = ['kernels.covSum', ['kernels.covSEiso', 'kernels.covSEiso', 'kernels.covNoise']]
