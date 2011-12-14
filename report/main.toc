@@ -14,14 +14,15 @@
 \contentsline {chapter}{\numberline {3}Solution}{13}{chapter.3}
 \contentsline {section}{\numberline {3.1}Fire and Sensor Simulation}{13}{section.3.1}
 \contentsline {section}{\numberline {3.2}Fire Interpreter}{13}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Changes in pyXGPR kernel to support wind}{15}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}Unexpected predictions with wind}{16}{subsection.3.2.2}
-\contentsline {subsubsection}{Solution 1 to unexpected predictions with wind}{16}{section*.4}
+\contentsline {subsection}{\numberline {3.2.1}Performance}{14}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Changes in pyXGPR kernel to support wind}{15}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Unexpected predictions with wind}{16}{subsection.3.2.3}
+\contentsline {subsubsection}{Solution 1 to unexpected predictions with wind}{17}{section*.4}
 \contentsline {subsubsection}{Solution 2 to unexpected predictions with wind}{17}{section*.5}
 \contentsline {chapter}{\numberline {4}Discussion}{19}{chapter.4}
 \contentsline {section}{\numberline {4.1}Results}{19}{section.4.1}
 \contentsline {subsection}{\numberline {4.1.1}Results with simple simulation}{19}{subsection.4.1.1}
 \contentsline {subsection}{\numberline {4.1.2}Results with advanced simulation}{19}{subsection.4.1.2}
-\contentsline {chapter}{\numberline {5}Conclusion}{21}{chapter.5}
-\contentsline {chapter}{Acknowledgments}{23}{chapter.5}
-\contentsline {chapter}{References}{24}{chapter*.6}
+\contentsline {chapter}{\numberline {5}Conclusion}{23}{chapter.5}
+\contentsline {chapter}{Acknowledgments}{25}{chapter.5}
+\contentsline {chapter}{References}{26}{chapter*.6}

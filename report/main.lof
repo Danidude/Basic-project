@@ -2,11 +2,12 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces The fire interpreter saves the sensor data (yellow dots) with \textbf {t}.}}{14}{figure.3.1}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces The left image illustrates when wind is used in predicting fire. The right image illustrates the faults with a pure wind implementation. The blue dots are where the there should have been predicted fire.}}{16}{figure.3.2}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces The fire interpreter saves the sensor data (yellow dots) and gives them a timestamp \textbf {t}. Earlier data is weighted less since the current \textbf {x star} and \textbf {X} has the same and last value for \textbf {t}. }}{14}{figure.3.1}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces The left image illustrates when wind is used in predicting fire, while the right image illustrates the faults with a pure wind implementation. The blue dots are where the there should have been predicted fire.}}{16}{figure.3.2}
 \contentsline {figure}{\numberline {3.3}{\ignorespaces All sensors (red) are sensing fire and sensor one has a vector to all other vectors sensing fire. The green triangle is an uncalculated point. Burning sensor correlation looks for the black vector which has the most similar angle to the closest blue vector.}}{17}{figure.3.3}
 \contentsline {figure}{\numberline {3.4}{\ignorespaces Locates all cells within the boundary.}}{18}{figure.3.4}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces The intense green is where the fire interpreter predicted correctly. The dark green is where the fire interpreter thought it was fire, but it was not. Red dots are where there actually was fire, but the predictor was unable to predict it.}}{20}{figure.4.1}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces The intense green is where the fire interpreter predicted correctly. The dark green is where the fire interpreter thought it was fire, but it was not. Red dots are where there actually was fire, but the predictor was unable to predict it.}}{20}{figure.4.2}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces The dark green overlay is where the fire interpreter predicted the fire to be. The red covered by the green overlay is where the fire interpreter predicted correctly and the red dots without any overlay is where there was fire, but did not predict.}}{21}{figure.4.2}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Wind and graphical algorithms disabled in the advanced simulation creates holes and shows a lack wind direction.}}{22}{figure.4.3}
 \addvspace {10\p@ }
