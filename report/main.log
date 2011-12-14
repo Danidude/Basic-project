@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (Web2C 2011) (format=pdflatex 2011.11.3)  14 DEC 2011 20:20
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (Web2C 2011) (format=pdflatex 2011.11.3)  14 DEC 2011 20:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -591,7 +591,7 @@ LaTeX Info: Redefining \nameref on input line 82.
 \openout3 = `main.out'.
 
 
-<introduction/graphics/uia_logo.jpg, id=63, 218.7372pt x 53.9616pt>
+<introduction/graphics/uia_logo.jpg, id=99, 218.7372pt x 53.9616pt>
 File: introduction/graphics/uia_logo.jpg Graphic file (type jpg)
 
 <use introduction/graphics/uia_logo.jpg>
@@ -623,61 +623,67 @@ l.4 \end{abstract}
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <24.88> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 97.
  (./main.toc
-LaTeX Font Info:    Try loading font information for U+msa on input line 4.
+LaTeX Font Info:    Try loading font information for U+msa on input line 3.
 
 (c:/texlive/2011/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 4.
+LaTeX Font Info:    Try loading font information for U+msb on input line 3.
 
 (c:/texlive/2011/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
-))
-\tf@toc=\write4
-\openout4 = `main.toc'.
-
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
-been already used, duplicate ignored
+)pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
+ been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.99 \listoffigures
-                    [1
+l.21 ...{\numberline {4}Discussion}{19}{chapter.4}
+                                                   [1
 
 
-] (./main.lof)
-\tf@lof=\write5
-\openout5 = `main.lof'.
+])
+\tf@toc=\write4
+\openout4 = `main.toc'.
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.101 \listoftables
-                    [2
+l.99 \listoffigures
+                    [2] (./main.lof)
+\tf@lof=\write5
+\openout5 = `main.lof'.
+
+ [3
 
 ] (./main.lot)
 \tf@lot=\write6
 \openout6 = `main.lot'.
 
- [3
+ [4
 
-] [4]
+] [5]
 \openout2 = `./introduction/introduction.aux'.
 
- (./introduction/introduction.tex
+
+(./introduction/introduction.tex
 Chapter 1.
-) [5
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <17.28> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 3.
+[6
 
 
-]
+] [7] [8] [9] [10])
+Overfull \hbox (7.96143pt too wide) in paragraph at lines 65--126
+[]\OT1/ptm/m/n/12 Finally, chap-ter five con-tains the con-clu-sion. It en-deav
+-ours to de-ter-mine whether
+ []
+
+[11]
 \openout2 = `./theory/theory.aux'.
 
  (./theory/theory.tex
 Chapter 2.
-(./theory/gaussian.tex
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <17.28> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1.
-)) [6
+(./theory/gaussian.tex)) [12
 
 
 
@@ -687,7 +693,7 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <17.28> not available
  (./solution/solution.tex
 Chapter 3.
 (./solution/simulation.tex) (./solution/fire-interpreter.tex
-<solution/graphics/timeElapse.png, id=155, 595.023pt x 248.93pt>
+<solution/graphics/timeElapse.png, id=228, 595.023pt x 248.93pt>
 File: solution/graphics/timeElapse.png Graphic file (type png)
 
 <use solution/graphics/timeElapse.png>
@@ -719,7 +725,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 2--17
 
  []
 
-[7
+[13
 
 
 
@@ -733,7 +739,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 18--20
 
  []
 
-[8 <./solution/graphics/timeElapse.png>]
+[14 <./solution/graphics/timeElapse.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 32--37
 
  []
@@ -743,23 +749,23 @@ Underfull \hbox (badness 10000) in paragraph at lines 32--37
 
  []
 
-<solution/graphics/wind-problem.png, id=169, 455.7025pt x 67.25125pt>
+<solution/graphics/wind-problem.png, id=241, 455.7025pt x 67.25125pt>
 File: solution/graphics/wind-problem.png Graphic file (type png)
 
 <use solution/graphics/wind-problem.png>
 Package pdftex.def Info: solution/graphics/wind-problem.png used on input line 
 40.
 (pdftex.def)             Requested size: 390.0pt x 57.5558pt.
- [9]
-<solution/graphics/burning-sensor-correlation.png, id=181, 308.15125pt x 237.88
+ [15]
+<solution/graphics/burning-sensor-correlation.png, id=253, 308.15125pt x 237.88
 875pt>
 File: solution/graphics/burning-sensor-correlation.png Graphic file (type png)
  <use solution/graphics/burning-sensor-correlation.png>
 Package pdftex.def Info: solution/graphics/burning-sensor-correlation.png used 
 on input line 50.
 (pdftex.def)             Requested size: 155.99762pt x 120.4287pt.
- [10 <./solution/graphics/wind-problem.png>]
-<solution/graphics/graphical-boundary.png, id=189, 308.15125pt x 234.8775pt>
+ [16 <./solution/graphics/wind-problem.png>]
+<solution/graphics/graphical-boundary.png, id=261, 308.15125pt x 234.8775pt>
 File: solution/graphics/graphical-boundary.png Graphic file (type png)
 
 <use solution/graphics/graphical-boundary.png>
@@ -770,14 +776,14 @@ Package pdftex.def Info: solution/graphics/graphical-boundary.png used on input
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[11 <./solution/graphics/burning-sensor-correlation.png>] [12 <./solution/graph
+[17 <./solution/graphics/burning-sensor-correlation.png>] [18 <./solution/graph
 ics/graphical-boundary.png>]
 \openout2 = `./discussion/discussion.aux'.
 
  (./discussion/discussion.tex
 Chapter 4.
 (./discussion/results.tex
-<discussion/graphics/results-simple-compare.png, id=202, 359.3425pt x 394.47375
+<discussion/graphics/results-simple-compare.png, id=274, 359.3425pt x 394.47375
 pt>
 File: discussion/graphics/results-simple-compare.png Graphic file (type png)
  <use discussion/graphics/results-simple-compare.png>
@@ -797,21 +803,21 @@ Package pdftex.def Info: discussion/graphics/results-simple-compare.png used on
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-)) [13
+)) [19
 
 
 
-] [14 <./discussion/graphics/results-simple-compare.png>]
+] [20 <./discussion/graphics/results-simple-compare.png>]
 \openout2 = `./conclusion/conclusion.aux'.
 
 
 (./conclusion/conclusion.tex
 Chapter 5.
-[15
+[21
 
 
 
-]) [16]
+]) [22]
 \openout2 = `./acknow.aux'.
 
  (./acknow.tex
@@ -829,7 +835,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 7--8
 
  []
 
-[17
+[23
 
 
 
@@ -848,7 +854,7 @@ Overfull \hbox (46.70651pt too wide) in paragraph at lines 3--5
 ah/GrahamScan.html
  []
 
-) [18
+) [24
 
 
 
@@ -861,13 +867,13 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 144.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 144.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 144.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 89E78F3F3A8EC3FBA4A8F0DC4B6337BF;935.
+(rerunfilecheck)             Checksum: 20B3B3FCF5BF6042E0E9F290B610C623;1680.
  ) 
 Here is how much of TeX's memory you used:
- 6829 strings out of 493629
- 95630 string characters out of 3146691
- 189514 words of memory out of 3000000
- 9875 multiletter control sequences out of 15000+200000
+ 6853 strings out of 493629
+ 95928 string characters out of 3146691
+ 189525 words of memory out of 3000000
+ 9884 multiletter control sequences out of 15000+200000
  26103 words of font info for 55 fonts, out of 3000000 for 9000
  831 hyphenation exceptions out of 8191
  29i,12n,43p,1685b,465s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -882,10 +888,10 @@ e/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2011/tex
 mf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/texlive/2011/texmf-dist/fonts/type
 1/urw/times/utmbi8a.pfb><c:/texlive/2011/texmf-dist/fonts/type1/urw/times/utmr8
 a.pfb><c:/texlive/2011/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (21 pages, 254725 bytes).
+Output written on main.pdf (27 pages, 270821 bytes).
 PDF statistics:
- 284 PDF objects out of 1000 (max. 8388607)
- 239 compressed objects within 3 object streams
- 52 named destinations out of 1000 (max. 500000)
- 151 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 360 PDF objects out of 1000 (max. 8388607)
+ 308 compressed objects within 4 object streams
+ 67 named destinations out of 1000 (max. 500000)
+ 223 words of extra memory for PDF output out of 10000 (max. 10000000)
 

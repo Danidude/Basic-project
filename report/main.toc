@@ -1,18 +1,27 @@
 \select@language {USenglish}
-\contentsline {chapter}{\numberline {1}Introduction}{5}{chapter.1}
-\contentsline {chapter}{\numberline {2}Theory}{6}{chapter.2}
-\contentsline {section}{\numberline {2.1}Gaussian Processes for Regression}{6}{section.2.1}
-\contentsline {chapter}{\numberline {3}Solution}{7}{chapter.3}
-\contentsline {section}{\numberline {3.1}Fire and Sensor Simulation}{7}{section.3.1}
-\contentsline {section}{\numberline {3.2}Fire Interpreter}{7}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Changes in pyXGPR kernel to support wind}{9}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}Unexpected predictions with wind}{10}{subsection.3.2.2}
-\contentsline {subsubsection}{Solution 1 to unexpected predictions with wind}{10}{section*.4}
-\contentsline {subsubsection}{Solution 2 to unexpected predictions with wind}{11}{section*.5}
-\contentsline {chapter}{\numberline {4}Discussion}{13}{chapter.4}
-\contentsline {section}{\numberline {4.1}Results}{13}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}Results with simple simulation}{13}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {4.1.2}Results with advanced simulation}{13}{subsection.4.1.2}
-\contentsline {chapter}{\numberline {5}Conclusion}{15}{chapter.5}
-\contentsline {chapter}{Acknowledgments}{17}{chapter.5}
-\contentsline {chapter}{References}{18}{chapter*.6}
+\contentsline {chapter}{\numberline {1}Introduction}{6}{chapter.1}
+\contentsline {section}{\numberline {1.1}Background}{6}{section.1.1}
+\contentsline {section}{\numberline {1.2}Problem Statement}{7}{section.1.2}
+\contentsline {section}{\numberline {1.3}Literature Review}{7}{section.1.3}
+\contentsline {subsection}{\numberline {1.3.1}A Survey of Mobile Phone Sensing}{7}{subsection.1.3.1}
+\contentsline {subsection}{\numberline {1.3.2}Distributed Perception Networks for Crisis Management}{8}{subsection.1.3.2}
+\contentsline {subsection}{\numberline {1.3.3}Video about how crisis mapping helped during the Haiti earthquake}{9}{subsection.1.3.3}
+\contentsline {subsection}{\numberline {1.3.4}A Real-time Disaster Situation Mapping System for University Campuses}{9}{subsection.1.3.4}
+\contentsline {section}{\numberline {1.4}Solution Approach}{11}{section.1.4}
+\contentsline {section}{\numberline {1.5}Report Outline}{11}{section.1.5}
+\contentsline {chapter}{\numberline {2}Theory}{12}{chapter.2}
+\contentsline {section}{\numberline {2.1}Gaussian Processes for Regression}{12}{section.2.1}
+\contentsline {chapter}{\numberline {3}Solution}{13}{chapter.3}
+\contentsline {section}{\numberline {3.1}Fire and Sensor Simulation}{13}{section.3.1}
+\contentsline {section}{\numberline {3.2}Fire Interpreter}{13}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Changes in pyXGPR kernel to support wind}{15}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Unexpected predictions with wind}{16}{subsection.3.2.2}
+\contentsline {subsubsection}{Solution 1 to unexpected predictions with wind}{16}{section*.4}
+\contentsline {subsubsection}{Solution 2 to unexpected predictions with wind}{17}{section*.5}
+\contentsline {chapter}{\numberline {4}Discussion}{19}{chapter.4}
+\contentsline {section}{\numberline {4.1}Results}{19}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Results with simple simulation}{19}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Results with advanced simulation}{19}{subsection.4.1.2}
+\contentsline {chapter}{\numberline {5}Conclusion}{21}{chapter.5}
+\contentsline {chapter}{Acknowledgments}{23}{chapter.5}
+\contentsline {chapter}{References}{24}{chapter*.6}
