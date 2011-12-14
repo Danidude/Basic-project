@@ -10,6 +10,9 @@
 \BOOKMARK [1][-]{section.1.5}{Report Outline}{chapter.1}
 \BOOKMARK [0][-]{chapter.2}{Theory}{}
 \BOOKMARK [1][-]{section.2.1}{Gaussian Processes for Regression}{chapter.2}
+\BOOKMARK [2][-]{subsection.2.1.1}{Covariance Function}{section.2.1}
+\BOOKMARK [2][-]{subsection.2.1.2}{Method of Calculation}{section.2.1}
+\BOOKMARK [2][-]{subsection.2.1.3}{Prediction of Temperature Using Gaussian Process Regression}{section.2.1}
 \BOOKMARK [0][-]{chapter.3}{Solution}{}
 \BOOKMARK [1][-]{section.3.1}{Fire and Sensor Simulation}{chapter.3}
 \BOOKMARK [1][-]{section.3.2}{Fire Interpreter}{chapter.3}
