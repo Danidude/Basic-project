@@ -14,15 +14,7 @@ class Predict:
 
         self.logtheta = np.array([ np.log(1.5), np.log(8.0), np.log(0.0001)])
         self.covfunc = ['kernels.covSum', ['kernels.covSEiso', 'kernels.covNoise']]
-#        self.logtheta = np.array([ np.log(1.0), np.log(8.0),np.log(1.0), np.log(8.0), np.log(0.0001)])
-#        self.covfunc = ['kernels.covSum', ['kernels.covSEiso', 'kernels.covSEiso', 'kernels.covNoise']]
-#        self.logtheta = np.array([ np.log(1.0), np.log(8.0), np.log(0.0001)])
-#        self.covfunc = ['kernels.covSum', ['kernels.covSEiso','kernels.covNoise']]
-        
-#    def predict(self, X, y):
-#        
-#        prediction = gpr.gp_pred(self.logtheta, self.covfunc, X, y, self.x_star)
-#        return prediction
+
     
     def predict(self, X, y, x_star):
         
@@ -34,8 +26,6 @@ class Predict:
     
 
 class GPR_Controller:
-
-
 
     def convert_to_numpy_array(self, fire_time_grid, X, y, x_star, fire_cells):
         
@@ -51,7 +41,7 @@ class GPR_Controller:
         for time_frame in fire_time_grid:
             for new_row in time_frame:
                 for new_cell in new_row:
-                    if new_cell.v < 40 and self.square_is_close_to(new_cell, fire_sensors, 12):#values are 0 - 8
+                    if new_cell.v < 40 and self.square_is_close_to(new_cell, fire_sensors, 14):#values are 0 - 8
 #                        if new_cell.v > 0: #sensors which detect fire
 #                            fire_sensors.append(new_cell)
                         if len(X) == 0:
@@ -73,7 +63,7 @@ class GPR_Controller:
                 if new_cell.v < 100:#only 127
                     continue
                 
-                is_close_to_fire_sensors = self.square_is_close_to(new_cell, fire_sensors, 12)
+                is_close_to_fire_sensors = self.square_is_close_to(new_cell, fire_sensors, 14)
 #                is_close_to_calculated_fire = self.square_is_close_to(new_cell, fire_cells, 3)
                 
                 if (not is_close_to_fire_sensors):# and (not is_close_to_calculated_fire):
@@ -152,63 +142,14 @@ class GPR_Controller:
 #                large_prediction_string += chr(126)
 ##                print 126
 #            else:
-            if fire > 70:
+            if fire > 66:
                 large_prediction_string += chr(fire)
             else:
                 large_prediction_string += chr(0)
 #                print 0
         return (large_prediction_string, large_s2_string)
     
-#    def create_large_string2(self, fire):
-#        large_prediction_string = ""
-#        large_s2_string = ""
-#        for row in fire:
-#            for cell in row:
-#                large_prediction_string += chr(cell.v)
-#                large_s2_string += chr(cell.v)
-#        return (large_prediction_string, large_s2_string)
-    
-#    def convert_to_discrete_values2(self,fire):
-#        fire_cells = []
-#        for row in fire:
-#            for cell in row:
-#                fire_cells.append(cell.v)
-#                if cell.v > 64:
-#                    print "x,y: {0}{1}, v: {2}".format(cell.x,cell.y,cell.v)
-#        return fire_cells
-#    def convert_to_discrete_values(self,fire):
-#        fire_cells = []
-#        for row in fire:
-#            for cell in row:
-#                if cell.v > 0.0:
-#                    cell.v = 126
-#                    fire_cells.append(cell)
-#                else:
-#                    cell.v = 0
-#        return fire_cells
-#    def add_prediction_to_grid_cells2(self, predictions, x_star, cells):
-#        prediction = predictions[0]
-#        S2 = predictions[1]
-#        import math
-#        
-#        for row in cells:
-#            for cell in row:
-#                if len(x_star) == 0:
-#                    cell.v = 0
-#                    cell.S2 = 0
-#                if cell.v == 127 and cell.x == x_star[0][0] and cell.y == x_star[0][1] and cell.t == x_star[0][2]:
-#
-#                    cell.v = prediction[0]#math.trunc(((prediction[0] + 1) * 32) + 0.5)
-#                    cell.S2 = S2[0][0]
-#                    prediction = prediction[1:]
-#                    S2 = S2[1:]
-#                    x_star = x_star[1:]
-#                elif cell.v > 0.9999999 and cell.v < 25:
-#                    cell.S2 = 0
-#                else:
-#                    cell.v = 0
-#                    cell.S2 = 0
-#        return
+
         
     def add_prediction_to_grid_cells(self, predictions, x_star, cells):
         prediction = predictions[0]

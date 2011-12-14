@@ -167,7 +167,7 @@ def covSEiso(loghyper=None, x=None, z=None, Y=None):
     else:               # compute covariance between data sets x and z
         z = z/ell
         A = sf2*numpy.ones((z.shape[0],1))         # self covariances (needed for GPR)
-        B = sf2*numpy.exp(-sq_dist(x,z,True,[-1,0],Y)/2)         # cross covariances
+        B = sf2*numpy.exp(-sq_dist(x,z,False,[-1,0],Y)/2)         # cross covariances
         A=[A,B]
     return A
 
@@ -424,7 +424,7 @@ def create_vector(x1, y1, x2, y2):
     return [x,y]
     
 
-import math
+#import math
 def calculate_angle_and_length(vector1, vector2):
     
     dot_product = (vector1[0] * vector2[0]) + (vector1[1] * vector2[1])
@@ -462,7 +462,7 @@ def calculate_weight(vector, wind_vector):#, middle):
 
     weight = (angle / numpy.pi)
     if weight > 0.26:# and not middle:
-        weight = 1.4#20.0
+        weight = 1.8#20.0
 
     else:
         weight = 0.5
@@ -523,18 +523,6 @@ def scan_line_fill(points):
     for y, mini_maxi in zip(y_list,min_max):
         for x in range(mini_maxi[0], mini_maxi[1] +1):
             area_points.append((x,y))
-#    for i in range(len(edge_points)):#does not handle concav
-#        if i > 0 and edge_points[i-1][1] == edge_points[i][1]:
-#            continue
-#        
-#        elif edge_points[i][1] == edge_points[i+1][1]:
-#            min_x = min(edge_points, key=lambda point: point[0])[0]
-#            max_x = max(edge_points, key=lambda point: point[0])[0]
-#            y = edge_points[i][1]
-#            for x in range(min_x, max_x +1):
-#                area_points.append((x, y))
-#        else:
-#            area_points.append(edge_points[i])
             
     return area_points
         
@@ -569,7 +557,6 @@ def sq_dist(a, b=None, wind=False, wind_vector=[-1,0], Y=None):
                     continue
                 
                 calculated_weight = calculate_weight(vector, wind_vector)#, middle_sensor)
-#                weights[i,j] = calculated_weight[0]
                 weight = calculated_weight[0]
                 point = (int(b[j][0]),int(b[j][1]))
                 if point in area_points:
@@ -587,11 +574,6 @@ def sq_dist(a, b=None, wind=False, wind_vector=[-1,0], Y=None):
         b = b.transpose()
 
     C = numpy.zeros((n,m))
-#    negative_matrix = numpy.zeros((n,m))
-#    wind_weight_matrix = numpy.ones((n,m))
-    
-    
-#    x_pos = None
 
     for d in range(0,D):
         tt = a[:,d]
@@ -603,7 +585,7 @@ def sq_dist(a, b=None, wind=False, wind_vector=[-1,0], Y=None):
 
         
         C = C + tem * tem
-    if wind and True:
+    if wind:
         for i in range(len(C)):
             for j in range(len(C[0])):
                 C[i,j] = C[i][j] * weights[i][j]
