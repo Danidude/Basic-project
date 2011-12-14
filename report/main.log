@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.12.13)  13 DEC 2011 18:05
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.12.13)  14 DEC 2011 01:03
 entering extended mode
  %&-line parsing enabled.
 **main.tex
@@ -651,16 +651,62 @@ Chapter 3.
 (./solution/fire-interpreter.tex
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <17.28> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1.
-)) [7
+
+Underfull \hbox (badness 10000) in paragraph at lines 3--7
+
+ []
+
+<solution/graphics/timeElapse.png, id=96, 544.0325pt x 221.82875pt>
+File: solution/graphics/timeElapse.png Graphic file (type png)
+
+<use solution/graphics/timeElapse.png> [7
 
 
 
 ]
+Underfull \hbox (badness 10000) in paragraph at lines 17--20
+
+ []
+
+[8 <./solution/graphics/timeElapse.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 36--39
+
+ []
+
+<solution/graphics/wind-problem.png, id=115, 455.7025pt x 67.25125pt>
+File: solution/graphics/wind-problem.png Graphic file (type png)
+
+<use solution/graphics/wind-problem.png>
+<solution/graphics/burning-sensor-correlation.png, id=118, 308.15125pt x 237.88
+875pt>
+File: solution/graphics/burning-sensor-correlation.png Graphic file (type png)
+ <use solution/graphics/burning-sensor-correlation.png>
+<solution/graphics/graphical-boundary.png, id=120, 308.15125pt x 234.8775pt>
+File: solution/graphics/graphical-boundary.png Graphic file (type png)
+
+<use solution/graphics/graphical-boundary.png>))
+Underfull \hbox (badness 10000) in paragraph at lines 47--143
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 47--143
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 47--143
+
+ []
+
+[9 <./solution/graphics/wind-problem.png (PNG copy)>] [10 <./solution/graphics/
+burning-sensor-correlation.png (PNG copy)>] [11 <./solution/graphics/graphical-
+boundary.png (PNG copy)>]
 \openout2 = `./discussion/discussion.aux'.
 
  (./discussion/discussion.tex
 Chapter 4.
-) [8
+) [12
 
 
 
@@ -669,7 +715,7 @@ Chapter 4.
 
  (./conclusion/conclusion.tex
 Chapter 5.
-) [9
+) [13
 
 
 
@@ -691,7 +737,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 7--9
 
  []
 
-[10
+[14
 
 
 
@@ -700,28 +746,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 7--9
 \openout2 = `./ref.aux'.
 
  (./ref.tex
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 5.
- (/usr/share/texmf-texlive/tex/latex/psnfss/ot1pcr.fd
-File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-)
-Underfull \hbox (badness 2126) in paragraph at lines 5--6
-[]\OT1/ptm/m/it/12 Apache Solr Wiki \OT1/ptm/m/n/12 avail-able at [][]$\OT1/pcr
-/m/n/12 http : / / wiki . apache . org / solr /
+Underfull \hbox (badness 10000) in paragraph at lines 3--5
+[]\OT1/ptm/m/n/12 Alejo Haus-ner, CS De-part-ment, Prince-ton Uni-ver-sity
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 6--7
-[]\OT1/ptm/m/it/12 Apache sol-r-con-fig.xml \OT1/ptm/m/n/12 avail-able at [][]$
-\OT1/pcr/m/n/12 http : / / svn . apache . org /
+Overfull \hbox (46.70651pt too wide) in paragraph at lines 3--5
+\OT1/ptm/m/it/12 http://www.cs.princeton.edu/courses/archive/spr10/cos226/demo/
+ah/GrahamScan.html
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 6--7
-\OT1/pcr/m/n/12 repos / asf / lucene / dev / trunk / solr / example / solr / co
-nf /
- []
-
-) [11
+) [15
 
 
 
@@ -729,22 +764,27 @@ nf /
 (./theory/theory.aux) (./solution/solution.aux) (./discussion/discussion.aux)
 (./conclusion/conclusion.aux) (./acknow.aux) (./ref.aux)) ) 
 Here is how much of TeX's memory you used:
- 6023 strings out of 495061
- 82074 string characters out of 1182620
- 157583 words of memory out of 3000000
- 8961 multiletter control sequences out of 15000+50000
- 26618 words of font info for 57 fonts, out of 3000000 for 9000
+ 6017 strings out of 495061
+ 82514 string characters out of 1182620
+ 166889 words of memory out of 3000000
+ 8950 multiletter control sequences out of 15000+50000
+ 26103 words of font info for 55 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 38i,6n,43p,1005b,346s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,12n,43p,1652b,346s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf-te
-xlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texlive/fonts/type1/urw/cou
-rier/ucrr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmb8a.pfb></us
-r/share/texmf-texlive/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texmf-texli
-ve/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/t
-imes/utmri8a.pfb>
-Output written on main.pdf (13 pages, 98692 bytes).
+xlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texlive/fonts/type1/public/
+amsfonts/cm/cmex10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm
+/cmmi12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi8.pfb>
+</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/
+texmf-texlive/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-texlive
+/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type
+1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/
+utmb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmbi8a.pfb></usr/sh
+are/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/fo
+nts/type1/urw/times/utmri8a.pfb>
+Output written on main.pdf (17 pages, 277337 bytes).
 PDF statistics:
- 144 PDF objects out of 1000 (max. 8388607)
- 30 named destinations out of 1000 (max. 500000)
- 70 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 201 PDF objects out of 1000 (max. 8388607)
+ 35 named destinations out of 1000 (max. 500000)
+ 90 words of extra memory for PDF output out of 10000 (max. 10000000)
 
