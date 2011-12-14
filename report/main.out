@@ -1,15 +1,15 @@
-\BOOKMARK [0][-]{chapter.1}{Introduction}{}
-\BOOKMARK [0][-]{chapter.2}{Theory}{}
-\BOOKMARK [1][-]{section.2.1}{Gaussian Processes for Regression}{chapter.2}
-\BOOKMARK [0][-]{chapter.3}{Solution}{}
-\BOOKMARK [1][-]{section.3.1}{Fire and Sensor Simulation}{chapter.3}
-\BOOKMARK [1][-]{section.3.2}{Fire Interpreter}{chapter.3}
-\BOOKMARK [2][-]{subsection.3.2.1}{Changes in pyXGPR kernel to support wind}{section.3.2}
-\BOOKMARK [2][-]{subsection.3.2.2}{Unexpected predictions with wind}{section.3.2}
-\BOOKMARK [0][-]{chapter.4}{Discussion}{}
-\BOOKMARK [1][-]{section.4.1}{Results}{chapter.4}
-\BOOKMARK [2][-]{subsection.4.1.1}{Results with simple simulation}{section.4.1}
-\BOOKMARK [2][-]{subsection.4.1.2}{Results with advanced simulation}{section.4.1}
-\BOOKMARK [0][-]{chapter.5}{Conclusion}{}
-\BOOKMARK [0][-]{chapter.5}{Acknowledgments}{}
-\BOOKMARK [0][-]{chapter*.6}{References}{}
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 1
+\BOOKMARK [0][-]{chapter.2}{Theory}{}% 2
+\BOOKMARK [1][-]{section.2.1}{Gaussian Processes for Regression}{chapter.2}% 3
+\BOOKMARK [0][-]{chapter.3}{Solution}{}% 4
+\BOOKMARK [1][-]{section.3.1}{Fire and Sensor Simulation}{chapter.3}% 5
+\BOOKMARK [1][-]{section.3.2}{Fire Interpreter}{chapter.3}% 6
+\BOOKMARK [2][-]{subsection.3.2.1}{Changes in pyXGPR kernel to support wind}{section.3.2}% 7
+\BOOKMARK [2][-]{subsection.3.2.2}{Unexpected predictions with wind}{section.3.2}% 8
+\BOOKMARK [0][-]{chapter.4}{Discussion}{}% 9
+\BOOKMARK [1][-]{section.4.1}{Results}{chapter.4}% 10
+\BOOKMARK [2][-]{subsection.4.1.1}{Results with simple simulation}{section.4.1}% 11
+\BOOKMARK [2][-]{subsection.4.1.2}{Results with advanced simulation}{section.4.1}% 12
+\BOOKMARK [0][-]{chapter.5}{Conclusion}{}% 13
+\BOOKMARK [0][-]{chapter.5}{Acknowledgments}{}% 14
+\BOOKMARK [0][-]{chapter*.6}{References}{}% 15
