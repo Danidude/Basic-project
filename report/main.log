@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.12.13)  14 DEC 2011 23:52
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.12.13)  15 DEC 2011 00:39
 entering extended mode
  %&-line parsing enabled.
 **main.tex
@@ -569,7 +569,7 @@ LaTeX Info: Redefining \pageref on input line 82.
 
 \AtBeginShipoutBox=\box31
 
-<introduction/graphics/uia_logo.jpg, id=114, 218.7372pt x 53.9616pt>
+<introduction/graphics/uia_logo.jpg, id=150, 218.7372pt x 53.9616pt>
 File: introduction/graphics/uia_logo.jpg Graphic file (type jpg)
 
 <use introduction/graphics/uia_logo.jpg>
@@ -610,7 +610,7 @@ File: umsb.fd 2009/06/22 v3.00 AMS symbols B
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.20 ... {3.2.1}Performance}{20}{subsection.3.2.1}
+l.20 ...2.2.3}Fire Movement}{19}{subsection.2.2.3}
                                                    [1
 
 
@@ -665,7 +665,7 @@ File: omsptm.fd
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 5.
 
-<theory/graphics/normal-distribution.png, id=260, 466.74374pt x 281.05pt>
+<theory/graphics/normal-distribution.png, id=320, 466.74374pt x 281.05pt>
 File: theory/graphics/normal-distribution.png Graphic file (type png)
 
 <use theory/graphics/normal-distribution.png>
@@ -680,15 +680,15 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
-] <theory/graphics/effects-of-l.png, id=270, 386.44376pt x 257.96375pt>
+] <theory/graphics/effects-of-l.png, id=330, 386.44376pt x 257.96375pt>
 File: theory/graphics/effects-of-l.png Graphic file (type png)
 
 <use theory/graphics/effects-of-l.png>
-<theory/graphics/effects-of-l-03.png, id=274, 363.3575pt x 291.0875pt>
+<theory/graphics/effects-of-l-03.png, id=334, 363.3575pt x 291.0875pt>
 File: theory/graphics/effects-of-l-03.png Graphic file (type png)
 
 <use theory/graphics/effects-of-l-03.png>
-<theory/graphics/effects-of-l-05.png, id=278, 377.41pt x 290.08376pt>
+<theory/graphics/effects-of-l-05.png, id=338, 377.41pt x 290.08376pt>
 File: theory/graphics/effects-of-l-05.png Graphic file (type png)
 
 <use theory/graphics/effects-of-l-05.png>
@@ -720,21 +720,58 @@ l.82  var(y_{*})&=& K_{*}_
                           {*}K_{*}K^{-1}K_{*}^{T}
 I treat `x_1_2' essentially like `x_1{}_2'.
 
-<theory/graphics/value-matrix.png, id=305, 503.8825pt x 259.97125pt>
+<theory/graphics/value-matrix.png, id=365, 503.8825pt x 259.97125pt>
 File: theory/graphics/value-matrix.png Graphic file (type png)
 
-<use theory/graphics/value-matrix.png>))
+<use theory/graphics/value-matrix.png>) (./theory/fire.tex
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[17] [18 <./theory/graphics/value-matrix.png (PNG copy)>]
+<theory/graphics/fire-triangle.png, id=367, 195.73125pt x 170.6375pt>
+File: theory/graphics/fire-triangle.png Graphic file (type png)
+
+<use theory/graphics/fire-triangle.png> [17]
+<theory/graphics/fire-ignition.png, id=377, 260.975pt x 281.05pt>
+File: theory/graphics/fire-ignition.png Graphic file (type png)
+
+<use theory/graphics/fire-ignition.png> [18 <./theory/graphics/value-matrix.png
+ (PNG copy)> <./theory/graphics/fire-triangle.png>]
+<theory/graphics/fire-slope.jpg, id=384, 261.97874pt x 193.72375pt>
+File: theory/graphics/fire-slope.jpg Graphic file (type jpg)
+
+<use theory/graphics/fire-slope.jpg>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<theory/graphics/fire-types.png, id=387, 594.22pt x 243.91125pt>
+File: theory/graphics/fire-types.png Graphic file (type png)
+
+<use theory/graphics/fire-types.png> [19 <./theory/graphics/fire-ignition.png (
+PNG copy)>] <theory/graphics/fire-wind.png, id=393, 478.78876pt x 412.54124pt>
+File: theory/graphics/fire-wind.png Graphic file (type png)
+
+<use theory/graphics/fire-wind.png> [20 <./theory/graphics/fire-slope.jpg> <./t
+heory/graphics/fire-types.png (PNG copy)>]
+<theory/graphics/fire-climate.png, id=398, 177.66376pt x 152.57pt>
+File: theory/graphics/fire-climate.png Graphic file (type png)
+
+<use theory/graphics/fire-climate.png>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[21 <./theory/graphics/fire-wind.png (PNG copy)>]
+<theory/graphics/fire-prediction.jpg, id=404, 580.1675pt x 318.18875pt>
+File: theory/graphics/fire-prediction.jpg Graphic file (type jpg)
+
+<use theory/graphics/fire-prediction.jpg> [22 <./theory/graphics/fire-climate.p
+ng (PNG copy)>] [23 <./theory/graphics/fire-prediction.jpg>])) [24]
 \openout2 = `./solution/solution.aux'.
 
 
 (./solution/solution.tex
 Chapter 3.
 (./solution/simulation.tex) (./solution/fire-interpreter.tex
-<solution/graphics/timeElapse.png, id=318, 595.023pt x 248.93pt>
+<solution/graphics/timeElapse.png, id=422, 595.023pt x 248.93pt>
 File: solution/graphics/timeElapse.png Graphic file (type png)
 
 <use solution/graphics/timeElapse.png>
@@ -742,7 +779,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 2--12
 
  []
 
-[19
+[25
 
 
 
@@ -761,7 +798,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 13--17
 
  []
 
-[20 <./solution/graphics/timeElapse.png>]
+[26 <./solution/graphics/timeElapse.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 18--20
 
  []
@@ -781,27 +818,27 @@ Underfull \hbox (badness 10000) in paragraph at lines 32--37
 
  []
 
-[21] <solution/graphics/wind-problem.png, id=341, 455.7025pt x 67.25125pt>
+[27] <solution/graphics/wind-problem.png, id=444, 455.7025pt x 67.25125pt>
 File: solution/graphics/wind-problem.png Graphic file (type png)
 
 <use solution/graphics/wind-problem.png>
-<solution/graphics/burning-sensor-correlation.png, id=345, 308.15125pt x 237.88
+<solution/graphics/burning-sensor-correlation.png, id=448, 308.15125pt x 237.88
 875pt>
 File: solution/graphics/burning-sensor-correlation.png Graphic file (type png)
- <use solution/graphics/burning-sensor-correlation.png> [22 <./solution/graphic
+ <use solution/graphics/burning-sensor-correlation.png> [28 <./solution/graphic
 s/wind-problem.png (PNG copy)>]
-<solution/graphics/graphical-boundary.png, id=352, 308.15125pt x 234.8775pt>
+<solution/graphics/graphical-boundary.png, id=455, 308.15125pt x 234.8775pt>
 File: solution/graphics/graphical-boundary.png Graphic file (type png)
 
-<use solution/graphics/graphical-boundary.png>)) [23 <./solution/graphics/burni
-ng-sensor-correlation.png (PNG copy)>] [24 <./solution/graphics/graphical-bound
+<use solution/graphics/graphical-boundary.png>)) [29 <./solution/graphics/burni
+ng-sensor-correlation.png (PNG copy)>] [30 <./solution/graphics/graphical-bound
 ary.png (PNG copy)>]
 \openout2 = `./discussion/discussion.aux'.
 
  (./discussion/discussion.tex
 Chapter 4.
 (./discussion/results.tex
-<discussion/graphics/results-simple-compare.png, id=369, 359.3425pt x 394.47375
+<discussion/graphics/results-simple-compare.png, id=472, 359.3425pt x 394.47375
 pt>
 File: discussion/graphics/results-simple-compare.png Graphic file (type png)
  <use discussion/graphics/results-simple-compare.png>
@@ -813,12 +850,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 4--13
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-<discussion/graphics/wind-advanced-bresenham-large.png, id=371, 279.0425pt x 21
+<discussion/graphics/wind-advanced-bresenham-large.png, id=474, 279.0425pt x 21
 1.79124pt>
 File: discussion/graphics/wind-advanced-bresenham-large.png Graphic file (type 
 png)
  <use discussion/graphics/wind-advanced-bresenham-large.png>
-<discussion/graphics/advanced-without-wind-and-bresenham.png, id=374, 229.85875
+<discussion/graphics/advanced-without-wind-and-bresenham.png, id=477, 229.85875
 pt x 178.6675pt>
 File: discussion/graphics/advanced-without-wind-and-bresenham.png Graphic file 
 (type png)
@@ -828,7 +865,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 14--129
 
  []
 
-[25
+[31
 
 
 
@@ -839,19 +876,19 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[26 <./discussion/graphics/results-simple-compare.png (PNG copy)>] [27 <./discu
-ssion/graphics/wind-advanced-bresenham-large.png>] [28 <./discussion/graphics/a
+[32 <./discussion/graphics/results-simple-compare.png (PNG copy)>] [33 <./discu
+ssion/graphics/wind-advanced-bresenham-large.png>] [34 <./discussion/graphics/a
 dvanced-without-wind-and-bresenham.png (PNG copy)>]
 \openout2 = `./conclusion/conclusion.aux'.
 
 
 (./conclusion/conclusion.tex
 Chapter 5.
-[29
+[35
 
 
 
-]) [30]
+]) [36]
 \openout2 = `./acknow.aux'.
 
  (./acknow.tex
@@ -869,7 +906,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 7--8
 
  []
 
-[31
+[37
 
 
 
@@ -939,7 +976,7 @@ Underfull \hbox (badness 6575) in paragraph at lines 17--18
 s . edu / []wallach / talks /
  []
 
-) [32
+) [38
 
 
 
@@ -951,10 +988,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 6222 strings out of 495061
- 86561 string characters out of 1182620
- 164926 words of memory out of 3000000
- 9065 multiletter control sequences out of 15000+50000
+ 6301 strings out of 495061
+ 88304 string characters out of 1182620
+ 166506 words of memory out of 3000000
+ 9110 multiletter control sequences out of 15000+50000
  26618 words of font info for 57 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  38i,12n,43p,1731b,440s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -970,9 +1007,9 @@ urw/courier/ucrr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmb8a.p
 fb></usr/share/texmf-texlive/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texm
 f-texlive/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/fonts/type
 1/urw/times/utmri8a.pfb>
-Output written on main.pdf (35 pages, 731637 bytes).
+Output written on main.pdf (41 pages, 1234055 bytes).
 PDF statistics:
- 490 PDF objects out of 1000 (max. 8388607)
- 95 named destinations out of 1000 (max. 500000)
- 290 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 600 PDF objects out of 1000 (max. 8388607)
+ 119 named destinations out of 1000 (max. 500000)
+ 397 words of extra memory for PDF output out of 10000 (max. 10000000)
 
