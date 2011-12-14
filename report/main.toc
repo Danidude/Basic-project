@@ -11,6 +11,8 @@
 \contentsline {subsubsection}{Solution 2 to unexpected predictions with wind}{11}{section*.5}
 \contentsline {chapter}{\numberline {4}Discussion}{13}{chapter.4}
 \contentsline {section}{\numberline {4.1}Results}{13}{section.4.1}
-\contentsline {chapter}{\numberline {5}Conclusion}{14}{chapter.5}
-\contentsline {chapter}{Acknowledgments}{15}{chapter.5}
-\contentsline {chapter}{References}{16}{chapter*.6}
+\contentsline {subsection}{\numberline {4.1.1}Results with simple simulation}{13}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Results with advanced simulation}{13}{subsection.4.1.2}
+\contentsline {chapter}{\numberline {5}Conclusion}{15}{chapter.5}
+\contentsline {chapter}{Acknowledgments}{16}{chapter.5}
+\contentsline {chapter}{References}{17}{chapter*.6}
