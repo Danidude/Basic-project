@@ -8,7 +8,7 @@
 \BOOKMARK [2][-]{subsection.1.3.4}{A Real-time Disaster Situation Mapping System for University Campuses}{section.1.3}
 \BOOKMARK [1][-]{section.1.4}{Solution Approach}{chapter.1}
 \BOOKMARK [1][-]{section.1.5}{Report Outline}{chapter.1}
-\BOOKMARK [0][-]{chapter.2}{Theory}{}
+\BOOKMARK [0][-]{chapter.2}{Theoretical Background}{}
 \BOOKMARK [1][-]{section.2.1}{Gaussian Processes for Regression}{chapter.2}
 \BOOKMARK [2][-]{subsection.2.1.1}{Covariance Function}{section.2.1}
 \BOOKMARK [2][-]{subsection.2.1.2}{Method of Calculation}{section.2.1}
@@ -20,8 +20,9 @@
 \BOOKMARK [2][-]{subsection.2.2.4}{Fire Types}{section.2.2}
 \BOOKMARK [2][-]{subsection.2.2.5}{Wind}{section.2.2}
 \BOOKMARK [2][-]{subsection.2.2.6}{Climate and Vegetation Effect on Fire}{section.2.2}
-\BOOKMARK [2][-]{subsection.2.2.7}{Relative Humidity}{section.2.2}
-\BOOKMARK [2][-]{subsection.2.2.8}{Rate of Spread}{section.2.2}
+\BOOKMARK [2][-]{subsection.2.2.7}{Temperature and Flame Height}{section.2.2}
+\BOOKMARK [2][-]{subsection.2.2.8}{Relative Humidity}{section.2.2}
+\BOOKMARK [2][-]{subsection.2.2.9}{Rate of Spread}{section.2.2}
 \BOOKMARK [0][-]{chapter.3}{Solution}{}
 \BOOKMARK [1][-]{section.3.1}{Fire and Sensor Simulation}{chapter.3}
 \BOOKMARK [1][-]{section.3.2}{Fire Interpreter}{chapter.3}
@@ -34,4 +35,4 @@
 \BOOKMARK [2][-]{subsection.4.1.2}{Results with advanced simulation}{section.4.1}
 \BOOKMARK [0][-]{chapter.5}{Conclusion}{}
 \BOOKMARK [0][-]{chapter.5}{Acknowledgments}{}
-\BOOKMARK [0][-]{chapter*.7}{References}{}
+\BOOKMARK [0][-]{chapter*.6}{References}{}
