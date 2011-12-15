@@ -16,12 +16,11 @@ class Predict:
         self.covfunc = ['kernels.covSum', ['kernels.covSEiso', 'kernels.covNoise']]
 
     
-    def predict(self, X, y, x_star):
+    def predict(self, X, y, x_star,wind):
         
         logtheta = np.array([ np.log(1.0), np.log(8.0), np.log(0.0001)])
         covfunc = ['kernels.covSum', ['kernels.covSEiso', 'kernels.covNoise']]
-        
-        prediction = gpr.gp_pred(logtheta, covfunc, X, y, x_star)
+        prediction = gpr.gp_pred(logtheta, covfunc, X, y, x_star, wind=wind)
         return prediction
     
 
@@ -95,7 +94,7 @@ class GPR_Controller:
     
     
 
-    def __init__(self, grid, time_fire, fire_cells):
+    def __init__(self, grid, time_fire, fire_cells, wind):
 
         xr = grid.sizeX
         yr = grid.sizeY
@@ -110,7 +109,7 @@ class GPR_Controller:
         X, y, x_star = self.convert_to_numpy_array(time_fire, y, X, x_star, fire_cells)
         
         
-        self.predict = predict.predict(X, y, x_star)
+        self.predict = predict.predict(X, y, x_star,wind)
         
         self.fire_cells = self.add_prediction_to_grid_cells(self.predict, x_star, grid.cells)
 

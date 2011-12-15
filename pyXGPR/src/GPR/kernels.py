@@ -129,7 +129,7 @@ from GrahamScan import convex_hull
 from BresenheimLineAlgorithm import bresenham_line
 
 
-def covSEiso(loghyper=None, x=None, z=None, Y=None):
+def covSEiso(loghyper=None, x=None, z=None, Y=None, wind=None):
 
     '''Squared Exponential covariance function with isotropic distance measure.
     The covariance function is parameterized as:
@@ -167,7 +167,7 @@ def covSEiso(loghyper=None, x=None, z=None, Y=None):
     else:               # compute covariance between data sets x and z
         z = z/ell
         A = sf2*numpy.ones((z.shape[0],1))         # self covariances (needed for GPR)
-        B = sf2*numpy.exp(-sq_dist(x,z,False,[-1,0],Y)/2)         # cross covariances
+        B = sf2*numpy.exp(-sq_dist(x,z,wind,Y)/2)         # cross covariances
         A=[A,B]
     return A
 
@@ -213,7 +213,7 @@ def covSEard(loghyper=None, x=None, z=None, t=None):
     return A
 
 
-def covNoise(loghyper=None, x=None, z=None,n=None):
+def covNoise(loghyper=None, x=None, z=None,n=None,wind=None):
     '''Independent covariance function, ie "white noise", with specified variance.
     The covariance function is specified as:
     k(x^p,x^q) = s2 * \delta(p,q)
@@ -336,7 +336,7 @@ def covSumMat(covfunc, loghyper=None, x=None, R=None, w=None, z=None, Rstar=None
     return A
     
     
-def covSum(covfunc, loghyper=None, x=None, z=None, Y=None):
+def covSum(covfunc, loghyper=None, x=None, z=None, Y=None, wind=None):
     
     '''covSum - compose a covariance function as the sum of other covariance
     functions. This function doesn't actually compute very much on its own, it
@@ -393,7 +393,7 @@ def covSum(covfunc, loghyper=None, x=None, z=None, Y=None):
         for i in range(1,len(covfunc)+1):
             f = covfunc[i-1] 
             # compute test covariances
-            results = Tools.general.feval(f, loghyper[int(v[i-1,0]):int(v[i-1,0])+int(v[i,0]),0], x, z,Y)
+            results = Tools.general.feval(f, loghyper[int(v[i-1,0]):int(v[i-1,0])+int(v[i,0]),0], x, z,Y, wind)
             # and accumulate
             A = A + results[0]    # self covariances 
             B = B + results[1]    # cross covariances        
@@ -527,18 +527,18 @@ def scan_line_fill(points):
     return area_points
         
 
-def sq_dist(a, b=None, wind=False, wind_vector=[-1,0], Y=None):
+def sq_dist(a, b=None, wind_vector=None, Y=None):
 
     '''Compute a matrix of all pairwise squared distances
     between two sets of vectors, stored in the row of the two matrices:
     a (of size n by D) and b (of size m by D). '''
 
     n = a.shape[0]
-    D = a.shape[1] 
+    D = a.shape[1]
     m = n
     
-    if b != None and wind:
-        
+    if b != None and wind_vector != None:
+        wind_vector = [-1,0]
         burning_sensors = find_burning_sensors(a, Y)
         burning_sensors_edge = convex_hull(burning_sensors)
         burning_sensors_edge.append(burning_sensors_edge[0])
@@ -565,7 +565,7 @@ def sq_dist(a, b=None, wind=False, wind_vector=[-1,0], Y=None):
                 weights[i][j] = weight
                 
                 
-
+    print wind_vector
     if b == None:
         b = a.transpose()
 
@@ -585,7 +585,7 @@ def sq_dist(a, b=None, wind=False, wind_vector=[-1,0], Y=None):
 
         
         C = C + tem * tem
-    if wind:
+    if wind_vector != None:
         for i in range(len(C)):
             for j in range(len(C[0])):
                 C[i,j] = C[i][j] * weights[i][j]

@@ -86,7 +86,13 @@ class HttpRequestHandlerWrapper:
                 return
             except IOError:
                 self.send_error(404,'File Not Found: %s' % fpath)
-         
+        
+        def create_unit_vector_based_on_angle(self,radian_angle):
+            import math
+            x = math.cos(radian_angle)
+            y = math.cos(radian_angle)
+            return [x,y]
+        
         def do_POST(self):
             try:
                 ctype, pdict = cgi.parse_header(self.headers.getheader('content-type'))
@@ -104,6 +110,7 @@ class HttpRequestHandlerWrapper:
             self.send_header('Content-type','text/plain')
             self.end_headers()
             cells = []
+            angle = 0.0
             for key,value in postvars.items():
                 if key == 'sizeX':
                     sizeX = int(value[0])
@@ -112,11 +119,13 @@ class HttpRequestHandlerWrapper:
                 elif key=='cells':
                     for char in base64.b64decode(value[0]):
                         cells.append(char)
+                elif key =="windDirection":
+                    angle = float(value[0])
             
             grid = Grid(sizeX,sizeY,cells)
-
+            unit_wind_vector = self.create_unit_vector_based_on_angle(angle)
             t = time.time()
-            gpr_controller = GPR_Controller(grid, HttpRequestHandlerWrapper.time_fire, HttpRequestHandlerWrapper.fire_cells)
+            gpr_controller = GPR_Controller(grid, HttpRequestHandlerWrapper.time_fire, HttpRequestHandlerWrapper.fire_cells, unit_wind_vector)
             #grid = gpr_controller.grid
             
             large_string = gpr_controller.large_string

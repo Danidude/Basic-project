@@ -210,7 +210,7 @@ cm.Grid.prototype = {
 		var vx,vy;
 		
 		// wind vector 'w'
-		var wd = parseInt($('#windDir').val()) * Math.PI/180;
+		var wd = this.windDirection = parseInt($('#windDir').val()) * Math.PI/180;
 		var wm = parseInt($('#windMag').val());
 
 		wm = wm == 0 ? 1 : wm;
