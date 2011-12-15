@@ -1,11 +1,11 @@
 \section{Implementation}
 \subsection{Grids}
-In the implementation, we introduced a concept called grid. A grid was a visual representation of an area (any area) divided into discrete valued cells. The purpose of the grid was to easily view the actual situation and the predicted situation after reconstructing it based on samples from the actual situation (mobile phone sensor readings). As figure \ref{fig:grid-concept} shows, we used two separate grids placed next to each other where the left grid is always the actual situation and the right grid is always the predicted situation. These two grids served as a guide line throughout the implementation. If the grids did not look somewhat similar at all times, some error had been done. How these grids were used are explained in the following sections.
+In the implementation, we introduced a concept called grid. A grid was a visual representation of an area (any area) divided into cells containing discrete values. The purpose of the grid was to easily view the actual situation and the predicted situation after reconstructing it based on samples from the actual situation (mobile phone sensor readings). As figure \ref{fig:grid-concept} shows, we used two separate grids placed next to each other where the left grid is always the actual situation and the right grid is always the predicted situation. These two grids served as a guide line throughout the implementation. If the grids did not look somewhat similar at all times, some error had been done. How these grids were used are explained in the following sections.
 
 \begin{figure}[here]
 \centering
 \includegraphics[width=0.5\textwidth]{solution/graphics/grid-concept.png}
-\caption{Two grids are used to compare actual situation on the left and the estimated situation on the right.}
+\caption{Two grids are used to compare the actual situation on the left and the estimated situation on the right.}
 \label{fig:grid-concept}
 \end{figure}
 
@@ -21,9 +21,10 @@ The fire spread was implemented with a simple algorithm. Given a two-dimensional
 \label{fig:fire-probability}
 \end{figure}
 
-The simple probability calculation was later extended to account for wind. Since wind can blow away smoke and heat wind direction and magnitude directly affects how much impact each neighboring cell would have on C. To simulate this, each neighboring cell used a portion of the wind vector to produce a weight of impact. The sum of all these weights divided by a total weight became the new probability calculation in the fire spreading algorithm.
+The simple probability calculation was later extended to account for wind. Since wind can blow away smoke and heat, wind direction and magnitude directly affects how much impact each neighboring cell would have on C. To simulate this, each neighboring cell used a portion of the wind vector to produce a weight of impact. The sum of all these weights divided by a total weight became the new probability calculation in the fire spreading algorithm.
 
 Humidity was implemented after wind. Humidity affects how fast fire spreads. It was implemented as a global value and had the same value for each cell. With this simplicity, we only had to either increase or decrease the total weight used in the probability calculation to adjust the rate of fire spread.
+
 \subsection{Sensing Data}
 After simulating data with wind and humidity, the next step was to use mobile phone sensors to read this data. Even if the current situation was known through the simulation at all times, we were only supposed to know the situation by the mobile phone sensor readings. To simulate sensing, two additional algorithms were used.
 
