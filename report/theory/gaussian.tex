@@ -6,7 +6,7 @@ Gaussian Process Regression (GPR) is one of the popular methods has been used du
 \item Less number of variables
 \item Learning by experience
 \end{itemize}
-Correct predictions must be based on the correct assumptions. Even though GPR is  learning from experience, it is not “free form” which means it is not automatically generated[ ]. Other techniques, such as “squared exponential”, can be used when the users are unable to do even basic assumptions.
+Correct predictions must be based on the correct assumptions. Even though GPR is  learning from experience, it is not “free form” which means it is not automatically generated\cite{gausreg}. Other techniques, such as “squared exponential”, can be used when the users are unable to do even basic assumptions.
 \\\\
 It is acceptable to assume that each observation point has data distribution similar to normal distribution. Therefore, it is needed  to calculate the mean value and variance for all predictions.
 \begin{figure}[here]
@@ -26,7 +26,7 @@ k(x,x^{'})=\sigma_{f}^{2}exp\left[ \dfrac{-(x-x^{'})^{2}}{2l^{2}} \right]
   l &=& length\hspace{7pt} parameter \nonumber \\
   \sigma_{f}^{2} &=& Maximum\hspace{7pt} allowable\hspace{7pt} covariance
 \end{eqnarray}
-To predict accurate data for a smooth curve, input (or observed) data from the neighbors must be identical. By studying the above equation, we can understand that $ \sigma_{f}^{2} $ is increased for functions which cover a wide area through the y-axis. When the $ (x-x') $value becomes larger, $k(x-x')$ approaches zero depending on the length of parameter $ l $.
+To predict accurate data for a smooth curve, input (or observed) data from the neighbours must be identical. By studying the above equation, it can understood that $ \sigma_{f}^{2} $ is increased for functions which cover a wide area through the y-axis. When the $ (x-x') $value becomes larger, $k(x-x')$ approaches zero depending on the length of parameter $ l $.
 \\\\
 The effects of the length parameter $l$, can be explained as follows: Lets assume $l=0.1$ for a particular prediction and graph  $f(x)VS x$, which is shown in figure \ref{fig:length-parameter}. It is clear that the curves are not aligned\cite{intro-to-gpr}.
 \begin{figure}[here]
@@ -35,14 +35,14 @@ The effects of the length parameter $l$, can be explained as follows: Lets assum
   \caption{When $l = 0.1$. \cite{length-parameter}. }
   \label{fig:length-parameter}
 \end{figure}
-So, we change $l=0.3$ and evaluate the results. This is shown in figure \ref{fig:length-parameter-03}. It is clear that the curves are more aligned here than in figure \ref{fig:length-parameter}.
+Then change $l=0.3$ and evaluate the results. This is shown in figure \ref{fig:length-parameter-03}. It is clear that the curves are more aligned here than in figure \ref{fig:length-parameter}.
 \begin{figure}[here]
   \centering
       \includegraphics[width=0.65\textwidth]{theory/graphics/effects-of-l-03.png}
   \caption{When $l = 0.3$. \cite{length-parameter}. }
   \label{fig:length-parameter-03}
 \end{figure}
-Since the curves are not perfectly aligned, length parameter l, is increased further and result is evaluated. In figure \ref{fig:length-parameter-05} we set $l=0.5$ and evaluate the results. Here we can observe that the curves are perfectly aligned \cite{length-parameter}.
+Since the curves are not perfectly aligned, length parameter $l$, is increased further and result is evaluated. In figure \ref{fig:length-parameter-05} the $l$ value is set to $0.5$ and evaluate the results. Here one can observe that the curves are perfectly aligned \cite{length-parameter}.
 \begin{figure}[here]
   \centering
       \includegraphics[width=0.65\textwidth]{theory/graphics/effects-of-l-05.png}
@@ -88,12 +88,12 @@ y_{1} \\ y_{2} \\ y_{3} \\ y_{4} \\ y_{5} \\ \end{bmatrix}
 \label{eq:k-matrix}
 \end{eqnarray}
 When finding the variance, a suitable confidence level must be selected according to the prediction (e.g. 95\% confidence level).
-\subsection{Prediction of  Temperature Using Gaussian Process Regression}
-The objective is to predict temperature at a particular point by interpreting other observed data. Imagine the following situation: The area highlighted in gray colour has sensors (Thermometer) to observe the temperature and one would want  to predict the temperature on red colour(3,3) in figure \ref{fig:value-matrix}.
+\subsection{Prediction of Values Using Gaussian Process Regression}
+The objective is to predict values at a particular point by interpreting other observed data. Imagine the following situation: The area highlighted in gray colour has sensors to observe the values and one would want to predict the value on red colour(3,3) in figure \ref{fig:value-matrix}.
 \begin{figure}[here]
   \centering
       \includegraphics[width=0.65\textwidth]{theory/graphics/value-matrix.png}
   \caption{ Value matrix. }
   \label{fig:value-matrix}
 \end{figure}
-Since we can find the distance between each cells, it is possible to define a covariance function using observed data (given from thermometers). $ \sigma_{f}^{2} $ and $ l $ (length parameter) can be determined by using the observed data. Thereafter, $ K_{**} $, $ K_{*} $, $ K $ matrices can be determined. This will give the values for mean and variance. Finally, it is possible to plot the graph and this will give the predicted values for any positions within the considered area.
+Since it is possible to find the distance between each cells, it is possible to define a covariance function using observed data (given from sensors). $ \sigma_{f}^{2} $ and $ l $ (length parameter) can be determined by using the observed data. Thereafter, $ K_{**} $, $ K_{*} $, $ K $ matrices can be determined. This will give the values for mean and variance. Finally, it is possible to plot the graph and this will give the predicted values for any positions within the considered area.
