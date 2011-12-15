@@ -1,8 +1,11 @@
-\section{Design}
-In the implementation, we introduced a concept called grid. A grid was a visual representation of an area (any area) divided into discrete valued cells. The purpose of the grid was to easily view the actual situation and the predicted situation after reconstructing it based on samples from the actual situation (mobile phone sensor readings). As figure \ref{fig:system-overview} shows, we used two separate grids placed next to each other where the left grid is always the actual situation and the right grid is always the predicted situation.
+\section{Design Specification}
+Our crisis mapping system was written in two different programming languages, Python and Javascript. We had to choose Python because the Gaussian Process library was implemented in this language. We chose JavaScript simply because it is easier to do pretty user-interface programming and we had working experience with it. Figure \ref{fig:system-overview} shows an overview of the system.
+
 \begin{figure}[here]
   \centering
       \includegraphics[width=0.7\textwidth]{solution/graphics/system-overview.png}
-  \caption{Locates all cells within the boundary.}
+  \caption{System overview.}
   \label{fig:system-overview}
 \end{figure}
+
+The system is not large and there is one main flow in the system. A fire situation is simulated and sampled in the simulator. The samples are sent to the interpreter. The interpreter will try to reconstruct the fire situation and send the result back to the visualizer to view the result. The actual fire situation and the reconstructed are then available for comparison in the Javascript system.
