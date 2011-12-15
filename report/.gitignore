@@ -1,0 +1,7 @@
+*.*
+!*.tex
+!*.png
+!*.gif
+!*.jpg
+!*.sty
+!.gitignore

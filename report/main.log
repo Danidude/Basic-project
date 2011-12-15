@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.12.13)  14 DEC 2011 02:39
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.12.13)  15 DEC 2011 01:00
 entering extended mode
  %&-line parsing enabled.
 **main.tex
@@ -500,26 +500,32 @@ Package: verbatim 2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
 \verbatim@line=\toks27
 \verbatim@in@stream=\read1
 ) (./main.aux
-(./abstract.aux) (./introduction/introduction.aux) (./theory/theory.aux)
-(./solution/solution.aux) (./discussion/discussion.aux)
+(./abstract.aux) (./introduction/introduction.aux) (./theory/theory.aux
+
+LaTeX Warning: Label `eq:referanceName' multiply defined.
+
+
+LaTeX Warning: Label `eq:k-matrix' multiply defined.
+
+) (./solution/solution.aux) (./discussion/discussion.aux)
 (./conclusion/conclusion.aux) (./acknow.aux) (./ref.aux))
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 79.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 82.
 
 (/usr/share/texmf-texlive/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
@@ -544,7 +550,7 @@ File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
 Package color Info: Driver file: pdftex.def on input line 130.
 )
-Package hyperref Info: Link coloring ON on input line 79.
+Package hyperref Info: Link coloring ON on input line 82.
 
 (/usr/share/texmf-texlive/tex/latex/hyperref/nameref.sty
 Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
@@ -554,8 +560,8 @@ Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
 )
 \c@section@level=\count115
 )
-LaTeX Info: Redefining \ref on input line 79.
-LaTeX Info: Redefining \pageref on input line 79.
+LaTeX Info: Redefining \ref on input line 82.
+LaTeX Info: Redefining \pageref on input line 82.
  (./main.out)
 (./main.out)
 \@outlinefile=\write3
@@ -563,14 +569,14 @@ LaTeX Info: Redefining \pageref on input line 79.
 
 \AtBeginShipoutBox=\box31
 
-<introduction/graphics/uia_logo.jpg, id=62, 218.7372pt x 53.9616pt>
+<introduction/graphics/uia_logo.jpg, id=154, 218.7372pt x 53.9616pt>
 File: introduction/graphics/uia_logo.jpg Graphic file (type jpg)
 
 <use introduction/graphics/uia_logo.jpg>
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <17.28> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 82.
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 85.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 82.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 85.
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./introduction/graphics/ui
@@ -589,101 +595,199 @@ l.4 \end{abstract}
 
 ])
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <24.88> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 94.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 97.
  (./main.toc
-LaTeX Font Info:    Try loading font information for U+msa on input line 4.
+LaTeX Font Info:    Try loading font information for U+msa on input line 3.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 4.
+LaTeX Font Info:    Try loading font information for U+msb on input line 3.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
-))
+)pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
+ been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.20 ...2.2.3}Fire Movement}{17}{subsection.2.2.3}
+                                                   [1
+
+
+])
 \tf@toc=\write4
 \openout4 = `main.toc'.
 
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.96 \listoffigures
-                    [1
+ [2] (./main.lof
+[3
 
-
-] (./main.lof)
+])
 \tf@lof=\write5
 \openout5 = `main.lof'.
 
- [2
-
-] (./main.lot)
-\tf@lot=\write6
-\openout6 = `main.lot'.
-
- [3
-
-] [4]
+ [4]
 \openout2 = `./introduction/introduction.aux'.
 
-
-(./introduction/introduction.tex
+ (./introduction/introduction.tex
 Chapter 1.
-) [5
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <17.28> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 3.
+[5
 
 
-]
+] [6] [7] [8] [9])
+Overfull \hbox (7.96143pt too wide) in paragraph at lines 65--127
+[]\OT1/ptm/m/n/12 Finally, chap-ter five con-tains the con-clu-sion. It en-deav
+-ours to de-ter-mine whether
+ []
+
+[10]
 \openout2 = `./theory/theory.aux'.
 
  (./theory/theory.tex
 Chapter 2.
 (./theory/gaussian.tex
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <17.28> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1.
-)) [6
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 5.
+ (/usr/share/texmf-texlive/tex/latex/psnfss/omsptm.fd
+File: omsptm.fd 
+)
+LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 5.
+
+<theory/graphics/normal-distribution.png, id=312, 466.74374pt x 281.05pt>
+File: theory/graphics/normal-distribution.png Graphic file (type png)
+
+<use theory/graphics/normal-distribution.png>
+Underfull \hbox (badness 10000) in paragraph at lines 9--18
+
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[11
 
 
 
-]
+] <theory/graphics/effects-of-l.png, id=323, 386.44376pt x 257.96375pt>
+File: theory/graphics/effects-of-l.png Graphic file (type png)
+
+<use theory/graphics/effects-of-l.png>
+<theory/graphics/effects-of-l-03.png, id=327, 363.3575pt x 291.0875pt>
+File: theory/graphics/effects-of-l-03.png Graphic file (type png)
+
+<use theory/graphics/effects-of-l-03.png>
+<theory/graphics/effects-of-l-05.png, id=331, 377.41pt x 290.08376pt>
+File: theory/graphics/effects-of-l-05.png Graphic file (type png)
+
+<use theory/graphics/effects-of-l-05.png>
+Underfull \hbox (badness 10000) in paragraph at lines 28--53
+
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[12 <./theory/graphics/normal-distribution.png (PNG copy)>]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[13 <./theory/graphics/effects-of-l.png (PNG copy)> <./theory/graphics/effects-
+of-l-03.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 70--75
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 70--75
+
+ []
+
+[14 <./theory/graphics/effects-of-l-05.png (PNG copy)>]
+! Double subscript.
+l.82  var(y_{*})&=& K_{*}_
+                          {*}K_{*}K^{-1}K_{*}^{T}
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+<theory/graphics/value-matrix.png, id=357, 503.8825pt x 259.97125pt>
+File: theory/graphics/value-matrix.png Graphic file (type png)
+
+<use theory/graphics/value-matrix.png>) (./theory/fire.tex
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<theory/graphics/fire-triangle.png, id=359, 195.73125pt x 170.6375pt>
+File: theory/graphics/fire-triangle.png Graphic file (type png)
+
+<use theory/graphics/fire-triangle.png> [15]
+<theory/graphics/fire-ignition.png, id=369, 260.975pt x 281.05pt>
+File: theory/graphics/fire-ignition.png Graphic file (type png)
+
+<use theory/graphics/fire-ignition.png> [16 <./theory/graphics/value-matrix.png
+ (PNG copy)> <./theory/graphics/fire-triangle.png>]
+<theory/graphics/fire-slope.jpg, id=376, 261.97874pt x 193.72375pt>
+File: theory/graphics/fire-slope.jpg Graphic file (type jpg)
+
+<use theory/graphics/fire-slope.jpg>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<theory/graphics/fire-types.png, id=379, 594.22pt x 243.91125pt>
+File: theory/graphics/fire-types.png Graphic file (type png)
+
+<use theory/graphics/fire-types.png> [17 <./theory/graphics/fire-ignition.png (
+PNG copy)>] <theory/graphics/fire-wind.png, id=386, 478.78876pt x 412.54124pt>
+File: theory/graphics/fire-wind.png Graphic file (type png)
+
+<use theory/graphics/fire-wind.png> [18 <./theory/graphics/fire-slope.jpg> <./t
+heory/graphics/fire-types.png (PNG copy)>]
+<theory/graphics/fire-climate.png, id=391, 177.66376pt x 152.57pt>
+File: theory/graphics/fire-climate.png Graphic file (type png)
+
+<use theory/graphics/fire-climate.png>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[19 <./theory/graphics/fire-wind.png (PNG copy)>] [20 <./theory/graphics/fire-c
+limate.png (PNG copy)>]
+<theory/graphics/fire-prediction.jpg, id=401, 580.1675pt x 318.18875pt>
+File: theory/graphics/fire-prediction.jpg Graphic file (type jpg)
+
+<use theory/graphics/fire-prediction.jpg> [21 <./theory/graphics/fire-predictio
+n.jpg>])) [22]
 \openout2 = `./solution/solution.aux'.
 
  (./solution/solution.tex
 Chapter 3.
 (./solution/simulation.tex) (./solution/fire-interpreter.tex
-<solution/graphics/timeElapse.png, id=146, 595.023pt x 248.93pt>
+<solution/graphics/timeElapse.png, id=414, 595.023pt x 248.93pt>
 File: solution/graphics/timeElapse.png Graphic file (type png)
 
 <use solution/graphics/timeElapse.png>
-Underfull \hbox (badness 10000) in paragraph at lines 2--17
+Underfull \hbox (badness 10000) in paragraph at lines 2--12
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 2--17
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2--17
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2--17
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2--17
-
- []
-
-[7
+[23
 
 
 
 ]
+Underfull \hbox (badness 10000) in paragraph at lines 13--17
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 13--17
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 13--17
+
+ []
+
+[24 <./solution/graphics/timeElapse.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 18--20
 
  []
@@ -693,61 +797,87 @@ Underfull \hbox (badness 10000) in paragraph at lines 18--20
 
  []
 
-[8 <./solution/graphics/timeElapse.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 32--37
-
- []
-
 
 Underfull \hbox (badness 10000) in paragraph at lines 32--37
 
  []
 
-<solution/graphics/wind-problem.png, id=159, 455.7025pt x 67.25125pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--37
+
+ []
+
+[25] <solution/graphics/wind-problem.png, id=437, 455.7025pt x 67.25125pt>
 File: solution/graphics/wind-problem.png Graphic file (type png)
 
-<use solution/graphics/wind-problem.png> [9]
-<solution/graphics/burning-sensor-correlation.png, id=171, 308.15125pt x 237.88
+<use solution/graphics/wind-problem.png>
+<solution/graphics/burning-sensor-correlation.png, id=441, 308.15125pt x 237.88
 875pt>
 File: solution/graphics/burning-sensor-correlation.png Graphic file (type png)
- <use solution/graphics/burning-sensor-correlation.png> [10 <./solution/graphic
+ <use solution/graphics/burning-sensor-correlation.png> [26 <./solution/graphic
 s/wind-problem.png (PNG copy)>]
-<solution/graphics/graphical-boundary.png, id=178, 308.15125pt x 234.8775pt>
+<solution/graphics/graphical-boundary.png, id=447, 308.15125pt x 234.8775pt>
 File: solution/graphics/graphical-boundary.png Graphic file (type png)
 
-<use solution/graphics/graphical-boundary.png>))
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[11 <./solution/graphics/burning-sensor-correlation.png (PNG copy)>] [12 <./sol
-ution/graphics/graphical-boundary.png (PNG copy)>]
+<use solution/graphics/graphical-boundary.png>)) [27 <./solution/graphics/burni
+ng-sensor-correlation.png (PNG copy)>] [28 <./solution/graphics/graphical-bound
+ary.png (PNG copy)>]
 \openout2 = `./discussion/discussion.aux'.
 
  (./discussion/discussion.tex
 Chapter 4.
 (./discussion/results.tex
-<discussion/graphics/results-simple-compare.png, id=192, 359.3425pt x 394.47375
+<discussion/graphics/results-simple-compare.png, id=464, 359.3425pt x 394.47375
 pt>
 File: discussion/graphics/results-simple-compare.png Graphic file (type png)
  <use discussion/graphics/results-simple-compare.png>
+Underfull \hbox (badness 10000) in paragraph at lines 4--13
+
+ []
+
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-)) [13
+
+<discussion/graphics/wind-advanced-bresenham-large.png, id=466, 279.0425pt x 21
+1.79124pt>
+File: discussion/graphics/wind-advanced-bresenham-large.png Graphic file (type 
+png)
+ <use discussion/graphics/wind-advanced-bresenham-large.png>
+<discussion/graphics/advanced-without-wind-and-bresenham.png, id=469, 229.85875
+pt x 178.6675pt>
+File: discussion/graphics/advanced-without-wind-and-bresenham.png Graphic file 
+(type png)
+
+<use discussion/graphics/advanced-without-wind-and-bresenham.png>))
+Underfull \hbox (badness 10000) in paragraph at lines 14--130
+
+ []
+
+[29
 
 
 
-] [14 <./discussion/graphics/results-simple-compare.png (PNG copy)>]
+]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[30 <./discussion/graphics/results-simple-compare.png (PNG copy)>] [31 <./discu
+ssion/graphics/wind-advanced-bresenham-large.png>] [32 <./discussion/graphics/a
+dvanced-without-wind-and-bresenham.png (PNG copy)>]
 \openout2 = `./conclusion/conclusion.aux'.
 
 
 (./conclusion/conclusion.tex
 Chapter 5.
-) [15
+[33
 
 
 
-]
+]) [34]
 \openout2 = `./acknow.aux'.
 
  (./acknow.tex
@@ -761,11 +891,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 5--6
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 7--9
+Underfull \hbox (badness 10000) in paragraph at lines 7--8
 
  []
 
-[16
+[35
 
 
 
@@ -774,46 +904,101 @@ Underfull \hbox (badness 10000) in paragraph at lines 7--9
 \openout2 = `./ref.aux'.
 
  (./ref.tex
-Underfull \hbox (badness 10000) in paragraph at lines 3--5
+Underfull \hbox (badness 10000) in paragraph at lines 4--6
 []\OT1/ptm/m/n/12 Alejo Haus-ner, CS De-part-ment, Prince-ton Uni-ver-sity
  []
 
 
-Overfull \hbox (46.70651pt too wide) in paragraph at lines 3--5
+Overfull \hbox (46.70651pt too wide) in paragraph at lines 4--6
 \OT1/ptm/m/it/12 http://www.cs.princeton.edu/courses/archive/spr10/cos226/demo/
 ah/GrahamScan.html
  []
 
-) [17
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 7.
+(/usr/share/texmf-texlive/tex/latex/psnfss/ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+)
+Underfull \hbox (badness 10000) in paragraph at lines 7--8
+[]\OT1/ptm/m/n/12 Teknomo K. Hadamard Prod-uct. 2011. Avail-able from [][]$\OT1
+/pcr/m/n/12 http :
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 7--8
+\OT1/pcr/m/n/12 / / people . revoledu . com / kardi / tutorial / LinearAlgebra 
+/
+ []
+
+
+Underfull \hbox (badness 1127) in paragraph at lines 9--10
+[]\OT1/ptm/m/n/12 Flanagan C. The Bre-sen-ham Line-Drawing Al-go-rithm. 2011. A
+vail-able
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 9--10
+\OT1/ptm/m/n/12 from [][]$\OT1/pcr/m/n/12 http : / / www . cs . helsinki . fi /
+ group / goa / mallinnus /
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 11--12
+\OT1/pcr/m/n/12 / / en . wikipedia . org / wiki / File : Normal _ Distribution 
+_
+ []
+
+
+Underfull \hbox (badness 6575) in paragraph at lines 12--13
+\OT1/ptm/m/n/12 Avail-able from [][]$\OT1/pcr/m/n/12 http : / / www . cs . umas
+s . edu / []wallach / talks /
+ []
+
+
+Underfull \hbox (badness 1502) in paragraph at lines 14--15
+\OT1/ptm/m/n/12 2008. Avail-able from [][]$\OT1/pcr/m/n/12 http : / / www . rob
+ots . ox . ac . uk / []mebden /
+ []
+
+
+Underfull \hbox (badness 6575) in paragraph at lines 17--18
+\OT1/ptm/m/n/12 Avail-able from [][]$\OT1/pcr/m/n/12 http : / / www . cs . umas
+s . edu / []wallach / talks /
+ []
+
+) [36
 
 
 
 ] (./main.aux (./abstract.aux) (./introduction/introduction.aux)
 (./theory/theory.aux) (./solution/solution.aux) (./discussion/discussion.aux)
-(./conclusion/conclusion.aux) (./acknow.aux) (./ref.aux)) ) 
+(./conclusion/conclusion.aux) (./acknow.aux) (./ref.aux))
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
 Here is how much of TeX's memory you used:
- 6060 strings out of 495061
- 83290 string characters out of 1182620
- 162679 words of memory out of 3000000
- 8964 multiletter control sequences out of 15000+50000
- 26103 words of font info for 55 fonts, out of 3000000 for 9000
+ 6295 strings out of 495061
+ 88272 string characters out of 1182620
+ 166493 words of memory out of 3000000
+ 9109 multiletter control sequences out of 15000+50000
+ 26618 words of font info for 57 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 38i,12n,43p,1685b,346s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/share/texmf-te
-xlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texlive/fonts/type1/public/
-amsfonts/cm/cmex10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm
-/cmmi12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi8.pfb>
-</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/
-texmf-texlive/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-texlive
-/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type
-1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-texlive/fonts/type1/public/ams
-fonts/cm/cmsy8.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmb8a.pfb><
-/usr/share/texmf-texlive/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texmf-te
-xlive/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/fonts/type1/ur
-w/times/utmri8a.pfb>
-Output written on main.pdf (19 pages, 294473 bytes).
+ 38i,12n,43p,1731b,392s stack positions out of 5000i,500n,10000p,200000b,50000s
+{/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texli
+ve/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-texlive/fonts/ty
+pe1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-texlive/fonts/type1/public/
+amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/
+cmr12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr8.pfb></u
+sr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/te
+xmf-texlive/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-texlive/
+fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-texlive/fonts/type1/
+urw/courier/ucrr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmb8a.p
+fb></usr/share/texmf-texlive/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texm
+f-texlive/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/fonts/type
+1/urw/times/utmri8a.pfb>
+Output written on main.pdf (38 pages, 1233459 bytes).
 PDF statistics:
- 268 PDF objects out of 1000 (max. 8388607)
- 50 named destinations out of 1000 (max. 500000)
- 151 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 593 PDF objects out of 1000 (max. 8388607)
+ 117 named destinations out of 1000 (max. 500000)
+ 405 words of extra memory for PDF output out of 10000 (max. 10000000)
 
