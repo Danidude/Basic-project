@@ -26,6 +26,7 @@ k(x,x^{'})=\sigma_{f}^{2}exp\left[ \dfrac{-(x-x^{'})^{2}}{2l^{2}} \right]
   l &=& length\hspace{7pt} parameter \nonumber \\
   \sigma_{f}^{2} &=& Maximum\hspace{7pt} allowable\hspace{7pt} covariance
 \end{eqnarray}
+\\\\
 To predict accurate data for a smooth curve, input (or observed) data from the neighbours must be identical. By studying the above equation, it can understood that $ \sigma_{f}^{2} $ is increased for functions which cover a wide area through the y-axis. When the $ (x-x') $value becomes larger, $k(x-x')$ approaches zero depending on the length of parameter $ l $.
 \\\\
 The effects of the length parameter $l$, can be explained as follows: Lets assume $l=0.1$ for a particular prediction and graph  $f(x)VS x$, which is shown in figure \ref{fig:length-parameter}. It is clear that the curves are not aligned\cite{intro-to-gpr}.
@@ -35,6 +36,7 @@ The effects of the length parameter $l$, can be explained as follows: Lets assum
   \caption{When $l = 0.1$. \cite{length-parameter}. }
   \label{fig:length-parameter}
 \end{figure}
+\\\\
 Then change $l=0.3$ and evaluate the results. This is shown in figure \ref{fig:length-parameter-03}. It is clear that the curves are more aligned here than in figure \ref{fig:length-parameter}.
 \begin{figure}[here]
   \centering
@@ -42,6 +44,7 @@ Then change $l=0.3$ and evaluate the results. This is shown in figure \ref{fig:l
   \caption{When $l = 0.3$. \cite{length-parameter}. }
   \label{fig:length-parameter-03}
 \end{figure}
+\\\\
 Since the curves are not perfectly aligned, length parameter $l$, is increased further and result is evaluated. In figure \ref{fig:length-parameter-05} the $l$ value is set to $0.5$ and evaluate the results. Here one can observe that the curves are perfectly aligned \cite{length-parameter}.
 \begin{figure}[here]
   \centering
@@ -49,11 +52,13 @@ Since the curves are not perfectly aligned, length parameter $l$, is increased f
   \caption{When $l = 0.5$. \cite{length-parameter}. }
   \label{fig:length-parameter-05}
 \end{figure}
+\\\\
 Apart from this, function consists of additional part to represent errors. This is an important part, when GPR is used to predict practical events. (e.g. environment temperature can be vary, due to external factors such as wind ).
 \begin{equation}
 k(x,x^{'})=\sigma_{f}^{2}exp\left[ \dfrac{-(x-x^{'})^{2}}{2l^{2}} \right] + \sigma_{n}^{2}\delta(x,x^{'})
 \label{eq:referanceName}
 \end{equation}
+\\\\
 However, people preferred to keep $ \sigma_{n}^{2} $ separately and work on covariance and error to simplify the calculation.
 
 \subsection{Method of Calculation}
@@ -66,7 +71,7 @@ k(x_{3}x_{1}) & k(x_{3}x_{2} & k(x_{3}x_{3} & k(x_{3}x_{4} & k(x_{3}x_{5} \\ k(x
 k(x_{5}x_{1}) & k(x_{5}x_{2} & k(x_{5}x_{3} & k(x_{5}x_{4} & k(x_{5}x_{5} \\ \end{bmatrix}
 \label{eq:k-matrix}
 \end{eqnarray}
-
+\\\\
 This is a symmetric metric, $k(x1,x2)$ and $k(x2,x1)$  where both elements have the same values. All diagonal elements are equal and show the highest $k(x,x')$ value since $ \dfrac{-(x-x^{'})^{2}}{2l^{2}} $  becomes zero.
 \\\\
 When the position is moving away from the diagonal line of the matrix, the value of $k(x_{n},x_{m})$ goes towards zero. In other words, if the matrix contain higher number of rows and columns, the values of positions such as far away from the diagonal are almost equal to zero, while diagonal values shows maximum covariance value.
@@ -76,6 +81,7 @@ While the $K$ matrix gives the covariance values for observed data points the $K
 K_{*} = [k(x_{*},x_{1}) \hspace{10pt} k(x_{*},x_{2}) \hspace{10pt} k(x_{*},x_{3}) \hspace{10pt} k(x_{*},x_{4}) \hspace{10pt} k(x_{*},x_{5})]
 \label{eq:referanceName}
 \end{equation}
+\\\\
 $K_{**}= k(x_{*} x_{*})$ also can be found same way as it is directly given by $k(x,x')=\sigma_{f}^{2}$. From the above values, mean and variance values for a given $y_{*}$ can be found in the following way:
 \begin{eqnarray}
  \overline{y_{*}} &=& K_{*}K^{-1} y    \nonumber \\
@@ -87,6 +93,7 @@ y =
 y_{1} \\ y_{2} \\ y_{3} \\ y_{4} \\ y_{5} \\ \end{bmatrix}
 \label{eq:k-matrix}
 \end{eqnarray}
+\\\\
 When finding the variance, a suitable confidence level must be selected according to the prediction (e.g. 95\% confidence level).
 \subsection{Prediction of Values Using Gaussian Process Regression}
 The objective is to predict values at a particular point by interpreting other observed data. Imagine the following situation: The area highlighted in gray colour has sensors to observe the values and one would want to predict the value on red colour(3,3) in figure \ref{fig:value-matrix}.
@@ -96,4 +103,5 @@ The objective is to predict values at a particular point by interpreting other o
   \caption{ Value matrix. }
   \label{fig:value-matrix}
 \end{figure}
+\\\\
 Since it is possible to find the distance between each cells, it is possible to define a covariance function using observed data (given from sensors). $ \sigma_{f}^{2} $ and $ l $ (length parameter) can be determined by using the observed data. Thereafter, $ K_{**} $, $ K_{*} $, $ K $ matrices can be determined. This will give the values for mean and variance. Finally, it is possible to plot the graph and this will give the predicted values for any positions within the considered area.
